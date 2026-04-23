@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Heart, Baby, HandHeart, Shield, Briefcase, Instagram, Facebook } from "lucide-react";
 import portrait from "@/assets/fernanda-portrait.jpg";
 import logo from "@/assets/sarelli-logo.png";
+import { CountdownEleicao } from "@/components/CountdownEleicao";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -154,6 +155,9 @@ function Capa() {
           </div>
         </div>
       </section>
+
+      {/* CRONÔMETRO ATÉ 04/10/2026 */}
+      <CountdownEleicao />
 
       {/* SOBRE / Bases — fundo branco */}
       <section className="relative bg-white py-20">
