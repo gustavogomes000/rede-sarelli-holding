@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useEffect, useMemo, useRef, useState, type ElementType, type ReactNode } from "react";
 import { Pencil, Check, X, Loader2 } from "lucide-react";
+import { loadEditableText, saveEditableText } from "@/lib/editable-text.functions";
 
 interface EditableTextProps {
   /** Identificador único do texto no banco. Ex: "planejamento.cta.titulo" */
@@ -17,7 +17,6 @@ interface EditableTextProps {
   children?: ReactNode;
 }
 
-// Cache global em memória para evitar refetch
 const cache = new Map<string, string>();
 const subscribers = new Map<string, Set<(v: string) => void>>();
 
@@ -39,8 +38,8 @@ export function EditableText({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | HTMLInputElement | null>(null);
+  const lines = useMemo(() => value.split("\n"), [value]);
 
-  // Inscrição no cache global
   useEffect(() => {
     const set = subscribers.get(id) ?? new Set();
     set.add(setValue);
@@ -50,36 +49,34 @@ export function EditableText({
     };
   }, [id]);
 
-  // Carrega do banco na montagem (só uma vez por id)
   useEffect(() => {
     let cancelled = false;
+
     if (cache.has(id)) {
-      setValue(cache.get(id)!);
+      const cachedValue = cache.get(id) ?? defaultValue;
+      setValue(cachedValue);
+      setDraft(cachedValue);
       return;
     }
+
     (async () => {
       try {
-        const { data, error } = await (supabase as any)
-          .from("caderno_textos")
-          .select("conteudo")
-          .eq("chave", id)
-          .maybeSingle();
+        const result = await loadEditableText({ data: { id, defaultValue } });
         if (cancelled) return;
-        if (!error && data?.conteudo) {
-          notify(id, data.conteudo);
-        } else {
-          cache.set(id, defaultValue);
-        }
+        notify(id, result.value);
+        setDraft(result.value);
       } catch {
-        if (!cancelled) cache.set(id, defaultValue);
+        if (cancelled) return;
+        notify(id, defaultValue);
+        setDraft(defaultValue);
       }
     })();
+
     return () => {
       cancelled = true;
     };
   }, [id, defaultValue]);
 
-  // Foco automático ao entrar em edição
   useEffect(() => {
     if (editing && inputRef.current) {
       inputRef.current.focus();
@@ -92,21 +89,19 @@ export function EditableText({
       setEditing(false);
       return;
     }
+
     setSaving(true);
     setError(null);
-    const { error } = await (supabase as any)
-      .from("caderno_textos")
-      .upsert(
-        { chave: id, conteudo: draft, atualizado_em: new Date().toISOString() },
-        { onConflict: "chave" },
-      );
-    setSaving(false);
-    if (error) {
-      setError(error.message);
-      return;
+
+    try {
+      const result = await saveEditableText({ data: { id, content: draft } });
+      notify(id, result.value);
+      setEditing(false);
+    } catch (saveError) {
+      setError(saveError instanceof Error ? saveError.message : "Não foi possível salvar o texto.");
+    } finally {
+      setSaving(false);
     }
-    notify(id, draft);
-    setEditing(false);
   };
 
   const handleCancel = () => {
@@ -132,7 +127,7 @@ export function EditableText({
 
   if (editing) {
     return (
-      <span className="inline-flex flex-col gap-2 w-full no-print">
+      <span className="inline-flex w-full flex-col gap-2 no-print">
         {multiline ? (
           <textarea
             ref={(el) => {
@@ -142,7 +137,7 @@ export function EditableText({
             onChange={(e) => setDraft(e.target.value)}
             onKeyDown={handleKey}
             rows={Math.min(10, Math.max(3, draft.split("\n").length + 1))}
-            className="w-full rounded-lg border-2 border-primary bg-white px-3 py-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/30 font-sans text-base leading-relaxed"
+            className="w-full rounded-lg border-2 border-primary bg-white px-3 py-2 text-base leading-relaxed text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/30 font-sans"
           />
         ) : (
           <input
@@ -175,7 +170,7 @@ export function EditableText({
             Cancelar
           </button>
           {error && <span className="text-xs text-destructive">{error}</span>}
-          <span className="text-[10px] text-muted-foreground ml-auto">
+          <span className="ml-auto text-[10px] text-muted-foreground">
             {multiline ? "Ctrl+Enter para salvar · Esc cancela" : "Enter salva · Esc cancela"}
           </span>
         </span>
@@ -193,10 +188,10 @@ export function EditableText({
       }}
     >
       {multiline
-        ? value.split("\n").map((line, i) => (
+        ? lines.map((line, i) => (
             <span key={i}>
               {line}
-              {i < value.split("\n").length - 1 && <br />}
+              {i < lines.length - 1 && <br />}
             </span>
           ))
         : value}
@@ -208,7 +203,7 @@ export function EditableText({
           setDraft(value);
           setEditing(true);
         }}
-        className="no-print opacity-0 group-hover/edit:opacity-100 transition-opacity ml-1.5 inline-flex items-center justify-center h-5 w-5 rounded-md bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground align-middle"
+        className="no-print ml-1.5 inline-flex h-5 w-5 items-center justify-center rounded-md bg-primary/10 align-middle text-primary opacity-0 transition-opacity group-hover/edit:opacity-100 hover:bg-primary hover:text-primary-foreground"
       >
         <Pencil className="h-3 w-3" />
       </button>
