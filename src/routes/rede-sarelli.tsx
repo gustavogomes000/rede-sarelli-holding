@@ -222,12 +222,12 @@ const APPS: App[] = [
 function RedeSarelliPage() {
   return (
     <PageShell
-      eyebrow="Capítulo 05 · Como a rede funciona"
+      eyebrow="Capítulo 05 · Ecossistema de cadastro"
       title={
         <EditableText
           id="rede.hero.titulo"
           as="span"
-          defaultValue="Rede Sarelli."
+          defaultValue="Como construímos nossa base eleitoral."
           className=""
         />
       }
@@ -236,7 +236,7 @@ function RedeSarelliPage() {
           id="rede.hero.intro"
           as="span"
           multiline
-          defaultValue="O organograma completo: Suplente no topo, Lideranças multiplicando, Fiscais cobrindo seções, Promotores cadastrando em volume e Coordenadores nos eventos. Junto, três aplicativos (SindsPag, Recepção e Time Tubarão) alimentam a mesma base. Tudo desce para o Time de CS, que aquece os contatos até o dia da eleição."
+          defaultValue="Esta página mostra TODOS os sistemas que usamos hoje para captar leads — não só a Rede Sarelli. De um lado, a rede humana (Suplente, Liderança, Fiscal, Promotor, Coordenador) trabalhando em árvore. Do outro, três aplicativos próprios (SindsPag, Recepção e Time Tubarão) coletando cadastros nos seus contextos. Tudo desce para uma base única, qualificada pelo Time de CS, até virar voto no dia da eleição."
         />
       }
     >
