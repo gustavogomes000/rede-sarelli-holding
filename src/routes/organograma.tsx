@@ -600,7 +600,7 @@ function OrganogramaPage() {
           subtitulo="Comandado pelo Head do Exército: Suplentes articulam, Fiscais defendem a urna, Lideranças convertem, Promotores prospectam."
           Icon={Swords}
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {exercito.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
