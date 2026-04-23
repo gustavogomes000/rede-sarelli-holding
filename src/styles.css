@@ -5,9 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Sarelli Design System
- * Pink Sarelli + Champagne Gold + Deep Black
- * Premium dark mode for data sections, light/pink for brand sections.
+ * Sarelli Design System — paleta REAL extraída de deputadasarelli.com.br
+ * Primary pink: #ea2e6d (hsl 340 82% 55%)
+ * Accents: #f4a7ba, #fbcfe8, #fbdae5
+ * Gold (do swoosh do logo): #d4a24c
+ * Tipografia: Poppins
  */
 
 @theme inline {
@@ -53,103 +55,109 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Sarelli brand tokens */
+  /* Sarelli brand tokens — alinhados ao site oficial */
   --color-pink: var(--pink);
   --color-pink-soft: var(--pink-soft);
+  --color-pink-pastel: var(--pink-pastel);
   --color-pink-deep: var(--pink-deep);
+  --color-rose: var(--rose);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-ink: var(--ink);
   --color-cream: var(--cream);
 
-  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  --font-display: "Poppins", "Helvetica Neue", system-ui, sans-serif;
+  --font-sans: "Poppins", "Helvetica Neue", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.875rem;
 
-  /* Sarelli palette */
-  --pink: oklch(0.62 0.24 0);            /* Rosa Sarelli vibrante #E91E63-ish */
-  --pink-soft: oklch(0.92 0.06 0);
-  --pink-deep: oklch(0.45 0.22 5);
-  --gold: oklch(0.82 0.13 85);           /* Champagne dourado */
-  --gold-soft: oklch(0.92 0.07 88);
-  --ink: oklch(0.14 0.01 280);           /* Preto profundo levemente azulado */
-  --cream: oklch(0.985 0.008 80);        /* Off-white quente */
+  /* Paleta exata do site oficial */
+  --pink: hsl(340 82% 55%);          /* #ea2e6d — primário */
+  --pink-pastel: hsl(340 82% 80%);   /* #f4a7ba — rosa do bloco hero */
+  --pink-soft: hsl(340 82% 92%);     /* #fbcfe8 */
+  --pink-deep: hsl(340 82% 40%);     /* magenta intenso */
+  --rose: hsl(340 70% 88%);          /* fbdae5 */
+  --gold: hsl(38 60% 56%);           /* dourado do swoosh */
+  --gold-soft: hsl(38 70% 88%);
+  --ink: hsl(220 25% 12%);           /* near black */
+  --cream: hsl(0 0% 100%);
 
-  /* Light theme = brand/pessoas */
-  --background: oklch(0.985 0.008 80);
-  --foreground: oklch(0.14 0.01 280);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.14 0.01 280);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.14 0.01 280);
-  --primary: oklch(0.62 0.24 0);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.02 80);
-  --secondary-foreground: oklch(0.14 0.01 280);
-  --muted: oklch(0.95 0.015 80);
-  --muted-foreground: oklch(0.45 0.02 280);
-  --accent: oklch(0.82 0.13 85);
-  --accent-foreground: oklch(0.14 0.01 280);
+  /* Light theme = padrão (igual ao site oficial) */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(220 25% 12%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(220 25% 12%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(220 25% 12%);
+  --primary: hsl(340 82% 55%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(340 30% 96%);
+  --secondary-foreground: hsl(340 82% 30%);
+  --muted: hsl(340 15% 96%);
+  --muted-foreground: hsl(220 10% 45%);
+  --accent: hsl(340 82% 95%);
+  --accent-foreground: hsl(340 82% 45%);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9 0.015 60);
-  --input: oklch(0.9 0.015 60);
-  --ring: oklch(0.62 0.24 0);
-  --chart-1: oklch(0.62 0.24 0);
-  --chart-2: oklch(0.82 0.13 85);
-  --chart-3: oklch(0.45 0.22 5);
-  --chart-4: oklch(0.55 0.05 280);
-  --chart-5: oklch(0.7 0.15 40);
-  --sidebar: oklch(0.14 0.01 280);
-  --sidebar-foreground: oklch(0.985 0.008 80);
-  --sidebar-primary: oklch(0.62 0.24 0);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.2 0.02 280);
-  --sidebar-accent-foreground: oklch(0.985 0.008 80);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.62 0.24 0);
+  --border: hsl(340 20% 90%);
+  --input: hsl(340 20% 90%);
+  --ring: hsl(340 82% 55%);
+  --chart-1: hsl(340 82% 55%);
+  --chart-2: hsl(38 60% 56%);
+  --chart-3: hsl(340 82% 80%);
+  --chart-4: hsl(220 25% 25%);
+  --chart-5: hsl(340 50% 70%);
+  --sidebar: hsl(220 25% 12%);
+  --sidebar-foreground: hsl(0 0% 100%);
+  --sidebar-primary: hsl(340 82% 55%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(220 20% 18%);
+  --sidebar-accent-foreground: hsl(0 0% 100%);
+  --sidebar-border: hsl(0 0% 100% / 8%);
+  --sidebar-ring: hsl(340 82% 55%);
 }
 
 .dark {
-  /* Dark theme = holding/dados/operacional — Bloomberg político */
-  --background: oklch(0.12 0.01 280);
-  --foreground: oklch(0.985 0.008 80);
-  --card: oklch(0.17 0.015 280);
-  --card-foreground: oklch(0.985 0.008 80);
-  --popover: oklch(0.17 0.015 280);
-  --popover-foreground: oklch(0.985 0.008 80);
-  --primary: oklch(0.7 0.24 0);
-  --primary-foreground: oklch(0.12 0.01 280);
-  --secondary: oklch(0.22 0.02 280);
-  --secondary-foreground: oklch(0.985 0.008 80);
-  --muted: oklch(0.22 0.02 280);
-  --muted-foreground: oklch(0.7 0.02 280);
-  --accent: oklch(0.82 0.13 85);
-  --accent-foreground: oklch(0.12 0.01 280);
+  /* Dark mode — usado nas seções operacionais */
+  --background: hsl(220 25% 8%);
+  --foreground: hsl(0 0% 98%);
+  --card: hsl(220 25% 12%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(220 25% 12%);
+  --popover-foreground: hsl(0 0% 98%);
+  --primary: hsl(340 82% 60%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(220 20% 18%);
+  --secondary-foreground: hsl(0 0% 98%);
+  --muted: hsl(220 20% 18%);
+  --muted-foreground: hsl(220 10% 65%);
+  --accent: hsl(38 60% 56%);
+  --accent-foreground: hsl(220 25% 12%);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.7 0.24 0);
-  --chart-1: oklch(0.7 0.24 0);
-  --chart-2: oklch(0.82 0.13 85);
-  --chart-3: oklch(0.55 0.22 5);
-  --chart-4: oklch(0.65 0.08 280);
-  --chart-5: oklch(0.75 0.15 40);
-  --sidebar: oklch(0.08 0.01 280);
-  --sidebar-foreground: oklch(0.985 0.008 80);
-  --sidebar-primary: oklch(0.7 0.24 0);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.18 0.015 280);
-  --sidebar-accent-foreground: oklch(0.985 0.008 80);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.7 0.24 0);
+  --border: hsl(0 0% 100% / 10%);
+  --input: hsl(0 0% 100% / 12%);
+  --ring: hsl(340 82% 60%);
+  --chart-1: hsl(340 82% 60%);
+  --chart-2: hsl(38 60% 56%);
+  --chart-3: hsl(340 82% 80%);
+  --chart-4: hsl(220 15% 60%);
+  --chart-5: hsl(340 50% 70%);
+  --sidebar: hsl(220 25% 5%);
+  --sidebar-foreground: hsl(0 0% 98%);
+  --sidebar-primary: hsl(340 82% 60%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(220 25% 14%);
+  --sidebar-accent-foreground: hsl(0 0% 98%);
+  --sidebar-border: hsl(0 0% 100% / 8%);
+  --sidebar-ring: hsl(340 82% 60%);
 }
 
 @layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
   * {
     border-color: var(--color-border);
   }
@@ -162,76 +170,85 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+    font-weight: 800;
   }
 }
 
 @layer utilities {
+  .gradient-pink {
+    background-image: linear-gradient(135deg, hsl(340 82% 60%) 0%, hsl(340 82% 45%) 100%);
+  }
+  .gradient-pink-pastel {
+    background-image: linear-gradient(135deg, hsl(340 82% 88%) 0%, hsl(340 82% 78%) 100%);
+  }
   .gradient-pink-gold {
-    background-image: linear-gradient(135deg, var(--pink) 0%, var(--gold) 100%);
+    background-image: linear-gradient(135deg, hsl(340 82% 55%) 0%, hsl(38 60% 56%) 100%);
   }
-  .gradient-ink-pink {
-    background-image: linear-gradient(135deg, var(--ink) 0%, var(--pink-deep) 100%);
+  .gradient-hero {
+    background-image: linear-gradient(135deg, hsl(340 82% 80%) 0%, hsl(340 82% 72%) 50%, hsl(340 82% 78%) 100%);
   }
-  .text-gradient-gold {
-    background-image: linear-gradient(135deg, var(--gold) 0%, oklch(0.95 0.08 88) 100%);
+  .text-gradient-pink {
+    background-image: linear-gradient(135deg, hsl(340 82% 55%) 0%, hsl(340 82% 40%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  .text-gradient-pink {
-    background-image: linear-gradient(135deg, var(--pink) 0%, var(--gold) 100%);
+  .text-gradient-gold {
+    background-image: linear-gradient(135deg, hsl(38 70% 65%) 0%, hsl(38 60% 50%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .glass {
-    background-color: color-mix(in oklab, var(--card) 60%, transparent);
+    background-color: color-mix(in oklab, white 70%, transparent);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
   .glass-dark {
-    background-color: color-mix(in oklab, var(--ink) 70%, transparent);
+    background-color: color-mix(in oklab, hsl(220 25% 8%) 75%, transparent);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
   .gold-line {
-    background-image: linear-gradient(90deg, transparent, var(--gold), transparent);
+    background-image: linear-gradient(90deg, transparent, hsl(38 60% 56%), transparent);
     height: 1px;
   }
+  .pink-line {
+    background-image: linear-gradient(90deg, transparent, hsl(340 82% 55%), transparent);
+    height: 2px;
+  }
   .shadow-pink {
-    box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--pink) 45%, transparent);
+    box-shadow: 0 20px 60px -20px hsl(340 82% 55% / 40%);
+  }
+  .shadow-pink-lg {
+    box-shadow: 0 30px 80px -20px hsl(340 82% 55% / 50%);
   }
   .shadow-gold {
-    box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--gold) 50%, transparent);
+    box-shadow: 0 20px 60px -20px hsl(38 60% 56% / 50%);
   }
   .grid-bg {
     background-image:
-      linear-gradient(color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px);
+      linear-gradient(color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px);
     background-size: 48px 48px;
+  }
+  .ring-glow-pink {
+    box-shadow: 0 0 0 4px white, 0 0 0 8px hsl(340 82% 55%), 0 25px 60px -15px hsl(340 82% 55% / 45%);
   }
   .animate-float {
     animation: float 6s ease-in-out infinite;
-  }
-  .animate-shimmer {
-    background-size: 200% 100%;
-    animation: shimmer 3s linear infinite;
   }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  50% { transform: translateY(-12px); }
 }
 
 @media print {
