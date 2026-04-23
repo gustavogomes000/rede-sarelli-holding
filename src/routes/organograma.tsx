@@ -2,34 +2,37 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   Crown,
   Compass,
-  Camera,
-  Video,
-  Mic,
-  PenTool,
+  CalendarClock,
+  Database,
   Megaphone,
-  BarChart3,
+  PhoneCall,
+  ClipboardList,
   Users,
+  UserCheck,
+  Church,
+  Footprints,
   ShieldCheck,
-  Sparkles,
-  Layers,
   Target,
   CheckCircle2,
+  Building2,
+  Swords,
+  Briefcase,
 } from "lucide-react";
 
 export const Route = createFileRoute("/organograma")({
   head: () => ({
     meta: [
-      { title: "Organograma da Campanha · Chama a Doutora — Sarelli 2026" },
+      { title: "Organograma · Holding Sarelli 2026" },
       {
         name: "description",
         content:
-          "Estrutura, cargos, responsabilidades e deveres de cada função da pré-campanha digital de Dra. Fernanda Sarelli — Goiás 2026.",
+          "Estrutura corporativa da Holding Sarelli 2026: Diretoria Executiva (C-Level), HQ de Inteligência e Exército de Campo. Cargos, deveres e KPIs.",
       },
-      { property: "og:title", content: "Organograma · Chama a Doutora 2026" },
+      { property: "og:title", content: "Organograma · Holding Sarelli 2026" },
       {
         property: "og:description",
         content:
-          "Quem faz o quê na máquina digital da Doutora: cargos, responsabilidades e entregáveis de cada função da campanha.",
+          "Holding Sarelli 2026 gerida como empresa de tecnologia: CEO, COO, Chief of Staff, HQ de dados e Exército de Campo.",
       },
     ],
   }),
@@ -39,200 +42,224 @@ export const Route = createFileRoute("/organograma")({
 type Cargo = {
   icon: typeof Crown;
   cargo: string;
+  ocupante?: string;
   papel: string;
   reporta: string;
   responsabilidades: string[];
   entregaveis: string[];
-  cor: "primary" | "rose" | "violet" | "amber" | "emerald" | "sky" | "slate";
+  cor: "primary" | "rose" | "violet" | "amber" | "emerald" | "sky" | "slate" | "indigo";
 };
 
-const lideranca: Cargo = {
+// ============= C-LEVEL =============
+const ceoPublica: Cargo = {
   icon: Crown,
-  cargo: "Dra. Fernanda Sarelli",
-  papel: "Pré-candidata · A Voz e a Causa",
+  cargo: "CEO Pública",
+  ocupante: "Dra. Fernanda Sarelli",
+  papel: "Personificação da marca",
   reporta: "Eleitorado de Goiás",
   responsabilidades: [
-    "Encarnar a mensagem: defesa da mulher, da criança e da família.",
-    "Aprovar diretrizes estratégicas e o tom da comunicação.",
-    "Cumprir agenda pública, encontros e gravações com pontualidade.",
-    "Validar pautas sensíveis (jurídicas, religiosas, partidárias).",
+    "Encarnar a marca: firmeza (criminalista), acolhimento (mãe/social) e eficiência (gestora).",
+    "Foco em rua, alianças políticas e geração de conteúdo.",
+    "Cumprir agenda com pontualidade e disponibilidade para gravações.",
+    "Validar pautas sensíveis e decisões estratégicas finais.",
   ],
   entregaveis: [
-    "Presença em agendas semanais definidas pela coordenação.",
-    "Disponibilidade para gravação de pílulas, lives e podcast.",
-    "Aprovação final de peças que envolvam imagem pessoal.",
+    "Presença em agendas de rua semanais.",
+    "Disponibilidade para vlogs, lives, podcast e cortes.",
+    "Aprovação de peças que envolvam imagem pessoal.",
   ],
   cor: "primary",
 };
 
-const estrategia: Cargo[] = [
+const cLevel: Cargo[] = [
   {
     icon: Compass,
-    cargo: "Coordenação Geral / Estratégia",
-    papel: "Cabeça da operação digital",
-    reporta: "Dra. Fernanda Sarelli",
+    cargo: "COO · Coordenador Geral",
+    ocupante: "Deocleciano",
+    papel: "Estrategista operacional",
+    reporta: "CEO Pública",
     responsabilidades: [
-      "Definir o plano estratégico mensal e os objetivos por fase.",
-      "Alinhar todas as áreas (conteúdo, mídia, dados, mobilização).",
-      "Tomar decisões com base no painel de dados (zonas de calor).",
-      "Gerir prazos, orçamento e priorização de pautas.",
+      "Gerir todos os setores da Holding (HQ + Exército de Campo).",
+      "Garantir execução do Roadmap Macro até 4 de outubro.",
+      "Receber e analisar relatórios diários de produtividade por região.",
+      "Tomar decisões com base no painel da Rede Sarelli.",
     ],
     entregaveis: [
-      "Plano editorial mensal aprovado.",
-      "Reunião semanal de status com a Doutora e líderes de área.",
-      "Relatório quinzenal de performance (alcance, leads, cliques).",
+      "Reunião semanal de status com todas as áreas.",
+      "Relatório consolidado quinzenal de KPIs.",
+      "Auditoria contínua de metas das promotoras e lideranças.",
     ],
     cor: "primary",
   },
   {
-    icon: ShieldCheck,
-    cargo: "Direção de Conteúdo & Narrativa",
-    papel: "Guardião do tom e da mensagem",
-    reporta: "Coordenação Geral",
+    icon: CalendarClock,
+    cargo: "Chief of Staff · Assessoria 24h",
+    papel: "Filtro de acesso e gestão de agenda",
+    reporta: "CEO Pública",
     responsabilidades: [
-      "Garantir consistência da mensagem nos 4 pilares (autoridade, afeto, clareza, mobilização).",
-      "Aprovar roteiros, legendas e copies antes da publicação.",
-      "Construir e manter o glossário de bandeiras e frases-âncora.",
-      "Mediar pautas sensíveis com a Doutora e o jurídico.",
+      "Gestão integral da agenda da CEO Pública.",
+      "Acompanhamento 24h: deslocamentos, compromissos, gravações.",
+      "Filtrar pedidos, convites e contatos antes de chegarem à Doutora.",
+      "Articular interface entre CEO e demais áreas da Holding.",
     ],
     entregaveis: [
-      "Manual de tom de voz da campanha.",
-      "Calendário editorial validado semanalmente.",
-      "Briefings prontos para roteirista, designer e edição.",
+      "Agenda semanal fechada e validada com 7 dias de antecedência.",
+      "Briefing diário pré-agenda para a CEO.",
+      "Confirmações e logística operacional de cada compromisso.",
     ],
     cor: "rose",
   },
 ];
 
-const producao: Cargo[] = [
+// ============= HQ — INTELIGÊNCIA E SUPORTE INTERNO =============
+const hq: Cargo[] = [
   {
-    icon: Camera,
-    cargo: "Fotografia & Cobertura de Agenda",
-    papel: "Olhos da campanha em campo",
-    reporta: "Direção de Conteúdo",
+    icon: Database,
+    cargo: "CTO & Head de Dados",
+    papel: "Inteligência da Rede Sarelli",
+    reporta: "COO · Coordenador Geral",
     responsabilidades: [
-      "Cobrir todas as agendas, reuniões, visitas e encontros da Doutora.",
-      "Alimentar o Banco de Mídia com fotos catalogadas (data, local, tema).",
-      "Capturar bastidores autênticos (não posados) para humanizar.",
-      "Garantir consentimento de imagem das pessoas atendidas.",
+      "Operar o sistema Rede Sarelli (cadastro, qualificação, retenção).",
+      "Auditoria de hashtags (#ChamaADoutora) e engajamento digital.",
+      "Manter mapa de calor por município, zona e seção.",
+      "Cruzar acessos do site, cliques no WhatsApp e base eleitoral.",
     ],
     entregaveis: [
-      "Mínimo 30 fotos editadas por agenda, entregues em até 24h.",
-      "Banco de mídia organizado por evento, mês e bandeira.",
-      "Seleção semanal de 'melhores capturas' para o feed.",
-    ],
-    cor: "amber",
-  },
-  {
-    icon: Video,
-    cargo: "Vídeo & Edição (Reels / Shorts / Cortes)",
-    papel: "Tradutor da agenda em conteúdo viral",
-    reporta: "Direção de Conteúdo",
-    responsabilidades: [
-      "Filmar e editar vídeos verticais (Reels, TikTok, Shorts).",
-      "Cortar lives e podcast em pílulas de 30s a 90s.",
-      "Manter padrão visual: legenda, cor, tipografia da campanha.",
-      "Otimizar primeiros 3 segundos (gancho) para retenção.",
-    ],
-    entregaveis: [
-      "5 a 7 vídeos verticais publicáveis por semana.",
-      "Cortes do podcast prontos em até 48h após gravação.",
-      "Banco de B-rolls organizado por tema.",
+      "Painel em tempo real para a coordenação.",
+      "Relatórios diários de produtividade por região.",
+      "Mapa de calor mensal para reorientar agendas e mídia.",
     ],
     cor: "violet",
   },
   {
-    icon: Mic,
-    cargo: "Podcast & Áudio",
-    papel: "Aprofundamento e autoridade",
-    reporta: "Direção de Conteúdo",
+    icon: Megaphone,
+    cargo: "Marketing & Branding",
+    papel: "Planejamento, conteúdo e tráfego",
+    reporta: "COO · Coordenador Geral",
     responsabilidades: [
-      "Produzir o podcast quinzenal 'Chama a Doutora'.",
-      "Captar convidadas (vítimas, mães, juristas, pastoras, lideranças).",
-      "Roteirizar blocos, perguntas e ganchos para cortes.",
-      "Publicar nas plataformas (Spotify, YouTube, cortes para redes).",
+      "Executar planejamento editorial de 24 semanas.",
+      "Coordenar o videomaker 'O Sombra' (vlogs estilo João Campos).",
+      "Gerir tráfego pago e impulsionamento por região.",
+      "Garantir consistência da marca: Efeito Cimed + Nova Política.",
     ],
     entregaveis: [
-      "1 episódio publicado a cada 15 dias.",
-      "Roteiro e pauta entregues 5 dias antes da gravação.",
-      "Mínimo 4 cortes por episódio para reaproveitamento.",
+      "Calendário editorial por semana, alinhado às fases do Roadmap.",
+      "5 a 7 vídeos verticais publicáveis por semana.",
+      "Relatório de performance de tráfego pago por município.",
+    ],
+    cor: "rose",
+  },
+  {
+    icon: PhoneCall,
+    cargo: "Customer Success · CS Político",
+    papel: "Retenção e validação de voto",
+    reporta: "COO · Coordenador Geral",
+    responsabilidades: [
+      "Ligar para cada lead cadastrado pelos promotores.",
+      "Validar o apoio e estreitar o laço com o eleitor.",
+      "Atualizar status do eleitor no sistema (frio, morno, quente).",
+      "Encaminhar leads quentes para a liderança de nicho correta.",
+    ],
+    entregaveis: [
+      "Meta diária de ligações por operador.",
+      "Conversão de leads frios em apoiadores qualificados.",
+      "Base de contatos atualizada no painel.",
     ],
     cor: "emerald",
   },
   {
-    icon: PenTool,
-    cargo: "Design & Identidade Visual",
-    papel: "Coerência estética da marca",
-    reporta: "Direção de Conteúdo",
+    icon: ClipboardList,
+    cargo: "Recepção & Data Entry",
+    papel: "Porta de entrada do comitê",
+    reporta: "COO · Coordenador Geral",
     responsabilidades: [
-      "Criar artes de feed, stories, capas, cards de citação.",
-      "Manter o guia visual (cores, fontes, fotos, ícones).",
-      "Adaptar materiais para WhatsApp, newsletter e site.",
-      "Produzir templates editáveis para apoiadores.",
+      "Cadastrar todas as visitas que entram no comitê.",
+      "Registrar métricas de fluxo (horários, motivos, regiões).",
+      "Garantir que nenhum apoiador saia sem cadastro.",
+      "Atendimento humano e cordial — primeira imagem da Holding.",
     ],
     entregaveis: [
-      "Pacote semanal de artes para feed e stories.",
-      "Templates 'pronto para compartilhar' no kit de apoiador.",
-      "Guia visual atualizado e versionado.",
-    ],
-    cor: "sky",
-  },
-];
-
-const distribuicao: Cargo[] = [
-  {
-    icon: Megaphone,
-    cargo: "Redes Sociais & Comunidade",
-    papel: "Voz pública diária",
-    reporta: "Direção de Conteúdo",
-    responsabilidades: [
-      "Programar e publicar conteúdo no Instagram, TikTok, Facebook.",
-      "Responder comentários e DMs com tom da campanha.",
-      "Monitorar tendências, hashtags e oportunidades de pauta.",
-      "Engajar com perfis aliados, jornalistas e influenciadoras.",
-    ],
-    entregaveis: [
-      "Feed e stories publicados todos os dias úteis.",
-      "Resposta a DMs em até 12h (horário comercial).",
-      "Relatório semanal de engajamento por formato.",
-    ],
-    cor: "rose",
-  },
-  {
-    icon: Users,
-    cargo: "Comunidade Forte (WhatsApp & Newsletter)",
-    papel: "Central de mobilização dos apoiadores",
-    reporta: "Coordenação Geral",
-    responsabilidades: [
-      "Organizar e moderar grupos de WhatsApp por município.",
-      "Distribuir kits prontos (artes, vídeos, recados) para compartilhamento.",
-      "Convocar apoiadores para curtir, comentar, divulgar nas igrejas.",
-      "Cadastrar e segmentar lista de apoiadores por região.",
-    ],
-    entregaveis: [
-      "Kit semanal enviado às terças e sextas.",
-      "Grupos de WhatsApp ativos por município estratégico.",
-      "Newsletter quinzenal com bastidores e convocações.",
+      "100% dos visitantes cadastrados no sistema.",
+      "Relatório semanal de fluxo do comitê.",
+      "Encaminhamento de cada visitante à área correta.",
     ],
     cor: "amber",
   },
+];
+
+// ============= EXÉRCITO DE CAMPO =============
+const exercito: Cargo[] = [
   {
-    icon: BarChart3,
-    cargo: "Dados, Painel & Inteligência",
-    papel: "Bússola da campanha",
-    reporta: "Coordenação Geral",
+    icon: Briefcase,
+    cargo: "Gerentes de Expansão",
+    papel: "Controladores da tropa",
+    reporta: "COO · Coordenador Geral",
     responsabilidades: [
-      "Operar o painel de dados (acessos, cliques, zonas de calor).",
-      "Cruzar dados do site com base eleitoral por município/zona.",
-      "Identificar regiões de alta e baixa penetração da mensagem.",
-      "Recomendar ajustes de agenda e investimento com base em evidências.",
+      "Coordenar e fiscalizar metas das promotoras em campo.",
+      "Distribuir territórios e definir rotas de prospecção.",
+      "Acompanhar produtividade individual de cada promotora.",
+      "Reportar gargalos e oportunidades de expansão à coordenação.",
     ],
     entregaveis: [
-      "Painel atualizado em tempo real, acessível à coordenação.",
-      "Relatório quinzenal: top municípios, bairros e cliques.",
-      "Mapa de calor mensal para reorientar agendas e mídia.",
+      "Mapa territorial atualizado de promotoras ativas.",
+      "Reunião semanal de metas com cada promotora.",
+      "Relatório de produtividade por região.",
     ],
-    cor: "violet",
+    cor: "indigo",
+  },
+  {
+    icon: UserCheck,
+    cargo: "Suplentes",
+    papel: "Captação e blindagem política",
+    reporta: "COO · Coordenador Geral",
+    responsabilidades: [
+      "Captar novas lideranças locais para a Rede Sarelli.",
+      "Blindagem política: neutralizar ataques e proteger a marca.",
+      "Articular alianças regionais com vereadores e prefeitos.",
+      "Representar a Doutora em agendas que ela não puder cumprir.",
+    ],
+    entregaveis: [
+      "Meta mensal de novas lideranças captadas.",
+      "Relatório de articulação política regional.",
+      "Cobertura de agendas delegadas pela CEO.",
+    ],
+    cor: "sky",
+  },
+  {
+    icon: Church,
+    cargo: "Lideranças de Nicho",
+    papel: "Conversão setorial",
+    reporta: "Suplentes · Gerentes de Expansão",
+    responsabilidades: [
+      "Converter setores específicos: igrejas, bairros, grupos profissionais.",
+      "Mobilizar suas redes próprias para o movimento Chama a Doutora.",
+      "Organizar encontros, cultos e reuniões de apoio.",
+      "Reportar leads quentes ao CS Político.",
+    ],
+    entregaveis: [
+      "Meta de votos comprometidos por nicho.",
+      "Mínimo 1 encontro mensal mobilizando a base.",
+      "Lista atualizada de apoiadores no sistema.",
+    ],
+    cor: "emerald",
+  },
+  {
+    icon: Footprints,
+    cargo: "Promotores · Infantaria",
+    papel: "Prospecção ativa de eleitores",
+    reporta: "Gerentes de Expansão",
+    responsabilidades: [
+      "Prospecção ativa: abordar e cadastrar novos eleitores.",
+      "Cadastrar cada eleitor no App geolocalizado da Rede Sarelli.",
+      "Engajar imediatamente no digital (curtir, comentar, hashtag).",
+      "Cumprir metas diárias de cadastros por território.",
+    ],
+    entregaveis: [
+      "Meta diária de cadastros validados no app.",
+      "Engajamento digital comprovado de cada lead.",
+      "Cobertura territorial conforme rota do Gerente.",
+    ],
+    cor: "amber",
   },
 ];
 
@@ -244,6 +271,7 @@ const COR_CLASSES: Record<Cargo["cor"], { bg: string; text: string; border: stri
   emerald: { bg: "bg-emerald-500", text: "text-emerald-600", border: "border-emerald-300/40", ring: "shadow-emerald-500/30" },
   sky: { bg: "bg-sky-500", text: "text-sky-600", border: "border-sky-300/40", ring: "shadow-sky-500/30" },
   slate: { bg: "bg-slate-500", text: "text-slate-600", border: "border-slate-300/40", ring: "shadow-slate-500/30" },
+  indigo: { bg: "bg-indigo-500", text: "text-indigo-600", border: "border-indigo-300/40", ring: "shadow-indigo-500/30" },
 };
 
 function CargoCard({ cargo }: { cargo: Cargo }) {
@@ -260,12 +288,15 @@ function CargoCard({ cargo }: { cargo: Cargo }) {
         >
           <Icon className="h-6 w-6" />
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <h3 className="font-display text-lg font-black text-foreground leading-tight">
             {cargo.cargo}
           </h3>
-          <p className={`text-sm font-semibold ${c.text} mt-0.5`}>{cargo.papel}</p>
-          <p className="text-[11px] font-mono uppercase tracking-wider text-foreground/40 mt-1">
+          {cargo.ocupante && (
+            <p className={`text-sm font-bold ${c.text} mt-0.5`}>{cargo.ocupante}</p>
+          )}
+          <p className="text-sm text-foreground/70 mt-0.5 italic">{cargo.papel}</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-foreground/40 mt-1">
             Reporta a: {cargo.reporta}
           </p>
         </div>
@@ -293,7 +324,7 @@ function CargoCard({ cargo }: { cargo: Cargo }) {
           <div className="flex items-center gap-2 mb-2">
             <CheckCircle2 className={`h-3.5 w-3.5 ${c.text}`} />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">
-              Entregáveis
+              Entregáveis & KPIs
             </span>
           </div>
           <ul className="space-y-1.5">
@@ -323,28 +354,27 @@ function OrganogramaPage() {
         <div className="mx-auto max-w-6xl px-6 lg:px-8 pt-12 pb-16">
           <div className="flex items-center gap-3 mb-6">
             <span className="font-mono text-xs font-bold text-primary tracking-[0.3em]">
-              CAPÍTULO 03
+              CAPÍTULO 03 · HOLDING SARELLI 2026
             </span>
             <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-primary/60 to-transparent" />
           </div>
 
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-black text-foreground leading-[0.95] tracking-tight mb-6">
-            O time que faz a
+            Organograma
             <br />
             <span className="bg-gradient-to-r from-primary via-pink-500 to-rose-500 bg-clip-text text-transparent">
-              campanha acontecer
+              Corporativo
             </span>
           </h1>
 
           <p className="text-xl sm:text-2xl text-foreground/70 max-w-3xl leading-relaxed font-light">
-            Cada cargo com{" "}
-            <span className="font-semibold text-foreground">papel claro</span>,
-            responsabilidades definidas e entregáveis mensuráveis. Sem sobreposição,
-            sem ponto cego.
+            A campanha gerida como uma{" "}
+            <span className="font-semibold text-foreground">empresa de tecnologia e serviços</span>,
+            com cargos, KPIs e responsabilidades claras — do C-Level ao Exército de Campo.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            {["Estratégia", "Produção", "Distribuição", "Dados"].map((tag) => (
+            {["Diretoria Executiva", "HQ · Inteligência", "Exército de Campo"].map((tag) => (
               <span
                 key={tag}
                 className="px-4 py-2 rounded-full border border-primary/20 bg-white/80 backdrop-blur text-sm font-semibold text-primary shadow-sm"
@@ -356,151 +386,210 @@ function OrganogramaPage() {
         </div>
       </section>
 
-      {/* TOPO DO ORGANOGRAMA — A DOUTORA */}
-      <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-20">
+      {/* CEO PÚBLICA */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-12">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
             <Crown className="h-4 w-4 text-primary" />
             <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Topo da Estrutura
+              Topo da Holding
             </span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground">
-            A <span className="text-primary">Voz</span> e a <span className="text-primary">Causa</span>
+            A <span className="text-primary">Marca</span> em pessoa
           </h2>
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <CargoCard cargo={lideranca} />
+          <CargoCard cargo={ceoPublica} />
         </div>
 
-        {/* Conector visual */}
-        <div className="flex justify-center my-8">
+        <div className="flex justify-center my-6">
           <div className="h-12 w-px bg-gradient-to-b from-primary to-primary/0" />
         </div>
       </section>
 
-      {/* CAMADA 1 — ESTRATÉGIA */}
+      {/* DIRETORIA EXECUTIVA */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-20">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
-            <Compass className="h-4 w-4 text-primary" />
+            <Briefcase className="h-4 w-4 text-primary" />
             <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Camada 01 · Comando
+              Camada 01 · Diretoria Executiva (C-Level)
             </span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
-            Estratégia & <span className="text-primary">Direção</span>
+            Quem <span className="text-primary">comanda</span> a operação
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            Quem pensa, decide e protege a mensagem.
+            COO operacional e Chief of Staff blindando a CEO Pública 24h por dia.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-5">
-          {estrategia.map((c) => (
+          {cLevel.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
         </div>
       </section>
 
-      {/* CAMADA 2 — PRODUÇÃO */}
+      {/* HQ — INTELIGÊNCIA */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-20">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
-            <Layers className="h-4 w-4 text-primary" />
+            <Building2 className="h-4 w-4 text-primary" />
             <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Camada 02 · Produção
+              Camada 02 · HQ · Inteligência e Suporte Interno
             </span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
-            Quem <span className="text-primary">cria</span> o conteúdo
+            O <span className="text-primary">cérebro</span> da Holding
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            Foto, vídeo, áudio e design — a matéria-prima da campanha.
+            Dados, marketing, retenção de leads e porta de entrada do comitê.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-5">
-          {producao.map((c) => (
+          {hq.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
         </div>
       </section>
 
-      {/* CAMADA 3 — DISTRIBUIÇÃO & DADOS */}
+      {/* EXÉRCITO DE CAMPO */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-20">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
-            <Sparkles className="h-4 w-4 text-primary" />
+            <Swords className="h-4 w-4 text-primary" />
             <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Camada 03 · Distribuição & Dados
+              Camada 03 · Exército de Campo · Operação de Rua
             </span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
-            Quem <span className="text-primary">leva ao público</span> e mede
+            Quem <span className="text-primary">conquista</span> território
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            Publicação, mobilização da comunidade e leitura dos dados.
+            Da prospecção do promotor à conversão da liderança de nicho.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {distribuicao.map((c) => (
+        <div className="grid md:grid-cols-2 gap-5">
+          {exercito.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
         </div>
       </section>
 
-      {/* PRINCÍPIOS DE GOVERNANÇA */}
-      <section className="mx-auto max-w-5xl px-6 lg:px-8">
+      {/* CICLO OPERACIONAL REDE SARELLI */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8 mb-20">
         <div className="relative overflow-hidden rounded-3xl bg-foreground text-background p-10 sm:p-14 shadow-2xl">
           <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-primary/30 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-pink-500/20 blur-3xl" />
 
           <div className="relative">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 mb-6">
-              <ShieldCheck className="h-4 w-4 text-primary" />
+              <Database className="h-4 w-4 text-primary" />
               <span className="text-[11px] uppercase tracking-[0.35em] font-bold text-primary">
-                Princípios de Governança
+                Ciclo Operacional · Rede Sarelli
               </span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-5xl font-black leading-[1.05] mb-8 max-w-3xl">
-              Como esse time{" "}
-              <span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">
-                opera no dia a dia
-              </span>
+              O funil <span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">auditável</span> de conversão de votos
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid sm:grid-cols-2 gap-6">
               {[
                 {
-                  t: "Reuniões fixas",
-                  d: "Status semanal (segunda) e revisão de dados (sexta) com toda a coordenação.",
+                  n: "01",
+                  t: "Prospecção",
+                  d: "O promotor cadastra o eleitor no app geolocalizado da Rede Sarelli.",
+                  who: "Promotores · Infantaria",
                 },
                 {
-                  t: "Decisão por dado",
-                  d: "Pautas, agendas e investimento são guiados pelo painel de zonas de calor.",
+                  n: "02",
+                  t: "Qualificação",
+                  d: "O sistema valida o engajamento digital — uso da hashtag #ChamaADoutora.",
+                  who: "CTO & Head de Dados",
                 },
                 {
-                  t: "Aprovação em camadas",
-                  d: "Conteúdo sensível passa por Direção de Conteúdo antes de chegar à Doutora.",
+                  n: "03",
+                  t: "Retenção (CS)",
+                  d: "O time de Customer Success liga, valida o voto e estreita o laço.",
+                  who: "CS Político",
                 },
                 {
-                  t: "Entregáveis mensuráveis",
-                  d: "Cada cargo tem metas semanais visíveis a todos. Sem zona cinzenta.",
+                  n: "04",
+                  t: "Auditoria",
+                  d: "O Coordenador Geral recebe relatórios diários de produtividade por região.",
+                  who: "COO · Coordenador Geral",
                 },
-              ].map((p) => (
-                <div key={p.t} className="border-l-2 border-primary/60 pl-4">
-                  <div className="font-display font-bold text-background text-lg mb-1">
-                    {p.t}
+              ].map((step) => (
+                <div key={step.n} className="border-l-2 border-primary/60 pl-5">
+                  <div className="font-mono text-xs font-bold text-primary tracking-[0.3em] mb-1">
+                    PASSO {step.n}
                   </div>
-                  <p className="text-background/75 text-sm leading-relaxed">{p.d}</p>
+                  <div className="font-display font-bold text-background text-xl mb-1">
+                    {step.t}
+                  </div>
+                  <p className="text-background/75 text-sm leading-relaxed mb-2">{step.d}</p>
+                  <p className="text-[11px] font-semibold text-primary uppercase tracking-wider">
+                    Responsável: {step.who}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* PRINCÍPIOS DE GOVERNANÇA */}
+      <section className="mx-auto max-w-5xl px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
+              Identidade & Governança
+            </span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
+            Como a Holding <span className="text-primary">opera</span>
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            {
+              icon: Users,
+              t: "Efeito Cimed",
+              d: "Transformar a política em uma marca de desejo e pertencimento. A campanha como produto cobiçado.",
+            },
+            {
+              icon: Database,
+              t: "Nova Política",
+              d: "Tecnologia, dados e linguagem de 'Creator de Autoridade'. Decisão por evidência, não por intuição.",
+            },
+            {
+              icon: ShieldCheck,
+              t: "Atributos da Marca",
+              d: "Firmeza (criminalista), Acolhimento (mãe/social) e Eficiência (gestora). Os três sempre juntos.",
+            },
+          ].map((p) => {
+            const Icon = p.icon;
+            return (
+              <article
+                key={p.t}
+                className="bg-white rounded-2xl p-6 border border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-primary/20">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-display text-lg font-black text-foreground mb-2">{p.t}</h3>
+                <p className="text-sm text-foreground/70 leading-relaxed">{p.d}</p>
+              </article>
+            );
+          })}
         </div>
       </section>
     </main>
