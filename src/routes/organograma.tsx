@@ -18,6 +18,8 @@ import {
   Swords,
   Briefcase,
   Wallet,
+  Clapperboard,
+  Share2,
 } from "lucide-react";
 
 export const Route = createFileRoute("/organograma")({
