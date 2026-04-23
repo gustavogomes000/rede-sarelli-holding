@@ -129,12 +129,6 @@ function Capa() {
                     Conheça as bandeiras
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <Link
-                    to="/holding"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 bg-white/10 backdrop-blur px-7 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition"
-                  >
-                    A tese da campanha
-                  </Link>
                 </div>
 
                 <div className="flex items-center gap-8 pt-6 animate-in fade-in duration-1000 delay-500">
