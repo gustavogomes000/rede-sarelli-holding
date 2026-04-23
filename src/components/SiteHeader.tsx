@@ -2,13 +2,13 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import logoHeader from "@/assets/sarelli-logo-header.png";
+import { chapters } from "./ChapterNav";
 
-const NAV = [
-  { to: "/", label: "Capa", n: "01" },
-  { to: "/estrategia-digital", label: "Estratégia Digital", n: "02" },
-  { to: "/organograma", label: "Organograma", n: "03" },
-  { to: "/planejamento", label: "Planejamento Semanal", n: "04" },
-] as const;
+const NAV = chapters.map((chapter) => ({
+  to: chapter.path,
+  label: chapter.label,
+  n: chapter.num,
+}));
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -27,6 +27,7 @@ export function SiteHeader() {
   }, [location.pathname]);
 
   const currentIdx = NAV.findIndex((n) => n.to === location.pathname);
+  const currentDisplay = currentIdx >= 0 ? NAV[currentIdx].n : "00";
   const progress = currentIdx >= 0 ? ((currentIdx + 1) / NAV.length) * 100 : 0;
   const prev = currentIdx > 0 ? NAV[currentIdx - 1] : null;
   const next = currentIdx >= 0 && currentIdx < NAV.length - 1 ? NAV[currentIdx + 1] : null;
@@ -41,7 +42,6 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* LOGO sozinho */}
           <Link to="/" className="flex items-center group shrink-0">
             <img
               src={logoHeader}
@@ -50,7 +50,6 @@ export function SiteHeader() {
             />
           </Link>
 
-          {/* NAV de capítulos (desktop) */}
           <nav className="hidden xl:flex items-center gap-0.5">
             {NAV.map((item) => {
               const active = location.pathname === item.to;
@@ -73,9 +72,7 @@ export function SiteHeader() {
             })}
           </nav>
 
-          {/* CONTROLES: Prev / Next / Menu */}
           <div className="flex items-center gap-2">
-            {/* Navegação prev/next — pílula elegante */}
             <div className="flex items-center gap-1 rounded-full border border-primary/20 bg-gradient-to-r from-white via-pink-50/40 to-white backdrop-blur-md px-1.5 py-1 shadow-[0_4px_20px_-8px_rgba(236,72,153,0.35)]">
               {prev ? (
                 <Link
@@ -96,9 +93,11 @@ export function SiteHeader() {
                   Cap.
                 </div>
                 <div className="text-sm font-display font-bold text-primary tabular-nums leading-none">
-                  {String(currentIdx + 1).padStart(2, "0")}
+                  {currentDisplay}
                   <span className="text-primary/30 mx-0.5">/</span>
-                  <span className="text-primary/60 text-xs">{String(NAV.length).padStart(2, "0")}</span>
+                  <span className="text-primary/60 text-xs">
+                    {NAV[NAV.length - 1]?.n ?? "00"}
+                  </span>
                 </div>
               </div>
               {next ? (
@@ -159,3 +158,4 @@ export function SiteHeader() {
     </>
   );
 }
+
