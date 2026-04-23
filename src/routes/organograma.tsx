@@ -17,6 +17,7 @@ import {
   Building2,
   Swords,
   Briefcase,
+  Wallet,
 } from "lucide-react";
 
 export const Route = createFileRoute("/organograma")({
@@ -26,18 +27,20 @@ export const Route = createFileRoute("/organograma")({
       {
         name: "description",
         content:
-          "Estrutura corporativa da Holding Sarelli 2026: Diretoria Executiva (C-Level), HQ de Inteligência e Exército de Campo. Cargos, deveres e KPIs.",
+          "Organograma corporativo da Holding Sarelli 2026: CEO, COO, CFO, Chief of Staff, HQ de Inteligência e Exército de Campo.",
       },
       { property: "og:title", content: "Organograma · Holding Sarelli 2026" },
       {
         property: "og:description",
         content:
-          "Holding Sarelli 2026 gerida como empresa de tecnologia: CEO, COO, Chief of Staff, HQ de dados e Exército de Campo.",
+          "Estrutura hierárquica da campanha gerida como holding: cargos, deveres e KPIs claros do C-Level ao Exército de Campo.",
       },
     ],
   }),
   component: OrganogramaPage,
 });
+
+type Cor = "primary" | "rose" | "violet" | "amber" | "emerald" | "sky" | "indigo" | "fuchsia";
 
 type Cargo = {
   icon: typeof Crown;
@@ -47,10 +50,10 @@ type Cargo = {
   reporta: string;
   responsabilidades: string[];
   entregaveis: string[];
-  cor: "primary" | "rose" | "violet" | "amber" | "emerald" | "sky" | "slate" | "indigo";
+  cor: Cor;
 };
 
-// ============= C-LEVEL =============
+// ============= TOPO =============
 const ceoPublica: Cargo = {
   icon: Crown,
   cargo: "CEO Pública",
@@ -71,31 +74,34 @@ const ceoPublica: Cargo = {
   cor: "primary",
 };
 
-const cLevel: Cargo[] = [
-  {
-    icon: Compass,
-    cargo: "COO · Coordenador Geral",
-    ocupante: "Deocleciano",
-    papel: "Estrategista operacional",
-    reporta: "CEO Pública",
-    responsabilidades: [
-      "Gerir todos os setores da Holding (HQ + Exército de Campo).",
-      "Garantir execução do Roadmap Macro até 4 de outubro.",
-      "Receber e analisar relatórios diários de produtividade por região.",
-      "Tomar decisões com base no painel da Rede Sarelli.",
-    ],
-    entregaveis: [
-      "Reunião semanal de status com todas as áreas.",
-      "Relatório consolidado quinzenal de KPIs.",
-      "Auditoria contínua de metas das promotoras e lideranças.",
-    ],
-    cor: "primary",
-  },
+// ============= COO ÚNICO (logo abaixo da CEO) =============
+const coo: Cargo = {
+  icon: Compass,
+  cargo: "COO · Coordenador Geral",
+  ocupante: "Deocleciano",
+  papel: "Causa do Exército · Gestão geral da operação",
+  reporta: "CEO Pública",
+  responsabilidades: [
+    "Gestão geral de toda a Holding (HQ + Exército de Campo).",
+    "Causa e comando do Exército: define metas, territórios e ritmo.",
+    "Garantir execução do Roadmap Macro até 4 de outubro.",
+    "Tomar decisões com base no painel da Rede Sarelli.",
+  ],
+  entregaveis: [
+    "Reunião semanal de status com todas as áreas.",
+    "Relatório consolidado quinzenal de KPIs.",
+    "Auditoria contínua de metas das promotoras e lideranças.",
+  ],
+  cor: "primary",
+};
+
+// ============= CAMADA 2 — CHIEF OF STAFF + CFO =============
+const camadaApoioCEO: Cargo[] = [
   {
     icon: CalendarClock,
     cargo: "Chief of Staff · Assessoria 24h",
     papel: "Filtro de acesso e gestão de agenda",
-    reporta: "CEO Pública",
+    reporta: "COO · Coordenador Geral",
     responsabilidades: [
       "Gestão integral da agenda da CEO Pública.",
       "Acompanhamento 24h: deslocamentos, compromissos, gravações.",
@@ -109,10 +115,28 @@ const cLevel: Cargo[] = [
     ],
     cor: "rose",
   },
+  {
+    icon: Wallet,
+    cargo: "CFO · Financeiro & Administrativo",
+    papel: "Caixa, contas e cobrança de resultados",
+    reporta: "COO · Coordenador Geral",
+    responsabilidades: [
+      "Gestão financeira: caixa, contas a pagar, fornecedores e prestação de contas.",
+      "Controle administrativo do comitê e dos contratos.",
+      "Cobrar resultados de cada área com base em metas e KPIs.",
+      "Garantir compliance eleitoral e auditoria das movimentações.",
+    ],
+    entregaveis: [
+      "Fluxo de caixa semanal aprovado pela COO.",
+      "Painel de cobrança de metas por área.",
+      "Prestação de contas mensal pronta para auditoria.",
+    ],
+    cor: "amber",
+  },
 ];
 
-// ============= HQ — INTELIGÊNCIA E SUPORTE INTERNO =============
-const hq: Cargo[] = [
+// ============= CAMADA 3 — DIRETORIA OPERACIONAL (HQ) =============
+const diretoria: Cargo[] = [
   {
     icon: Database,
     cargo: "CTO & Head de Dados",
@@ -133,7 +157,7 @@ const hq: Cargo[] = [
   },
   {
     icon: Megaphone,
-    cargo: "Marketing & Branding",
+    cargo: "CMO · Marketing & Branding",
     papel: "Planejamento, conteúdo e tráfego",
     reporta: "COO · Coordenador Geral",
     responsabilidades: [
@@ -148,6 +172,24 @@ const hq: Cargo[] = [
       "Relatório de performance de tráfego pago por município.",
     ],
     cor: "rose",
+  },
+  {
+    icon: Swords,
+    cargo: "Head do Exército · Controle de Campo",
+    papel: "Responsável direto pelo Exército de Campo",
+    reporta: "COO · Coordenador Geral",
+    responsabilidades: [
+      "Comandar Suplentes, Lideranças e Promotores no dia a dia.",
+      "Distribuir territórios, definir rotas e fiscalizar metas em campo.",
+      "Reportar gargalos, bloqueios e oportunidades à COO.",
+      "Garantir que cada lead capturado em rua entre na Rede Sarelli.",
+    ],
+    entregaveis: [
+      "Mapa territorial atualizado de promotoras e lideranças ativas.",
+      "Reunião semanal de metas com cada Suplente.",
+      "Relatório diário de produtividade por região.",
+    ],
+    cor: "indigo",
   },
   {
     icon: PhoneCall,
@@ -183,35 +225,17 @@ const hq: Cargo[] = [
       "Relatório semanal de fluxo do comitê.",
       "Encaminhamento de cada visitante à área correta.",
     ],
-    cor: "amber",
+    cor: "fuchsia",
   },
 ];
 
-// ============= EXÉRCITO DE CAMPO =============
+// ============= CAMADA 4 — EXÉRCITO DE CAMPO =============
 const exercito: Cargo[] = [
-  {
-    icon: Briefcase,
-    cargo: "Gerentes de Expansão",
-    papel: "Controladores da tropa",
-    reporta: "COO · Coordenador Geral",
-    responsabilidades: [
-      "Coordenar e fiscalizar metas das promotoras em campo.",
-      "Distribuir territórios e definir rotas de prospecção.",
-      "Acompanhar produtividade individual de cada promotora.",
-      "Reportar gargalos e oportunidades de expansão à coordenação.",
-    ],
-    entregaveis: [
-      "Mapa territorial atualizado de promotoras ativas.",
-      "Reunião semanal de metas com cada promotora.",
-      "Relatório de produtividade por região.",
-    ],
-    cor: "indigo",
-  },
   {
     icon: UserCheck,
     cargo: "Suplentes",
-    papel: "Captação e blindagem política",
-    reporta: "COO · Coordenador Geral",
+    papel: "Captação e blindagem política regional",
+    reporta: "Head do Exército",
     responsabilidades: [
       "Captar novas lideranças locais para a Rede Sarelli.",
       "Blindagem política: neutralizar ataques e proteger a marca.",
@@ -229,7 +253,7 @@ const exercito: Cargo[] = [
     icon: Church,
     cargo: "Lideranças de Nicho",
     papel: "Conversão setorial",
-    reporta: "Suplentes · Gerentes de Expansão",
+    reporta: "Suplentes",
     responsabilidades: [
       "Converter setores específicos: igrejas, bairros, grupos profissionais.",
       "Mobilizar suas redes próprias para o movimento Chama a Doutora.",
@@ -247,7 +271,7 @@ const exercito: Cargo[] = [
     icon: Footprints,
     cargo: "Promotores · Infantaria",
     papel: "Prospecção ativa de eleitores",
-    reporta: "Gerentes de Expansão",
+    reporta: "Lideranças · Head do Exército",
     responsabilidades: [
       "Prospecção ativa: abordar e cadastrar novos eleitores.",
       "Cadastrar cada eleitor no App geolocalizado da Rede Sarelli.",
@@ -257,21 +281,21 @@ const exercito: Cargo[] = [
     entregaveis: [
       "Meta diária de cadastros validados no app.",
       "Engajamento digital comprovado de cada lead.",
-      "Cobertura territorial conforme rota do Gerente.",
+      "Cobertura territorial conforme rota do Head do Exército.",
     ],
     cor: "amber",
   },
 ];
 
-const COR_CLASSES: Record<Cargo["cor"], { bg: string; text: string; border: string; ring: string }> = {
-  primary: { bg: "bg-primary", text: "text-primary", border: "border-primary/30", ring: "shadow-primary/30" },
-  rose: { bg: "bg-rose-500", text: "text-rose-600", border: "border-rose-300/40", ring: "shadow-rose-500/30" },
-  violet: { bg: "bg-violet-500", text: "text-violet-600", border: "border-violet-300/40", ring: "shadow-violet-500/30" },
-  amber: { bg: "bg-amber-500", text: "text-amber-600", border: "border-amber-300/40", ring: "shadow-amber-500/30" },
-  emerald: { bg: "bg-emerald-500", text: "text-emerald-600", border: "border-emerald-300/40", ring: "shadow-emerald-500/30" },
-  sky: { bg: "bg-sky-500", text: "text-sky-600", border: "border-sky-300/40", ring: "shadow-sky-500/30" },
-  slate: { bg: "bg-slate-500", text: "text-slate-600", border: "border-slate-300/40", ring: "shadow-slate-500/30" },
-  indigo: { bg: "bg-indigo-500", text: "text-indigo-600", border: "border-indigo-300/40", ring: "shadow-indigo-500/30" },
+const COR_CLASSES: Record<Cor, { bg: string; text: string; border: string; ring: string; line: string }> = {
+  primary: { bg: "bg-primary", text: "text-primary", border: "border-primary/30", ring: "shadow-primary/30", line: "bg-primary" },
+  rose: { bg: "bg-rose-500", text: "text-rose-600", border: "border-rose-300/40", ring: "shadow-rose-500/30", line: "bg-rose-400" },
+  violet: { bg: "bg-violet-500", text: "text-violet-600", border: "border-violet-300/40", ring: "shadow-violet-500/30", line: "bg-violet-400" },
+  amber: { bg: "bg-amber-500", text: "text-amber-600", border: "border-amber-300/40", ring: "shadow-amber-500/30", line: "bg-amber-400" },
+  emerald: { bg: "bg-emerald-500", text: "text-emerald-600", border: "border-emerald-300/40", ring: "shadow-emerald-500/30", line: "bg-emerald-400" },
+  sky: { bg: "bg-sky-500", text: "text-sky-600", border: "border-sky-300/40", ring: "shadow-sky-500/30", line: "bg-sky-400" },
+  indigo: { bg: "bg-indigo-500", text: "text-indigo-600", border: "border-indigo-300/40", ring: "shadow-indigo-500/30", line: "bg-indigo-400" },
+  fuchsia: { bg: "bg-fuchsia-500", text: "text-fuchsia-600", border: "border-fuchsia-300/40", ring: "shadow-fuchsia-500/30", line: "bg-fuchsia-400" },
 };
 
 function CargoCard({ cargo }: { cargo: Cargo }) {
@@ -279,7 +303,7 @@ function CargoCard({ cargo }: { cargo: Cargo }) {
   const c = COR_CLASSES[cargo.cor];
   return (
     <article
-      className={`group relative bg-white rounded-2xl border ${c.border} p-6 hover:shadow-2xl ${c.ring} hover:-translate-y-1 transition-all duration-300 overflow-hidden`}
+      className={`group relative bg-white rounded-2xl border ${c.border} p-6 hover:shadow-2xl ${c.ring} hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full`}
     >
       <div className={`absolute top-0 left-0 right-0 h-1 ${c.bg}`} />
       <div className="flex items-start gap-4 mb-5">
@@ -341,6 +365,58 @@ function CargoCard({ cargo }: { cargo: Cargo }) {
   );
 }
 
+/** Conector vertical entre níveis */
+function VerticalConnector({ height = "h-12" }: { height?: string }) {
+  return (
+    <div className="flex justify-center">
+      <div className={`${height} w-px bg-gradient-to-b from-primary/70 via-primary/40 to-primary/0`} />
+    </div>
+  );
+}
+
+/** Barra horizontal que conecta um pai a múltiplos filhos */
+function HorizontalBracket() {
+  return (
+    <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="flex justify-center">
+        <div className="h-8 w-px bg-primary/50" />
+      </div>
+      <div className="mx-auto h-px w-[85%] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+    </div>
+  );
+}
+
+function NivelHeader({
+  capitulo,
+  titulo,
+  destaque,
+  subtitulo,
+  Icon,
+}: {
+  capitulo: string;
+  titulo: string;
+  destaque: string;
+  subtitulo?: string;
+  Icon: typeof Crown;
+}) {
+  return (
+    <div className="text-center mb-8">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
+        <Icon className="h-4 w-4 text-primary" />
+        <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
+          {capitulo}
+        </span>
+      </div>
+      <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
+        {titulo} <span className="text-primary">{destaque}</span>
+      </h2>
+      {subtitulo && (
+        <p className="text-foreground/60 max-w-2xl mx-auto">{subtitulo}</p>
+      )}
+    </div>
+  );
+}
+
 function OrganogramaPage() {
   return (
     <main className="relative min-h-screen bg-gradient-to-b from-background via-pink-50/20 to-background pt-24 pb-32">
@@ -370,11 +446,11 @@ function OrganogramaPage() {
           <p className="text-xl sm:text-2xl text-foreground/70 max-w-3xl leading-relaxed font-light">
             A campanha gerida como uma{" "}
             <span className="font-semibold text-foreground">empresa de tecnologia e serviços</span>,
-            com cargos, KPIs e responsabilidades claras — do C-Level ao Exército de Campo.
+            com hierarquia clara — da CEO Pública ao último promotor em campo.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            {["Diretoria Executiva", "HQ · Inteligência", "Exército de Campo"].map((tag) => (
+            {["CEO Pública", "COO único", "Apoio · CoS + CFO", "Diretoria HQ", "Exército de Campo"].map((tag) => (
               <span
                 key={tag}
                 className="px-4 py-2 rounded-full border border-primary/20 bg-white/80 backdrop-blur text-sm font-semibold text-primary shadow-sm"
@@ -386,95 +462,85 @@ function OrganogramaPage() {
         </div>
       </section>
 
-      {/* CEO PÚBLICA */}
-      <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-12">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
-            <Crown className="h-4 w-4 text-primary" />
-            <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Topo da Holding
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground">
-            A <span className="text-primary">Marca</span> em pessoa
-          </h2>
-        </div>
+      {/* ====== ORGANOGRAMA HIERÁRQUICO ====== */}
 
+      {/* NÍVEL 1 — CEO */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8">
+        <NivelHeader
+          capitulo="Nível 01 · Topo da Holding"
+          titulo="A"
+          destaque="Marca em pessoa"
+          Icon={Crown}
+        />
         <div className="max-w-2xl mx-auto">
           <CargoCard cargo={ceoPublica} />
         </div>
+      </section>
 
-        <div className="flex justify-center my-6">
-          <div className="h-12 w-px bg-gradient-to-b from-primary to-primary/0" />
+      <VerticalConnector />
+
+      {/* NÍVEL 2 — COO ÚNICO (Deocleciano sozinho) */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8">
+        <NivelHeader
+          capitulo="Nível 02 · Coordenação Geral"
+          titulo="Quem"
+          destaque="comanda toda a operação"
+          subtitulo="Único elo entre a CEO Pública e toda a estrutura. Causa do Exército e gestor da Holding."
+          Icon={Compass}
+        />
+        <div className="max-w-2xl mx-auto">
+          <CargoCard cargo={coo} />
         </div>
       </section>
 
-      {/* DIRETORIA EXECUTIVA */}
-      <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-20">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
-            <Briefcase className="h-4 w-4 text-primary" />
-            <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Camada 01 · Diretoria Executiva (C-Level)
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
-            Quem <span className="text-primary">comanda</span> a operação
-          </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            COO operacional e Chief of Staff blindando a CEO Pública 24h por dia.
-          </p>
-        </div>
+      <HorizontalBracket />
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {cLevel.map((c) => (
+      {/* NÍVEL 3 — CHIEF OF STAFF + CFO */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8 mt-6">
+        <NivelHeader
+          capitulo="Nível 03 · Apoio Direto à Coordenação"
+          titulo="Agenda, finanças e"
+          destaque="cobrança de resultados"
+          subtitulo="Chief of Staff blinda a CEO 24h. CFO administra o caixa e cobra metas de cada área."
+          Icon={Briefcase}
+        />
+        <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+          {camadaApoioCEO.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
         </div>
       </section>
 
-      {/* HQ — INTELIGÊNCIA */}
-      <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-20">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
-            <Building2 className="h-4 w-4 text-primary" />
-            <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Camada 02 · HQ · Inteligência e Suporte Interno
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
-            O <span className="text-primary">cérebro</span> da Holding
-          </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            Dados, marketing, retenção de leads e porta de entrada do comitê.
-          </p>
-        </div>
+      <HorizontalBracket />
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {hq.map((c) => (
+      {/* NÍVEL 4 — DIRETORIA OPERACIONAL (HQ) */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8 mt-6">
+        <NivelHeader
+          capitulo="Nível 04 · Diretoria Operacional · HQ"
+          titulo="O"
+          destaque="cérebro da Holding"
+          subtitulo="CTO, Marketing, Head do Exército, CS Político e Recepção. Cada um responde diretamente ao COO."
+          Icon={Building2}
+        />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {diretoria.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
         </div>
       </section>
 
-      {/* EXÉRCITO DE CAMPO */}
-      <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-20">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
-            <Swords className="h-4 w-4 text-primary" />
-            <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Camada 03 · Exército de Campo · Operação de Rua
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground mb-2">
-            Quem <span className="text-primary">conquista</span> território
-          </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            Da prospecção do promotor à conversão da liderança de nicho.
-          </p>
-        </div>
+      <HorizontalBracket />
 
-        <div className="grid md:grid-cols-2 gap-5">
+      {/* NÍVEL 5 — EXÉRCITO DE CAMPO */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8 mt-6 mb-20">
+        <NivelHeader
+          capitulo="Nível 05 · Exército de Campo · Operação de Rua"
+          titulo="Quem"
+          destaque="conquista território"
+          subtitulo="Comandado pelo Head do Exército: Suplentes articulam, Lideranças convertem, Promotores prospectam."
+          Icon={Swords}
+        />
+        <div className="grid md:grid-cols-3 gap-5">
           {exercito.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
