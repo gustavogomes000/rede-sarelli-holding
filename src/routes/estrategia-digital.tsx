@@ -6,9 +6,16 @@ import {
   Target,
   Sparkles,
   ShieldCheck,
-  MessageCircle,
   TrendingUp,
   ArrowRight,
+  Camera,
+  Mic,
+  Video,
+  FileText,
+  Instagram,
+  Lightbulb,
+  Layers,
+  Compass,
 } from "lucide-react";
 
 export const Route = createFileRoute("/estrategia-digital")({
