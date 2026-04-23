@@ -20,7 +20,6 @@ import {
   Wallet,
   Clapperboard,
   Share2,
-  Megaphone as MegaphoneIcon,
   Layers,
 } from "lucide-react";
 import { EditableText } from "@/components/EditableText";
