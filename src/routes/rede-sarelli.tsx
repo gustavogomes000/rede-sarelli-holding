@@ -15,6 +15,11 @@ import {
   UserPlus,
   Vote,
   ShieldCheck,
+  Smartphone,
+  Home,
+  Fish,
+  Eye,
+  Database,
 } from "lucide-react";
 import { EditableText } from "@/components/EditableText";
 import { PageShell } from "@/components/PageShell";
@@ -26,13 +31,13 @@ export const Route = createFileRoute("/rede-sarelli")({
       {
         name: "description",
         content:
-          "Como cada papel da rede (Suplente, Liderança, Promotor, Coordenador, CS) atua no fluxo de cadastro, acesso e engajamento.",
+          "Organograma completo da rede: Suplente, Liderança, Fiscal, Promotor, Coordenador e os apps (SindsPag, Recepção, Time Tubarão) que alimentam o time de CS.",
       },
-      { property: "og:title", content: "Rede Sarelli — Fluxo de Cadastro" },
+      { property: "og:title", content: "Rede Sarelli — Organograma de Cadastro" },
       {
         property: "og:description",
         content:
-          "Fluxo de uso do sistema por papel: quem cadastra quem, como recebe acesso e como o engajamento é medido.",
+          "Como cada papel cadastra, quem cadastra quem, e como os 3 apps alimentam a base que chega ao Time de CS.",
       },
     ],
   }),
@@ -85,13 +90,32 @@ const PAPEIS: Papel[] = [
     defaultAcesso:
       "Recebe link de convite gerado pelo Suplente (ou por outra Liderança). Ao clicar, cria a própria conta e já entra com acesso ativo.",
     defaultCadastra:
-      "Pode cadastrar: outras Lideranças e Eleitores. Também pode gerar links para liberar novas Lideranças abaixo de si.",
+      "Pode cadastrar: outras Lideranças, Fiscais e Eleitores. Também pode gerar links para liberar novas Lideranças e Fiscais abaixo de si.",
     defaultResponsabilidades:
       "Expandir a base de apoio na sua região, manter constância semanal de cadastros e formar novas lideranças.",
     defaultEntrega:
       "Cadastros próprios + crescimento da sub-rede + postagens semanais nas redes sociais cadastradas.",
     defaultMedicao:
       "Nº de cadastros próprios + cadastros da sub-rede inteira + frequência de postagens nas redes sociais vinculadas ao perfil.",
+  },
+  {
+    id: "fiscal",
+    icone: ShieldCheck,
+    cor: "text-sky-700",
+    bgCor: "bg-sky-50",
+    borderCor: "border-sky-300",
+    defaultNome: "Fiscal",
+    defaultSubtitulo: "Cadastrado por Suplente ou Liderança",
+    defaultAcesso:
+      "Recebe link de convite gerado por um Suplente ou por uma Liderança. Cria a própria conta e atua na zona/seção definida.",
+    defaultCadastra:
+      "Pode cadastrar: Eleitores. Foco em garantir presença nas seções no dia da eleição e ampliar contatos na região onde fiscaliza.",
+    defaultResponsabilidades:
+      "Cobrir seções eleitorais, garantir lisura no dia da votação e cadastrar eleitores da sua área de atuação.",
+    defaultEntrega:
+      "Eleitores cadastrados na zona/seção + presença confirmada no dia da eleição.",
+    defaultMedicao:
+      "Nº de eleitores cadastrados + cobertura de seções designadas + relatórios de fiscalização entregues.",
   },
   {
     id: "promotor",
@@ -118,12 +142,12 @@ const PAPEIS: Papel[] = [
     cor: "text-emerald-700",
     bgCor: "bg-emerald-50",
     borderCor: "border-emerald-300",
-    defaultNome: "Coordenador de Evento",
-    defaultSubtitulo: "Atua nos eventos cadastrando possíveis eleitores",
+    defaultNome: "Coordenador",
+    defaultSubtitulo: "Cadastra eleitores no dia do evento",
     defaultAcesso:
       "Acesso criado pela coordenação central, vinculado a um ou mais eventos específicos.",
     defaultCadastra:
-      "Pode cadastrar: Possíveis Eleitores no momento do evento, com vínculo automático ao evento que está acontecendo.",
+      "Pode cadastrar: Eleitores no momento do evento, com vínculo automático ao evento que está acontecendo.",
     defaultResponsabilidades:
       "Estar presente nos eventos, abordar pessoas e transformar cada interação em cadastro qualificado no sistema.",
     defaultEntrega:
@@ -140,15 +164,58 @@ const PAPEIS: Papel[] = [
     defaultNome: "Time de CS",
     defaultSubtitulo: "Recebe TODOS os cadastros e mantém a base aquecida",
     defaultAcesso:
-      "Acesso interno do time central. Vê em tempo real todos os cadastros entrando — não importa de qual papel da rede vieram.",
+      "Acesso interno do time central. Vê em tempo real todos os cadastros entrando — não importa de qual papel ou app vieram.",
     defaultCadastra:
-      "Não cadastra novos contatos: trabalha em cima da base que chega de Suplentes, Lideranças, Promotores e Coordenadores.",
+      "Não cadastra novos contatos: trabalha em cima da base que chega de Suplentes, Lideranças, Fiscais, Promotores, Coordenadores e dos 3 aplicativos.",
     defaultResponsabilidades:
       "Entrar em contato com cada novo cadastro, qualificar, segmentar e manter o relacionamento aquecido até o dia da eleição.",
     defaultEntrega:
       "Base ativa, segmentada e relacionada — cada eleitor cadastrado precisa chegar no dia da eleição lembrando da campanha.",
     defaultMedicao:
       "Taxa de contato realizado + taxa de resposta + nível de aquecimento da base ao longo do tempo.",
+  },
+];
+
+type App = {
+  id: string;
+  icone: typeof Crown;
+  cor: string;
+  bgCor: string;
+  borderCor: string;
+  defaultNome: string;
+  defaultDescricao: string;
+};
+
+const APPS: App[] = [
+  {
+    id: "sindspag",
+    icone: Smartphone,
+    cor: "text-orange-700",
+    bgCor: "bg-orange-50",
+    borderCor: "border-orange-300",
+    defaultNome: "App SindsPag",
+    defaultDescricao:
+      "Aplicativo do sindicato — cada associado cadastrado pelo SindsPag entra automaticamente na base e segue o fluxo até o Time de CS.",
+  },
+  {
+    id: "recepcao",
+    icone: Home,
+    cor: "text-teal-700",
+    bgCor: "bg-teal-50",
+    borderCor: "border-teal-300",
+    defaultNome: "App Recepção",
+    defaultDescricao:
+      "Aplicativo usado nas visitas presenciais. Cada pessoa atendida vira um cadastro qualificado, com origem 'visita' marcada no sistema.",
+  },
+  {
+    id: "tubarao",
+    icone: Fish,
+    cor: "text-indigo-700",
+    bgCor: "bg-indigo-50",
+    borderCor: "border-indigo-300",
+    defaultNome: "App Time Tubarão",
+    defaultDescricao:
+      "Aplicativo do Time Tubarão — segue o mesmo fluxo de cadastro da rede e alimenta a base central com novos eleitores.",
   },
 ];
 
@@ -169,81 +236,122 @@ function RedeSarelliPage() {
           id="rede.hero.intro"
           as="span"
           multiline
-          defaultValue="O caminho de cada pessoa dentro do sistema: quem recebe acesso, quem cadastra quem, o que entrega e como o engajamento é medido. A rede cresce em árvore — quanto mais cada papel multiplica, maior fica a base que chega ao time de CS."
+          defaultValue="O organograma completo: Suplente no topo, Lideranças multiplicando, Fiscais cobrindo seções, Promotores cadastrando em volume e Coordenadores nos eventos. Junto, três aplicativos (SindsPag, Recepção e Time Tubarão) alimentam a mesma base. Tudo desce para o Time de CS, que aquece os contatos até o dia da eleição."
         />
       }
     >
-      {/* ============ MAPA DO FLUXO ============ */}
+      {/* ============ ORGANOGRAMA COMPLETO ============ */}
       <section className="mb-16">
         <div className="flex items-center gap-3 mb-8">
           <span className="h-px w-10 bg-primary" />
           <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-            Mapa do fluxo
+            Organograma do fluxo
           </span>
         </div>
 
-        <div className="rounded-3xl border border-border/60 bg-card p-6 sm:p-10 shadow-sm">
-          {/* Nível 1: Quem cadastra */}
-          <div className="text-center mb-6">
-            <span className="inline-block text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">
-              Nível 1 · Quem capta
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
+        <div className="rounded-3xl border border-border/60 bg-card p-6 sm:p-10 shadow-sm overflow-x-auto">
+          {/* === NÍVEL 1: SUPLENTE === */}
+          <NivelLabel numero="1" texto="Topo da rede" />
+          <div className="flex justify-center mb-2">
             <NoFluxo papel={PAPEIS[0]} />
+          </div>
+          <SetaVertical legenda="Suplente cadastra ↓" />
+
+          {/* === NÍVEL 2: LIDERANÇA + FISCAL + (eleitor direto) === */}
+          <NivelLabel numero="2" texto="Multiplicadores da rede" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
             <NoFluxo papel={PAPEIS[1]} />
             <NoFluxo papel={PAPEIS[2]} />
+            <NoFluxoEleitor legenda="Eleitores cadastrados direto pelo Suplente" />
+          </div>
+
+          {/* Liderança recadastra */}
+          <div className="my-6 rounded-xl border border-rose-200 bg-rose-50/50 p-4 text-center">
+            <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-rose-700 mb-2">
+              ↻ Liderança também cadastra Liderança, Fiscal e Eleitor
+            </div>
+            <p className="text-xs text-foreground/70">
+              A rede multiplica em árvore: cada Liderança pode gerar novas Lideranças e Fiscais abaixo de si.
+            </p>
+          </div>
+
+          <SetaVertical legenda="Lideranças e Fiscais cadastram ↓" />
+
+          {/* === NÍVEL 3: ELEITORES (vindos de vários canais) === */}
+          <NivelLabel numero="3" texto="Quem cadastra eleitores em paralelo" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
             <NoFluxo papel={PAPEIS[3]} />
+            <NoFluxo papel={PAPEIS[4]} />
           </div>
 
-          <SetaVertical legenda="Todos os cadastros descem para →" />
+          <SetaVertical legenda="Apps externos também alimentam a base ↓" />
 
-          {/* Nível 2: CS recebe tudo */}
-          <div className="text-center mb-6">
-            <span className="inline-block text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">
-              Nível 2 · Quem aquece a base
-            </span>
+          {/* === NÍVEL 4: APLICATIVOS === */}
+          <NivelLabel numero="4" texto="Aplicativos que alimentam o mesmo fluxo" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+            {APPS.map((app) => (
+              <NoApp key={app.id} app={app} />
+            ))}
           </div>
 
-          <div className="flex justify-center mb-8">
-            <NoFluxo papel={PAPEIS[4]} destacado />
+          <SetaVertical legenda="Tudo converge para ↓" />
+
+          {/* === NÍVEL 5: BASE ÚNICA === */}
+          <NivelLabel numero="5" texto="Base única de eleitores" />
+          <div className="flex justify-center mb-2">
+            <div className="rounded-2xl border-2 border-dashed border-primary/40 bg-primary/5 px-6 py-5 text-center max-w-md">
+              <Database className="h-7 w-7 text-primary mx-auto mb-2" />
+              <div className="font-display font-extrabold text-base text-primary">
+                Base única — todos os cadastros num só lugar
+              </div>
+              <p className="text-xs text-foreground/70 mt-1">
+                Suplente, Liderança, Fiscal, Promotor, Coordenador e os 3 apps despejam na mesma base. Cada cadastro carrega a origem.
+              </p>
+            </div>
+          </div>
+
+          <SetaVertical legenda="Time de CS recebe e trabalha ↓" />
+
+          {/* === NÍVEL 6: CS === */}
+          <NivelLabel numero="6" texto="Aquecimento da base" />
+          <div className="flex justify-center mb-2">
+            <NoFluxo papel={PAPEIS[5]} destacado />
           </div>
 
           <SetaVertical legenda="Base aquecida chega no →" />
 
-          {/* Nível 3: Dia da eleição */}
+          {/* === NÍVEL FINAL: ELEIÇÃO === */}
           <div className="flex justify-center">
-            <div className="rounded-2xl border-2 border-primary bg-primary/5 px-8 py-5 text-center max-w-sm">
+            <div className="rounded-2xl border-2 border-primary bg-primary/10 px-8 py-5 text-center max-w-sm">
               <Vote className="h-7 w-7 text-primary mx-auto mb-2" />
               <div className="font-display font-extrabold text-lg text-primary">
-                Dia da eleição
+                Lead final · Dia da eleição
               </div>
               <p className="text-xs text-foreground/70 mt-1">
-                Eleitores lembram da campanha porque foram cadastrados, contatados e mantidos aquecidos.
+                Eleitores lembram da campanha porque foram cadastrados, contatados e mantidos aquecidos por meses.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Legenda do fluxo */}
+        {/* Legenda dos canais */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           <div className="flex items-start gap-2 rounded-lg border border-border/60 bg-card p-3">
             <UserPlus className="h-4 w-4 text-primary shrink-0 mt-0.5" />
             <span className="text-foreground/80">
-              <strong>Suplente, Liderança e Promotor</strong> cadastram a partir de qualquer lugar (rua, casa, WhatsApp).
+              <strong>Rede em árvore:</strong> Suplente → Liderança → Liderança/Fiscal → Eleitor.
             </span>
           </div>
           <div className="flex items-start gap-2 rounded-lg border border-border/60 bg-card p-3">
-            <Target className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+            <Eye className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
             <span className="text-foreground/80">
-              <strong>Coordenador</strong> só cadastra dentro de eventos — cada cadastro fica vinculado ao evento.
+              <strong>Canais paralelos:</strong> Promotor (link) e Coordenador (eventos) cadastram direto eleitores.
             </span>
           </div>
           <div className="flex items-start gap-2 rounded-lg border border-border/60 bg-card p-3">
-            <Headset className="h-4 w-4 text-violet-600 shrink-0 mt-0.5" />
+            <Smartphone className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
             <span className="text-foreground/80">
-              <strong>Time de CS</strong> recebe 100% dos cadastros e trabalha relacionamento até a eleição.
+              <strong>3 apps:</strong> SindsPag, Recepção e Time Tubarão entram na mesma base com origem marcada.
             </span>
           </div>
         </div>
@@ -262,6 +370,47 @@ function RedeSarelliPage() {
           {PAPEIS.map((p) => (
             <CardDetalhe key={p.id} papel={p} />
           ))}
+        </div>
+      </section>
+
+      {/* ============ APPS ============ */}
+      <section className="mb-16">
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-10 bg-primary" />
+          <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
+            Aplicativos que alimentam a base
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {APPS.map((app) => {
+            const Icone = app.icone;
+            return (
+              <article
+                key={app.id}
+                className={`rounded-2xl border-2 ${app.borderCor} ${app.bgCor} p-6 hover:shadow-lg transition-shadow`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-white ${app.cor}`}>
+                    <Icone className="h-6 w-6" />
+                  </div>
+                  <EditableText
+                    id={`rede.app.${app.id}.nome`}
+                    as="h3"
+                    defaultValue={app.defaultNome}
+                    className={`font-display text-lg font-extrabold leading-tight ${app.cor}`}
+                  />
+                </div>
+                <EditableText
+                  id={`rede.app.${app.id}.descricao`}
+                  as="p"
+                  multiline
+                  defaultValue={app.defaultDescricao}
+                  className="text-sm text-foreground/80 leading-relaxed"
+                />
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -318,7 +467,6 @@ function RedeSarelliPage() {
           </article>
         </div>
 
-        {/* Pontos-chave */}
         <div className="mt-6 rounded-2xl border border-primary/30 bg-primary/5 p-6">
           <div className="flex items-center gap-2 mb-4">
             <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -329,39 +477,19 @@ function RedeSarelliPage() {
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-foreground/85">
             <li className="flex items-start gap-2">
               <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-              <EditableText
-                id="rede.entrega.item1"
-                as="span"
-                multiline
-                defaultValue="Cadastros próprios feitos no sistema"
-              />
+              <EditableText id="rede.entrega.item1" as="span" multiline defaultValue="Cadastros próprios feitos no sistema" />
             </li>
             <li className="flex items-start gap-2">
               <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-              <EditableText
-                id="rede.entrega.item2"
-                as="span"
-                multiline
-                defaultValue="Cadastros gerados pela sub-rede (quando aplicável)"
-              />
+              <EditableText id="rede.entrega.item2" as="span" multiline defaultValue="Cadastros gerados pela sub-rede (quando aplicável)" />
             </li>
             <li className="flex items-start gap-2">
               <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-              <EditableText
-                id="rede.entrega.item3"
-                as="span"
-                multiline
-                defaultValue="Postagens e stories nas redes cadastradas"
-              />
+              <EditableText id="rede.entrega.item3" as="span" multiline defaultValue="Postagens e stories nas redes cadastradas" />
             </li>
             <li className="flex items-start gap-2">
               <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-              <EditableText
-                id="rede.entrega.item4"
-                as="span"
-                multiline
-                defaultValue="Presença e cobertura dos eventos da campanha"
-              />
+              <EditableText id="rede.entrega.item4" as="span" multiline defaultValue="Presença e cobertura dos eventos da campanha" />
             </li>
           </ul>
         </div>
@@ -371,6 +499,16 @@ function RedeSarelliPage() {
 }
 
 /* ============ Subcomponentes ============ */
+
+function NivelLabel({ numero, texto }: { numero: string; texto: string }) {
+  return (
+    <div className="text-center mb-4">
+      <span className="inline-block text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">
+        Nível {numero} · {texto}
+      </span>
+    </div>
+  );
+}
 
 function NoFluxo({ papel, destacado = false }: { papel: Papel; destacado?: boolean }) {
   const Icone = papel.icone;
@@ -384,14 +522,12 @@ function NoFluxo({ papel, destacado = false }: { papel: Papel; destacado?: boole
         <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white ${papel.cor}`}>
           <Icone className="h-5 w-5" />
         </div>
-        <div>
-          <EditableText
-            id={`rede.no.${papel.id}.nome`}
-            as="div"
-            defaultValue={papel.defaultNome}
-            className={`font-display font-extrabold text-base ${papel.cor} leading-tight`}
-          />
-        </div>
+        <EditableText
+          id={`rede.no.${papel.id}.nome`}
+          as="div"
+          defaultValue={papel.defaultNome}
+          className={`font-display font-extrabold text-base ${papel.cor} leading-tight`}
+        />
       </div>
       <EditableText
         id={`rede.no.${papel.id}.subtitulo`}
@@ -400,6 +536,46 @@ function NoFluxo({ papel, destacado = false }: { papel: Papel; destacado?: boole
         defaultValue={papel.defaultSubtitulo}
         className="text-xs text-foreground/70 leading-snug"
       />
+    </div>
+  );
+}
+
+function NoApp({ app }: { app: App }) {
+  const Icone = app.icone;
+  return (
+    <div
+      className={`relative rounded-2xl border-2 ${app.borderCor} ${app.bgCor} p-5 w-full max-w-xs mx-auto shadow-sm`}
+    >
+      <div className="flex items-center gap-3 mb-2">
+        <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white ${app.cor}`}>
+          <Icone className="h-5 w-5" />
+        </div>
+        <EditableText
+          id={`rede.appno.${app.id}.nome`}
+          as="div"
+          defaultValue={app.defaultNome}
+          className={`font-display font-extrabold text-base ${app.cor} leading-tight`}
+        />
+      </div>
+      <EditableText
+        id={`rede.appno.${app.id}.subtitulo`}
+        as="p"
+        multiline
+        defaultValue="Cadastros entram na mesma base com origem marcada"
+        className="text-xs text-foreground/70 leading-snug"
+      />
+    </div>
+  );
+}
+
+function NoFluxoEleitor({ legenda }: { legenda: string }) {
+  return (
+    <div className="relative rounded-2xl border-2 border-dashed border-muted-foreground/40 bg-muted/30 p-5 w-full max-w-xs mx-auto flex flex-col items-center justify-center text-center">
+      <UserPlus className="h-6 w-6 text-muted-foreground mb-2" />
+      <div className="font-display font-extrabold text-sm text-foreground/70 leading-tight">
+        Eleitor
+      </div>
+      <p className="text-[11px] text-foreground/60 leading-snug mt-1">{legenda}</p>
     </div>
   );
 }
@@ -444,36 +620,11 @@ function CardDetalhe({ papel }: { papel: Papel }) {
       </header>
 
       <div className="space-y-5">
-        <BlocoCampo
-          icone={Link2}
-          titulo="Como recebe acesso"
-          id={`rede.detalhe.${papel.id}.acesso`}
-          defaultValue={papel.defaultAcesso}
-        />
-        <BlocoCampo
-          icone={UserPlus}
-          titulo="Quem pode cadastrar"
-          id={`rede.detalhe.${papel.id}.cadastra`}
-          defaultValue={papel.defaultCadastra}
-        />
-        <BlocoCampo
-          icone={ClipboardList}
-          titulo="Função no sistema"
-          id={`rede.detalhe.${papel.id}.responsabilidades`}
-          defaultValue={papel.defaultResponsabilidades}
-        />
-        <BlocoCampo
-          icone={Target}
-          titulo="O que precisa entregar"
-          id={`rede.detalhe.${papel.id}.entrega`}
-          defaultValue={papel.defaultEntrega}
-        />
-        <BlocoCampo
-          icone={Activity}
-          titulo="Como é medido"
-          id={`rede.detalhe.${papel.id}.medicao`}
-          defaultValue={papel.defaultMedicao}
-        />
+        <BlocoCampo icone={Link2} titulo="Como recebe acesso" id={`rede.detalhe.${papel.id}.acesso`} defaultValue={papel.defaultAcesso} />
+        <BlocoCampo icone={UserPlus} titulo="Quem pode cadastrar" id={`rede.detalhe.${papel.id}.cadastra`} defaultValue={papel.defaultCadastra} />
+        <BlocoCampo icone={ClipboardList} titulo="Função no sistema" id={`rede.detalhe.${papel.id}.responsabilidades`} defaultValue={papel.defaultResponsabilidades} />
+        <BlocoCampo icone={Target} titulo="O que precisa entregar" id={`rede.detalhe.${papel.id}.entrega`} defaultValue={papel.defaultEntrega} />
+        <BlocoCampo icone={Activity} titulo="Como é medido" id={`rede.detalhe.${papel.id}.medicao`} defaultValue={papel.defaultMedicao} />
       </div>
     </article>
   );
@@ -500,13 +651,7 @@ function BlocoCampo({
             {titulo}
           </span>
         </div>
-        <EditableText
-          id={id}
-          as="p"
-          multiline
-          defaultValue={defaultValue}
-          className="text-sm text-foreground/80 leading-relaxed"
-        />
+        <EditableText id={id} as="p" multiline defaultValue={defaultValue} className="text-sm text-foreground/80 leading-relaxed" />
       </div>
     </div>
   );
