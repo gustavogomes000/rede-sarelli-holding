@@ -20,6 +20,7 @@ import {
   Wallet,
   Clapperboard,
   Share2,
+  Layers,
 } from "lucide-react";
 import { EditableText } from "@/components/EditableText";
 
@@ -320,6 +321,27 @@ const exercito: Cargo[] = [
     ],
     cor: "amber",
   },
+  {
+    icon: Layers,
+    cargo: "Coordenador Setorial",
+    papel: "Líder de grupos temáticos (saúde, segurança pública, dança, cultura e afins)",
+    reporta: "Head do Exército",
+    responsabilidades: [
+      "Comandar grupos setoriais organizados por pauta de defesa da Doutora (saúde, segurança pública, dança, cultura, educação e demais segmentos).",
+      "Disseminar conteúdo oficial da campanha dentro do seu grupo, garantindo alinhamento de discurso e mobilização constante.",
+      "Solicitar materiais de apoio (peças gráficas, vídeos, briefings) ao CMO de Conteúdo sempre que necessário para ativar o segmento.",
+      "Agendar e conduzir reuniões periódicas com o grupo para alinhar pautas, capacitar lideranças setoriais e acompanhar resultados.",
+      "Cadastrar no app Rede Sarelli todas as pessoas do mesmo segmento captadas pelo grupo, mantendo o pipeline atualizado.",
+      "Atuar como porta-voz da pauta setorial junto à HQ, levando demandas e oportunidades do segmento.",
+    ],
+    entregaveis: [
+      "Grupo setorial ativo com cadência mínima de 1 reunião mensal.",
+      "Meta mensal de novos cadastros do segmento no app Rede Sarelli.",
+      "Relatório de engajamento e disseminação de conteúdo dentro do grupo.",
+      "Mapeamento atualizado de lideranças e formadores de opinião do setor.",
+    ],
+    cor: "rose",
+  },
 ];
 
 const COR_CLASSES: Record<Cor, { bg: string; text: string; border: string; ring: string; line: string }> = {
@@ -578,7 +600,7 @@ function OrganogramaPage() {
           subtitulo="Comandado pelo Head do Exército: Suplentes articulam, Fiscais defendem a urna, Lideranças convertem, Promotores prospectam."
           Icon={Swords}
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {exercito.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
