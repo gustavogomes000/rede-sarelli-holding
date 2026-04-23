@@ -140,15 +140,18 @@ const diretoria: Cargo[] = [
   {
     icon: Database,
     cargo: "CTO & Head de Dados",
-    papel: "Inteligência da Rede Sarelli",
+    papel: "Inteligência da Rede Sarelli e desenvolvimento de sistemas",
     reporta: "COO · Coordenador Geral",
     responsabilidades: [
       "Operar o sistema Rede Sarelli (cadastro, qualificação, retenção).",
+      "Desenvolver todos os sistemas necessários para a operação: app de campo, painéis, integrações, automações e ferramentas internas.",
+      "Construir e manter landings, formulários, bots e fluxos digitais sob demanda das áreas.",
       "Auditoria de hashtags (#ChamaADoutora) e engajamento digital.",
       "Manter mapa de calor por município, zona e seção.",
       "Cruzar acessos do site, cliques no WhatsApp e base eleitoral.",
     ],
     entregaveis: [
+      "Sistemas e ferramentas internas entregues conforme demanda das áreas.",
       "Painel em tempo real para a coordenação.",
       "Relatórios diários de produtividade por região.",
       "Mapa de calor mensal para reorientar agendas e mídia.",
