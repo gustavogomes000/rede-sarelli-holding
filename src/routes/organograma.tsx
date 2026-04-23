@@ -263,24 +263,6 @@ const exercito: Cargo[] = [
     cor: "sky",
   },
   {
-    icon: ShieldCheck,
-    cargo: "Fiscais · Dia da Eleição",
-    papel: "Lisura da votação e recepção de votos na escola",
-    reporta: "Head do Exército",
-    responsabilidades: [
-      "Atuar no dia da eleição como fiscais — dentro e fora da escola — garantindo lisura da votação.",
-      "Recepcionar conhecidos, amigos e familiares na porta da escola.",
-      "Trazer o máximo de votos possíveis para a Doutora na hora da votação.",
-      "Reportar irregularidades e ocorrências em tempo real ao Head do Exército.",
-    ],
-    entregaveis: [
-      "Escala completa de fiscais por escola/zona/seção entregue até 30 dias antes da eleição.",
-      "Relatório de votos recepcionados/conduzidos na porta da escola no dia da eleição.",
-      "Registro de ocorrências por seção em tempo real.",
-    ],
-    cor: "indigo",
-  },
-  {
     icon: Church,
     cargo: "Lideranças de Nicho",
     papel: "Conversão setorial",
@@ -297,6 +279,24 @@ const exercito: Cargo[] = [
       "Lista atualizada de apoiadores no sistema.",
     ],
     cor: "emerald",
+  },
+  {
+    icon: ShieldCheck,
+    cargo: "Fiscais · Dia da Eleição",
+    papel: "Lisura da votação e recepção de votos na escola",
+    reporta: "Head do Exército",
+    responsabilidades: [
+      "Atuar no dia da eleição como fiscais — dentro e fora da escola — garantindo lisura da votação.",
+      "Recepcionar conhecidos, amigos e familiares na porta da escola.",
+      "Trazer o máximo de votos possíveis para a Doutora na hora da votação.",
+      "Reportar irregularidades e ocorrências em tempo real ao Head do Exército.",
+    ],
+    entregaveis: [
+      "Escala completa de fiscais por escola/zona/seção entregue até 30 dias antes da eleição.",
+      "Relatório de votos recepcionados/conduzidos na porta da escola no dia da eleição.",
+      "Registro de ocorrências por seção em tempo real.",
+    ],
+    cor: "indigo",
   },
   {
     icon: Footprints,
