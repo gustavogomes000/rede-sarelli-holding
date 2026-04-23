@@ -3,6 +3,10 @@ import { supabaseAdmin } from "@/integrations/supabase/client.server";
 const FALLBACK_PREFIX = "editable_text:";
 const MISSING_TABLE_CODES = new Set(["42P01", "PGRST205"]);
 
+function hasSupabaseAdminEnv() {
+  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+}
+
 function getFallbackKey(id: string) {
   return `${FALLBACK_PREFIX}${id}`;
 }
@@ -17,6 +21,8 @@ function isMissingTableError(error: unknown) {
 }
 
 async function readFromCadernoTextos(id: string) {
+  if (!hasSupabaseAdminEnv()) return null;
+
   const { data, error } = await (supabaseAdmin as any)
     .from("caderno_textos")
     .select("conteudo")
@@ -28,6 +34,8 @@ async function readFromCadernoTextos(id: string) {
 }
 
 async function readFromSiteSettings(id: string) {
+  if (!hasSupabaseAdminEnv()) return null;
+
   const { data, error } = await supabaseAdmin
     .from("site_settings")
     .select("setting_value, value")
@@ -42,6 +50,8 @@ async function readFromSiteSettings(id: string) {
 }
 
 export async function getEditableTextValue(id: string) {
+  if (!hasSupabaseAdminEnv()) return null;
+
   try {
     return await readFromCadernoTextos(id);
   } catch (error) {
@@ -51,6 +61,10 @@ export async function getEditableTextValue(id: string) {
 }
 
 export async function saveEditableTextValue(id: string, content: string) {
+  if (!hasSupabaseAdminEnv()) {
+    return { storage: "unavailable" as const };
+  }
+
   try {
     const { error } = await (supabaseAdmin as any)
       .from("caderno_textos")
