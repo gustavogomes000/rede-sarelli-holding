@@ -21,6 +21,7 @@ import {
   Flame,
   MousePointerClick,
 } from "lucide-react";
+import { EditableText } from "@/components/EditableText";
 
 export const Route = createFileRoute("/estrategia-digital")({
   head: () => ({
@@ -113,18 +114,23 @@ function EstrategiaDigital() {
           </div>
 
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-black text-foreground leading-[0.95] tracking-tight mb-6">
-            A abordagem
+            <EditableText id="estrategia.hero.titulo1" as="span" defaultValue="A abordagem" />
             <br />
-            <span className="bg-gradient-to-r from-primary via-pink-500 to-rose-500 bg-clip-text text-transparent">
-              digital
-            </span>
+            <EditableText
+              id="estrategia.hero.titulo2"
+              as="span"
+              defaultValue="digital"
+              className="bg-gradient-to-r from-primary via-pink-500 to-rose-500 bg-clip-text text-transparent"
+            />
           </h1>
 
-          <p className="text-xl sm:text-2xl text-foreground/70 max-w-3xl leading-relaxed font-light">
-            Como a pré-campanha de Dra. Fernanda Sarelli vai conquistar Goiás{" "}
-            <span className="font-semibold text-foreground">pelas telas</span> —
-            antes mesmo de pisar no palanque.
-          </p>
+          <EditableText
+            id="estrategia.hero.subtitulo"
+            as="p"
+            multiline
+            defaultValue="Como a pré-campanha de Dra. Fernanda Sarelli vai conquistar Goiás pelas telas — antes mesmo de pisar no palanque."
+            className="text-xl sm:text-2xl text-foreground/70 max-w-3xl leading-relaxed font-light"
+          />
 
           <div className="mt-10 flex flex-wrap gap-3">
             {["Autoridade", "Afeto", "Clareza", "Mobilização"].map((tag) => (

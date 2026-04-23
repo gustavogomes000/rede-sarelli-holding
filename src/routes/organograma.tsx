@@ -21,6 +21,7 @@ import {
   Clapperboard,
   Share2,
 } from "lucide-react";
+import { EditableText } from "@/components/EditableText";
 
 export const Route = createFileRoute("/organograma")({
   head: () => ({
@@ -470,18 +471,23 @@ function OrganogramaPage() {
           </div>
 
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-black text-foreground leading-[0.95] tracking-tight mb-6">
-            Organograma
+            <EditableText id="organograma.hero.titulo1" as="span" defaultValue="Organograma" />
             <br />
-            <span className="bg-gradient-to-r from-primary via-pink-500 to-rose-500 bg-clip-text text-transparent">
-              Corporativo
-            </span>
+            <EditableText
+              id="organograma.hero.titulo2"
+              as="span"
+              defaultValue="Corporativo"
+              className="bg-gradient-to-r from-primary via-pink-500 to-rose-500 bg-clip-text text-transparent"
+            />
           </h1>
 
-          <p className="text-xl sm:text-2xl text-foreground/70 max-w-3xl leading-relaxed font-light">
-            A campanha gerida como uma{" "}
-            <span className="font-semibold text-foreground">empresa de tecnologia e serviços</span>,
-            com hierarquia clara — da CEO Pública ao último promotor em campo.
-          </p>
+          <EditableText
+            id="organograma.hero.subtitulo"
+            as="p"
+            multiline
+            defaultValue="A campanha gerida como uma empresa de tecnologia e serviços, com hierarquia clara — da CEO Pública ao último promotor em campo."
+            className="text-xl sm:text-2xl text-foreground/70 max-w-3xl leading-relaxed font-light"
+          />
 
           <div className="mt-10 flex flex-wrap gap-3">
             {["CEO Pública", "COO · CFO · Admin", "Chief of Staff 24h", "Diretoria HQ", "Exército de Campo"].map((tag) => (

@@ -23,6 +23,7 @@ import {
   Clock,
   TrendingUp,
 } from "lucide-react";
+import { EditableText } from "@/components/EditableText";
 
 
 export const Route = createFileRoute("/planejamento")({
@@ -531,12 +532,16 @@ function PlanejamentoPage() {
               </span>
             </div>
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-tight text-foreground">
-              24 semanas até <span className="text-gradient-pink">04 de outubro</span>
+              <EditableText id="planejamento.hero.titulo1" as="span" defaultValue="24 semanas até " />
+              <EditableText id="planejamento.hero.titulo2" as="span" defaultValue="04 de outubro" className="text-gradient-pink" />
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              O calendário-mestre da pré-campanha. Cinco fases, sete dias por semana, uma rotina de
-              conteúdo executável — do awareness ao Dia D.
-            </p>
+            <EditableText
+              id="planejamento.hero.subtitulo"
+              as="p"
+              multiline
+              defaultValue="O calendário-mestre da pré-campanha. Cinco fases, sete dias por semana, uma rotina de conteúdo executável — do awareness ao Dia D."
+              className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl"
+            />
           </div>
 
           {/* MÉTRICAS DE TOPO */}
