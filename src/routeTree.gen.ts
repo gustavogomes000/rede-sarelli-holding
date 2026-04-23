@@ -13,6 +13,7 @@ import { Route as RedeSarelliRouteImport } from './routes/rede-sarelli'
 import { Route as PlanejamentoRouteImport } from './routes/planejamento'
 import { Route as OrganogramaRouteImport } from './routes/organograma'
 import { Route as InteligenciaEleitoralRouteImport } from './routes/inteligencia-eleitoral'
+import { Route as FunilMetasRouteImport } from './routes/funil-metas'
 import { Route as EstrategiaDigitalRouteImport } from './routes/estrategia-digital'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -36,6 +37,11 @@ const InteligenciaEleitoralRoute = InteligenciaEleitoralRouteImport.update({
   path: '/inteligencia-eleitoral',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FunilMetasRoute = FunilMetasRouteImport.update({
+  id: '/funil-metas',
+  path: '/funil-metas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EstrategiaDigitalRoute = EstrategiaDigitalRouteImport.update({
   id: '/estrategia-digital',
   path: '/estrategia-digital',
@@ -50,6 +56,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/funil-metas': typeof FunilMetasRoute
   '/inteligencia-eleitoral': typeof InteligenciaEleitoralRoute
   '/organograma': typeof OrganogramaRoute
   '/planejamento': typeof PlanejamentoRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/funil-metas': typeof FunilMetasRoute
   '/inteligencia-eleitoral': typeof InteligenciaEleitoralRoute
   '/organograma': typeof OrganogramaRoute
   '/planejamento': typeof PlanejamentoRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/funil-metas': typeof FunilMetasRoute
   '/inteligencia-eleitoral': typeof InteligenciaEleitoralRoute
   '/organograma': typeof OrganogramaRoute
   '/planejamento': typeof PlanejamentoRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/estrategia-digital'
+    | '/funil-metas'
     | '/inteligencia-eleitoral'
     | '/organograma'
     | '/planejamento'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/estrategia-digital'
+    | '/funil-metas'
     | '/inteligencia-eleitoral'
     | '/organograma'
     | '/planejamento'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/estrategia-digital'
+    | '/funil-metas'
     | '/inteligencia-eleitoral'
     | '/organograma'
     | '/planejamento'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EstrategiaDigitalRoute: typeof EstrategiaDigitalRoute
+  FunilMetasRoute: typeof FunilMetasRoute
   InteligenciaEleitoralRoute: typeof InteligenciaEleitoralRoute
   OrganogramaRoute: typeof OrganogramaRoute
   PlanejamentoRoute: typeof PlanejamentoRoute
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InteligenciaEleitoralRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/funil-metas': {
+      id: '/funil-metas'
+      path: '/funil-metas'
+      fullPath: '/funil-metas'
+      preLoaderRoute: typeof FunilMetasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/estrategia-digital': {
       id: '/estrategia-digital'
       path: '/estrategia-digital'
@@ -158,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EstrategiaDigitalRoute: EstrategiaDigitalRoute,
+  FunilMetasRoute: FunilMetasRoute,
   InteligenciaEleitoralRoute: InteligenciaEleitoralRoute,
   OrganogramaRoute: OrganogramaRoute,
   PlanejamentoRoute: PlanejamentoRoute,
