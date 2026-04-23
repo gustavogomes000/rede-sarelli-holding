@@ -129,7 +129,7 @@ const REGRAS: Regra[] = [
 function GovernancaPage() {
   return (
     <PageShell
-      eyebrow="Capítulo 05 · Como nos governamos"
+      eyebrow="Capítulo 06 · Como nos governamos"
       title={
         <EditableText
           id="governanca.hero.titulo"

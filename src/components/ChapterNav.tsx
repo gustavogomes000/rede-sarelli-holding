@@ -6,8 +6,8 @@ export const chapters = [
   { path: "/organograma", label: "Organograma", num: "01" },
   { path: "/estrategia-digital", label: "Estratégia Digital", num: "02" },
   { path: "/planejamento", label: "Planejamento até 04/Out", num: "03" },
-  { path: "/governanca", label: "Governança", num: "04" },
-  { path: "/rede-sarelli", label: "Rede Sarelli", num: "05" },
+  { path: "/rede-sarelli", label: "Rede Sarelli", num: "04" },
+  { path: "/governanca", label: "Governança", num: "05" },
 ] as const;
 
 export function ChapterNav() {

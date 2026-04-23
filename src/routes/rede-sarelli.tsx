@@ -141,7 +141,7 @@ const PAPEIS: Papel[] = [
 function RedeSarelliPage() {
   return (
     <PageShell
-      eyebrow="Capítulo 06 · Como a rede funciona"
+      eyebrow="Capítulo 05 · Como a rede funciona"
       title={
         <EditableText
           id="rede.hero.titulo"
