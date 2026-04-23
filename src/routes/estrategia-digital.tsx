@@ -314,15 +314,15 @@ function EstrategiaDigital() {
           {[
             {
               n: "01",
-              titulo: "A Doutora que escuta antes de falar",
+              titulo: "A Doutora chega antes da política",
               texto:
-                "Toda peça abre pelo lado humano: a mulher que chegou com medo no escritório, a mãe que não sabia para onde ir, a família destruída por uma ligação à meia-noite. A advogada aparece depois — primeiro vem a pessoa que entendeu a dor.",
+                "Ela não pede voto — ela resolve um problema. Cada conteúdo entrega algo útil de verdade: um direito que a mulher não sabia que tinha, um passo prático em caso de violência, uma orientação que economiza meses de sofrimento. Quando o eleitor descobrir que ela é candidata, já vai dever favor — e voto se paga com voto.",
             },
             {
               n: "02",
-              titulo: "Rede de quem já foi ajudada",
+              titulo: "Transformar clientes em testemunhas",
               texto:
-                "Cada mulher atendida em uma década é uma porta de entrada. Convidá-las (com sigilo e consentimento absolutos) a contar o que viveram — em vídeo, áudio ou texto. Quem foi salva fala com mais força do que qualquer marqueteiro.",
+                "Em dez anos, milhares de mulheres saíram do escritório dela com a vida reconstruída. Essa é a maior base de dados afetiva da campanha — e ninguém pode replicar. Vamos ativar essa rede com cuidado cirúrgico: depoimentos com sigilo absoluto, encontros regionais, um pacto silencioso de quem foi salva e agora salva a Doutora de volta.",
             },
             {
               n: "03",
@@ -338,9 +338,9 @@ function EstrategiaDigital() {
             },
             {
               n: "05",
-              titulo: "Sensibilidade como diferencial competitivo",
+              titulo: "Sussurrar onde todos gritam",
               texto:
-                "Enquanto a política tradicional grita, a Doutora abaixa o tom. Vídeos calmos, olhar firme, voz que acolhe. Em um cenário saturado de raiva, ternura com técnica vira escassez — e escassez vira voto.",
+                "A política goiana de 2026 vai ser ensurdecedora — homens berrando promessas, ataques cruzados, ruído. A Doutora faz o oposto: vídeo de um minuto, luz natural, voz baixa, uma única ideia bem dita. Em terreno saturado de barulho, silêncio com substância vira o conteúdo mais compartilhado da timeline. É contraintuitivo — e por isso funciona.",
             },
           ].map((item) => (
             <article
