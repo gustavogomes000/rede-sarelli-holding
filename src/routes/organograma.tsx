@@ -276,10 +276,10 @@ const exercito: Cargo[] = [
       "Reportar leads quentes ao CS Político.",
     ],
     entregaveis: [
-      "Meta mensal de votos comprometidos por liderança.",
-      "Volume de cadastros realizados no app Rede Sarelli.",
+      "KPI de divulgação: publicações replicadas e alcance gerado nas redes.",
+      "Meta mensal de cadastros no app Rede Sarelli.",
+      "Volume de novas pessoas trazidas para o projeto.",
       "Mínimo 1 reunião / encontro mensal mobilizando a base.",
-      "Engajamento ativo nas redes (posts replicados, marcações, presença digital).",
     ],
     cor: "emerald",
   },
