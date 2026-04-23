@@ -6,6 +6,7 @@ import logoHeader from "@/assets/sarelli-logo-header.png";
 const NAV = [
   { to: "/", label: "Capa", n: "01" },
   { to: "/estrategia-digital", label: "Estratégia Digital", n: "02" },
+  { to: "/organograma", label: "Organograma", n: "03" },
 ] as const;
 
 export function SiteHeader() {
