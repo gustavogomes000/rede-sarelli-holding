@@ -3,10 +3,9 @@ import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 
 export const chapters = [
   { path: "/", label: "Capa", num: "00" },
-  { path: "/holding", label: "A Operação", num: "01" },
-  { path: "/marca", label: "Identidade & Marca", num: "02" },
-  { path: "/pilares", label: "5 Pilares", num: "03" },
-  { path: "/organograma", label: "Organograma", num: "04" },
+  { path: "/organograma", label: "Organograma", num: "01" },
+  { path: "/estrategia-digital", label: "Estratégia Digital", num: "02" },
+  { path: "/planejamento", label: "Planejamento até 04/Out", num: "03" },
   { path: "/governanca", label: "Governança", num: "05" },
   { path: "/rede-sarelli", label: "Rede Sarelli", num: "06" },
   { path: "/funil", label: "Funil de Captura", num: "07" },

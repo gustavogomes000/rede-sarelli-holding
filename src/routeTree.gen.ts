@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PlanejamentoRouteImport } from './routes/planejamento'
 import { Route as OrganogramaRouteImport } from './routes/organograma'
 import { Route as EstrategiaDigitalRouteImport } from './routes/estrategia-digital'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PlanejamentoRoute = PlanejamentoRouteImport.update({
+  id: '/planejamento',
+  path: '/planejamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrganogramaRoute = OrganogramaRouteImport.update({
   id: '/organograma',
   path: '/organograma',
@@ -33,34 +39,50 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
   '/organograma': typeof OrganogramaRoute
+  '/planejamento': typeof PlanejamentoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
   '/organograma': typeof OrganogramaRoute
+  '/planejamento': typeof PlanejamentoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
   '/organograma': typeof OrganogramaRoute
+  '/planejamento': typeof PlanejamentoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/estrategia-digital' | '/organograma'
+  fullPaths: '/' | '/estrategia-digital' | '/organograma' | '/planejamento'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/estrategia-digital' | '/organograma'
-  id: '__root__' | '/' | '/estrategia-digital' | '/organograma'
+  to: '/' | '/estrategia-digital' | '/organograma' | '/planejamento'
+  id:
+    | '__root__'
+    | '/'
+    | '/estrategia-digital'
+    | '/organograma'
+    | '/planejamento'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EstrategiaDigitalRoute: typeof EstrategiaDigitalRoute
   OrganogramaRoute: typeof OrganogramaRoute
+  PlanejamentoRoute: typeof PlanejamentoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/planejamento': {
+      id: '/planejamento'
+      path: '/planejamento'
+      fullPath: '/planejamento'
+      preLoaderRoute: typeof PlanejamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/organograma': {
       id: '/organograma'
       path: '/organograma'
@@ -89,6 +111,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EstrategiaDigitalRoute: EstrategiaDigitalRoute,
   OrganogramaRoute: OrganogramaRoute,
+  PlanejamentoRoute: PlanejamentoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
