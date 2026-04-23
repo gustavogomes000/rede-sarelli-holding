@@ -312,11 +312,36 @@ function EstrategiaDigital() {
 
         <div className="space-y-4">
           {[
-            { n: "01", titulo: "Identidade Visual Consistente", texto: "Paleta de cores fixa (rosa Sarelli + branco), tipografia única, logo 'Chama a Doutora' aplicado em tudo. Em 3 segundos qualquer post se reconhece como dela." },
-            { n: "02", titulo: "Tom de Voz Definido", texto: "Firme sem ser agressiva, técnica sem ser fria, mulher sem perder autoridade. Toda legenda, todo vídeo, segue o mesmo tom — escrito por ela ou por quem fala como ela." },
-            { n: "03", titulo: "Narrativa Pessoal Clara", texto: "Quem é a Doutora: filha de Porangatu, advogada criminalista, cristã, mãe, empresária. Cada um desses pilares vira conteúdo recorrente — não uma vez, sempre." },
-            { n: "04", titulo: "Provas Sociais Reais", texto: "Cases de mulheres atendidas (com consentimento), depoimentos, presença em comunidades, fotos de bastidor. Mostrar — não dizer — que ela está onde diz que está." },
-            { n: "05", titulo: "Postura Pública Única", texto: "Um gesto, uma frase de assinatura, um jeito de fechar vídeos. Algo que vire meme bom, que as apoiadoras imitem. A marca virando movimento." },
+            {
+              n: "01",
+              titulo: "A Doutora que escuta antes de falar",
+              texto:
+                "Toda peça abre pelo lado humano: a mulher que chegou com medo no escritório, a mãe que não sabia para onde ir, a família destruída por uma ligação à meia-noite. A advogada aparece depois — primeiro vem a pessoa que entendeu a dor.",
+            },
+            {
+              n: "02",
+              titulo: "Rede de quem já foi ajudada",
+              texto:
+                "Cada mulher atendida em uma década é uma porta de entrada. Convidá-las (com sigilo e consentimento absolutos) a contar o que viveram — em vídeo, áudio ou texto. Quem foi salva fala com mais força do que qualquer marqueteiro.",
+            },
+            {
+              n: "03",
+              titulo: "Autoridade que vem do caso real",
+              texto:
+                "Em vez de discurso, jurisprudência viva: 'esta semana atendemos uma mulher na situação X — a lei diz Y, e foi assim que resolvemos'. Educar enquanto humaniza. A Doutora vira referência prática, não promessa política.",
+            },
+            {
+              n: "04",
+              titulo: "Multiplicadoras locais por município",
+              texto:
+                "Identificar em cada cidade de Goiás 3 a 5 mulheres respeitadas — pastoras, líderes comunitárias, ex-clientes, professoras — e dar a elas conteúdo pronto, formação curta e canal direto. Elas levam a Doutora onde nenhum impulsionamento chega.",
+            },
+            {
+              n: "05",
+              titulo: "Sensibilidade como diferencial competitivo",
+              texto:
+                "Enquanto a política tradicional grita, a Doutora abaixa o tom. Vídeos calmos, olhar firme, voz que acolhe. Em um cenário saturado de raiva, ternura com técnica vira escassez — e escassez vira voto.",
+            },
           ].map((item) => (
             <article
               key={item.n}
