@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { ChapterNav } from "./ChapterNav";
 
 interface PageShellProps {
   eyebrow: string;
@@ -43,6 +44,7 @@ export function PageShell({
             )}
           </div>
           <div className="mt-14">{children}</div>
+          <ChapterNav />
         </div>
       </div>
     </main>
