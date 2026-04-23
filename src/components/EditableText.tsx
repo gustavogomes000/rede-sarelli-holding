@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ElementType, type ReactNode } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { Pencil, Check, X, Loader2 } from "lucide-react";
 import { loadEditableText, saveEditableText } from "@/lib/editable-text.functions";
 
@@ -39,6 +40,8 @@ export function EditableText({
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | HTMLInputElement | null>(null);
   const lines = useMemo(() => value.split("\n"), [value]);
+  const loadEditableTextFn = useServerFn(loadEditableText);
+  const saveEditableTextFn = useServerFn(saveEditableText);
 
   useEffect(() => {
     const set = subscribers.get(id) ?? new Set();
@@ -61,7 +64,7 @@ export function EditableText({
 
     (async () => {
       try {
-        const result = await loadEditableText({ data: { id, defaultValue } });
+        const result = await loadEditableTextFn({ data: { id, defaultValue } });
         if (cancelled) return;
         notify(id, result.value);
         setDraft(result.value);
@@ -75,7 +78,7 @@ export function EditableText({
     return () => {
       cancelled = true;
     };
-  }, [id, defaultValue]);
+  }, [defaultValue, id, loadEditableTextFn]);
 
   useEffect(() => {
     if (editing && inputRef.current) {
@@ -94,7 +97,7 @@ export function EditableText({
     setError(null);
 
     try {
-      const result = await saveEditableText({ data: { id, content: draft } });
+      const result = await saveEditableTextFn({ data: { id, content: draft } });
       notify(id, result.value);
       setEditing(false);
     } catch (saveError) {
