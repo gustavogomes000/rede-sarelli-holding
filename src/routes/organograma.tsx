@@ -76,66 +76,52 @@ const ceoPublica: Cargo = {
   cor: "primary",
 };
 
-// ============= COO ÚNICO (logo abaixo da CEO) =============
+// ============= COO ÚNICO (logo abaixo da CEO) — acumula CFO/Admin/Dev =============
 const coo: Cargo = {
   icon: Compass,
-  cargo: "COO · Coordenador Geral",
+  cargo: "COO · Coordenador Geral, CFO & Admin",
   ocupante: "Deocleciano",
-  papel: "Causa do Exército · Gestão geral da operação",
+  papel: "Causa do Exército · Gestão geral, financeiro, administrativo e desenvolvimento sob demanda",
   reporta: "CEO Pública",
   responsabilidades: [
     "Gestão geral de toda a Holding (HQ + Exército de Campo).",
     "Causa e comando do Exército: define metas, territórios e ritmo.",
+    "Gestão financeira: caixa, contas a pagar, fornecedores e prestação de contas.",
+    "Controle administrativo do comitê, contratos e fornecedores.",
+    "Cobrança de resultados e responsabilidade financeira de cada área.",
+    "Desenvolve qualquer solução/local digital necessário para qualquer demanda do dia a dia (landing, formulário, integração).",
     "Garantir execução do Roadmap Macro até 4 de outubro.",
     "Tomar decisões com base no painel da Rede Sarelli.",
   ],
   entregaveis: [
     "Reunião semanal de status com todas as áreas.",
     "Relatório consolidado quinzenal de KPIs.",
+    "Fluxo de caixa semanal e painel de cobrança de metas por área.",
+    "Soluções digitais sob demanda entregues no prazo solicitado.",
     "Auditoria contínua de metas das promotoras e lideranças.",
   ],
   cor: "primary",
 };
 
-// ============= CAMADA 2 — CHIEF OF STAFF + CFO =============
-const camadaApoioCEO: Cargo[] = [
-  {
-    icon: CalendarClock,
-    cargo: "Chief of Staff · Assessoria 24h",
-    papel: "Filtro de acesso e gestão de agenda",
-    reporta: "COO · Coordenador Geral",
-    responsabilidades: [
-      "Gestão integral da agenda da CEO Pública.",
-      "Acompanhamento 24h: deslocamentos, compromissos, gravações.",
-      "Filtrar pedidos, convites e contatos antes de chegarem à Doutora.",
-      "Articular interface entre CEO e demais áreas da Holding.",
-    ],
-    entregaveis: [
-      "Agenda semanal fechada e validada com 7 dias de antecedência.",
-      "Briefing diário pré-agenda para a CEO.",
-      "Confirmações e logística operacional de cada compromisso.",
-    ],
-    cor: "rose",
-  },
-  {
-    icon: Wallet,
-    cargo: "CFO · Financeiro, Administrativo & Dados",
-    papel: "Caixa, contas, cobrança de resultados e desenvolvimento sob demanda",
-    reporta: "COO · Coordenador Geral",
-    responsabilidades: [
-      "Gestão financeira: caixa, contas a pagar, fornecedores e prestação de contas.",
-      "Controle administrativo do comitê, contratos e fornecedores.",
-      "Cobrança de resultados e responsabilidade financeira de cada área.",
-      "Além de dados, desenvolve qualquer solução/local digital necessário para qualquer demanda do dia a dia (landing, formulário, integração).",
-    ],
-    entregaveis: [
-      "Fluxo de caixa semanal aprovado pela COO.",
-      "Painel de cobrança de metas por área e responsáveis.",
-      "Soluções digitais sob demanda entregues no prazo solicitado.",
-    ],
-    cor: "amber",
-  },
-];
+// ============= CAMADA 2 — CHIEF OF STAFF (sozinha, 24h com a CEO) =============
+const chiefOfStaff: Cargo = {
+  icon: CalendarClock,
+  cargo: "Chief of Staff · Assessoria 24h",
+  papel: "Companhia 24h da Doutora · Filtro de acesso e gestão de agenda",
+  reporta: "COO · Coordenador Geral",
+  responsabilidades: [
+    "Acompanhar a CEO 24h: deslocamentos, compromissos, gravações e bastidores.",
+    "Gestão integral da agenda da CEO Pública.",
+    "Filtrar pedidos, convites e contatos antes de chegarem à Doutora.",
+    "Articular interface entre CEO e demais áreas da Holding.",
+  ],
+  entregaveis: [
+    "Agenda semanal fechada e validada com 7 dias de antecedência.",
+    "Briefing diário pré-agenda para a CEO.",
+    "Confirmações e logística operacional de cada compromisso.",
+  ],
+  cor: "rose",
+};
 
 // ============= CAMADA 3 — DIRETORIA OPERACIONAL (HQ) =============
 const diretoria: Cargo[] = [
@@ -495,7 +481,7 @@ function OrganogramaPage() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            {["CEO Pública", "COO único", "Apoio · CoS + CFO", "Diretoria HQ", "Exército de Campo"].map((tag) => (
+            {["CEO Pública", "COO · CFO · Admin", "Chief of Staff 24h", "Diretoria HQ", "Exército de Campo"].map((tag) => (
               <span
                 key={tag}
                 className="px-4 py-2 rounded-full border border-primary/20 bg-white/80 backdrop-blur text-sm font-semibold text-primary shadow-sm"
@@ -540,19 +526,17 @@ function OrganogramaPage() {
 
       <HorizontalBracket />
 
-      {/* NÍVEL 3 — CHIEF OF STAFF + CFO */}
+      {/* NÍVEL 3 — CHIEF OF STAFF (sozinha) */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8 mt-6">
         <NivelHeader
-          capitulo="Nível 03 · Apoio Direto à Coordenação"
-          titulo="Agenda, finanças e"
-          destaque="cobrança de resultados"
-          subtitulo="Chief of Staff blinda a CEO 24h. CFO administra o caixa e cobra metas de cada área."
+          capitulo="Nível 03 · Sombra da CEO"
+          titulo="Quem está com a Doutora"
+          destaque="24 horas por dia"
+          subtitulo="Chief of Staff: companhia, agenda e filtro de acesso. A pessoa que blinda a CEO o tempo inteiro."
           Icon={Briefcase}
         />
-        <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
-          {camadaApoioCEO.map((c) => (
-            <CargoCard key={c.cargo} cargo={c} />
-          ))}
+        <div className="max-w-2xl mx-auto">
+          <CargoCard cargo={chiefOfStaff} />
         </div>
       </section>
 
@@ -564,7 +548,7 @@ function OrganogramaPage() {
           capitulo="Nível 04 · Diretoria Operacional · HQ"
           titulo="O"
           destaque="cérebro da Holding"
-          subtitulo="CTO, Marketing, Head do Exército, CS Político e Recepção. Cada um responde diretamente ao COO."
+          subtitulo="CTO, CMOs (Conteúdo + Redes), Head do Exército, CS Político e Recepção. Cada um responde diretamente ao COO."
           Icon={Building2}
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -582,10 +566,10 @@ function OrganogramaPage() {
           capitulo="Nível 05 · Exército de Campo · Operação de Rua"
           titulo="Quem"
           destaque="conquista território"
-          subtitulo="Comandado pelo Head do Exército: Suplentes articulam, Lideranças convertem, Promotores prospectam."
+          subtitulo="Comandado pelo Head do Exército: Suplentes articulam, Fiscais defendem a urna, Lideranças convertem, Promotores prospectam."
           Icon={Swords}
         />
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {exercito.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
