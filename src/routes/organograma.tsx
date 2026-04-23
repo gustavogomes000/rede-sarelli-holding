@@ -18,6 +18,8 @@ import {
   Swords,
   Briefcase,
   Wallet,
+  Clapperboard,
+  Share2,
 } from "lucide-react";
 
 export const Route = createFileRoute("/organograma")({
@@ -159,26 +161,44 @@ const diretoria: Cargo[] = [
     cor: "violet",
   },
   {
-    icon: Megaphone,
-    cargo: "CMO · Marketing & Branding",
-    papel: "Planejamento, conteúdo, tráfego e Instagram",
+    icon: Clapperboard,
+    cargo: "CMO · Conteúdo & Produção",
+    papel: "Criação de conteúdo, campo, filmagem, edição e criação dos conteúdos",
     reporta: "COO · Coordenador Geral",
     responsabilidades: [
-      "Executar planejamento editorial de 24 semanas.",
+      "Executar planejamento editorial de 24 semanas (criação dos conteúdos).",
+      "Ir a campo com a Doutora: filmar agendas, ruas, bastidores e gravações.",
       "Coordenar o videomaker 'O Sombra' (vlogs estilo João Campos).",
-      "Gerir tráfego pago e impulsionamento por região.",
-      "Cuidar do Instagram da Doutora: conteúdo, stories, respostas e tom de voz.",
-      "Conversar diretamente com o Head do Exército para alinhar o exército de campo às pautas e campanhas das redes sociais.",
+      "Edição de vídeos, cortes, reels, podcasts e peças gráficas.",
       "Garantir consistência da marca: Efeito Cimed + Nova Política.",
     ],
     entregaveis: [
       "Calendário editorial por semana, alinhado às fases do Roadmap.",
       "5 a 7 vídeos verticais publicáveis por semana.",
-      "Instagram ativo diariamente (feed + stories) com métricas de engajamento.",
+      "Cobertura completa de cada agenda da Doutora em campo.",
+      "Banco de cortes e peças prontas entregues ao CMO de Redes.",
+    ],
+    cor: "rose",
+  },
+  {
+    icon: Share2,
+    cargo: "CMO · Redes Sociais & Tráfego",
+    papel: "Cuidar de todas as redes sociais e impulsionamento",
+    reporta: "COO · Coordenador Geral",
+    responsabilidades: [
+      "Cuidar de todas as redes sociais da Doutora: Instagram, TikTok, Facebook, YouTube, Kwai e WhatsApp.",
+      "Publicar, agendar, responder comentários e direct, gerir tom de voz.",
+      "Gerir tráfego pago e impulsionamento por região.",
+      "Conversar diretamente com o Head do Exército para alinhar o exército de campo às pautas e campanhas das redes sociais.",
+      "Monitorar métricas, hashtags e tendências em tempo real.",
+    ],
+    entregaveis: [
+      "Todas as redes ativas diariamente (feed + stories + shorts).",
+      "Relatório semanal de engajamento e crescimento por rede.",
       "Briefing semanal entregue ao Head do Exército com pautas para o campo.",
       "Relatório de performance de tráfego pago por município.",
     ],
-    cor: "rose",
+    cor: "fuchsia",
   },
   {
     icon: Swords,
