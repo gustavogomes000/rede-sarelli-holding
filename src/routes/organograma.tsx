@@ -25,17 +25,17 @@ import {
 export const Route = createFileRoute("/organograma")({
   head: () => ({
     meta: [
-      { title: "Organograma · Holding Sarelli 2026" },
+      { title: "Organograma · Operação Sarelli 2026" },
       {
         name: "description",
         content:
-          "Organograma corporativo da Holding Sarelli 2026: CEO, COO, CFO, Chief of Staff, HQ de Inteligência e Exército de Campo.",
+          "Organograma corporativo da Operação Sarelli 2026: CEO, COO, CFO, Chief of Staff, HQ de Inteligência e Exército de Campo.",
       },
-      { property: "og:title", content: "Organograma · Holding Sarelli 2026" },
+      { property: "og:title", content: "Organograma · Operação Sarelli 2026" },
       {
         property: "og:description",
         content:
-          "Estrutura hierárquica da campanha gerida como holding: cargos, deveres e KPIs claros do C-Level ao Exército de Campo.",
+          "Estrutura hierárquica da campanha gerida como operação: cargos, deveres e KPIs claros do C-Level ao Exército de Campo.",
       },
     ],
   }),
@@ -113,7 +113,7 @@ const chiefOfStaff: Cargo = {
     "Acompanhar a CEO 24h: deslocamentos, compromissos, gravações e bastidores.",
     "Gestão integral da agenda da CEO Pública.",
     "Filtrar pedidos, convites e contatos antes de chegarem à Doutora.",
-    "Articular interface entre CEO e demais áreas da Holding.",
+    "Articular interface entre CEO e demais áreas da Operação.",
   ],
   entregaveis: [
     "Agenda semanal fechada e validada com 7 dias de antecedência.",
@@ -231,7 +231,7 @@ const diretoria: Cargo[] = [
       "Cadastrar todas as visitas que entram no comitê.",
       "Registrar métricas de fluxo (horários, motivos, regiões).",
       "Garantir que nenhum apoiador saia sem cadastro.",
-      "Atendimento humano e cordial — primeira imagem da Holding.",
+      "Atendimento humano e cordial — primeira imagem da Operação.",
     ],
     entregaveis: [
       "100% dos visitantes cadastrados no sistema.",
@@ -461,7 +461,7 @@ function OrganogramaPage() {
         <div className="mx-auto max-w-6xl px-6 lg:px-8 pt-12 pb-16">
           <div className="flex items-center gap-3 mb-6">
             <span className="font-mono text-xs font-bold text-primary tracking-[0.3em]">
-              CAPÍTULO 03 · HOLDING SARELLI 2026
+              CAPÍTULO 03 · OPERAÇÃO SARELLI 2026
             </span>
             <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-primary/60 to-transparent" />
           </div>
@@ -498,7 +498,7 @@ function OrganogramaPage() {
       {/* NÍVEL 1 — CEO */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8">
         <NivelHeader
-          capitulo="Nível 01 · Topo da Holding"
+          capitulo="Nível 01 · Topo da Operação"
           titulo="A"
           destaque="Marca em pessoa"
           Icon={Crown}
@@ -516,7 +516,7 @@ function OrganogramaPage() {
           capitulo="Nível 02 · Coordenação Geral"
           titulo="Quem"
           destaque="comanda toda a operação"
-          subtitulo="Único elo entre a CEO Pública e toda a estrutura. Causa do Exército e gestor da Holding."
+          subtitulo="Único elo entre a CEO Pública e toda a estrutura. Causa do Exército e gestor da Operação."
           Icon={Compass}
         />
         <div className="max-w-2xl mx-auto">
@@ -547,7 +547,7 @@ function OrganogramaPage() {
         <NivelHeader
           capitulo="Nível 04 · Diretoria Operacional · HQ"
           titulo="O"
-          destaque="cérebro da Holding"
+          destaque="cérebro da Operação"
           subtitulo="CTO, CMOs (Conteúdo + Redes), Head do Exército, CS Político e Recepção. Cada um responde diretamente ao COO."
           Icon={Building2}
         />
