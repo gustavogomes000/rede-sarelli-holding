@@ -23,7 +23,7 @@ import {
   Clock,
   TrendingUp,
 } from "lucide-react";
-import { ChapterNav } from "@/components/ChapterNav";
+
 
 export const Route = createFileRoute("/planejamento")({
   head: () => ({
