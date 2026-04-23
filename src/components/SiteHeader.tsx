@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Moon, Sun, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import logoHeader from "@/assets/sarelli-logo-header.png";
 
 const NAV = [
@@ -20,14 +20,7 @@ const NAV = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(false);
   const { location } = useRouterState();
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (dark) root.classList.add("dark");
-    else root.classList.remove("dark");
-  }, [dark]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -54,13 +47,13 @@ export function SiteHeader() {
             : "bg-white/60 backdrop-blur-sm"
         }`}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* LOGO sozinho */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group shrink-0">
             <img
               src={logoHeader}
               alt="Doutora Fernanda Sarelli — Chama a Doutora"
-              className="h-12 w-auto object-contain"
+              className="h-16 sm:h-20 w-auto object-contain transition-transform group-hover:scale-105"
             />
           </Link>
 
@@ -87,53 +80,53 @@ export function SiteHeader() {
             })}
           </nav>
 
-          {/* CONTROLES: Prev / Next / Tema / Menu */}
-          <div className="flex items-center gap-1.5">
-            {/* Navegação prev/next sempre visível */}
-            <div className="flex items-center rounded-full border border-border bg-white/80 backdrop-blur p-0.5 shadow-sm">
+          {/* CONTROLES: Prev / Next / Menu */}
+          <div className="flex items-center gap-2">
+            {/* Navegação prev/next — pílula elegante */}
+            <div className="flex items-center gap-1 rounded-full border border-primary/20 bg-gradient-to-r from-white via-pink-50/40 to-white backdrop-blur-md px-1.5 py-1 shadow-[0_4px_20px_-8px_rgba(236,72,153,0.35)]">
               {prev ? (
                 <Link
                   to={prev.to}
-                  className="h-9 w-9 flex items-center justify-center rounded-full text-foreground/70 hover:text-primary hover:bg-accent transition"
+                  className="group h-10 w-10 flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
                   aria-label={`Anterior: ${prev.label}`}
                   title={`← ${prev.label}`}
                 >
-                  <ChevronLeft className="h-4 w-4" />
+                  <ChevronLeft className="h-5 w-5 transition-transform group-hover:-translate-x-0.5" />
                 </Link>
               ) : (
-                <span className="h-9 w-9 flex items-center justify-center text-foreground/20">
-                  <ChevronLeft className="h-4 w-4" />
+                <span className="h-10 w-10 flex items-center justify-center text-foreground/15 cursor-not-allowed">
+                  <ChevronLeft className="h-5 w-5" />
                 </span>
               )}
-              <div className="px-2 text-[10px] font-mono font-bold text-primary tabular-nums">
-                {String(currentIdx + 1).padStart(2, "0")}/{String(NAV.length).padStart(2, "0")}
+              <div className="px-3 min-w-[64px] text-center">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-primary/50 leading-none mb-0.5">
+                  Cap.
+                </div>
+                <div className="text-sm font-display font-bold text-primary tabular-nums leading-none">
+                  {String(currentIdx + 1).padStart(2, "0")}
+                  <span className="text-primary/30 mx-0.5">/</span>
+                  <span className="text-primary/60 text-xs">{String(NAV.length).padStart(2, "0")}</span>
+                </div>
               </div>
               {next ? (
                 <Link
                   to={next.to}
-                  className="h-9 w-9 flex items-center justify-center rounded-full text-foreground/70 hover:text-primary hover:bg-accent transition"
+                  className="group h-10 w-10 flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
                   aria-label={`Próxima: ${next.label}`}
                   title={`${next.label} →`}
                 >
-                  <ChevronRight className="h-4 w-4" />
+                  <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               ) : (
-                <span className="h-9 w-9 flex items-center justify-center text-foreground/20">
-                  <ChevronRight className="h-4 w-4" />
+                <span className="h-10 w-10 flex items-center justify-center text-foreground/15 cursor-not-allowed">
+                  <ChevronRight className="h-5 w-5" />
                 </span>
               )}
             </div>
 
             <button
-              onClick={() => setDark(!dark)}
-              className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full text-foreground/70 hover:text-primary hover:bg-accent transition"
-              aria-label="Alternar tema"
-            >
-              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-            <button
               onClick={() => setOpen(!open)}
-              className="xl:hidden h-10 w-10 flex items-center justify-center rounded-full text-foreground hover:bg-accent"
+              className="xl:hidden h-11 w-11 flex items-center justify-center rounded-full text-foreground hover:bg-accent transition"
               aria-label="Menu"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -150,7 +143,7 @@ export function SiteHeader() {
       </header>
 
       {open && (
-        <div className="no-print fixed inset-0 top-20 z-40 glass xl:hidden overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="no-print fixed inset-0 top-24 z-40 glass xl:hidden overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="px-4 py-8 space-y-1">
             {NAV.map((item) => {
               const active = location.pathname === item.to;
