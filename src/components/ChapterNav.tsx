@@ -6,12 +6,8 @@ export const chapters = [
   { path: "/organograma", label: "Organograma", num: "01" },
   { path: "/estrategia-digital", label: "Estratégia Digital", num: "02" },
   { path: "/planejamento", label: "Planejamento até 04/Out", num: "03" },
-  { path: "/governanca", label: "Governança", num: "05" },
-  { path: "/rede-sarelli", label: "Rede Sarelli", num: "06" },
-  { path: "/funil", label: "Funil de Captura", num: "07" },
-  { path: "/promotores", label: "Promotores", num: "08" },
-  { path: "/roadmap", label: "Roadmap até 04/Out", num: "09" },
-  { path: "/proximos-passos", label: "Próximos Passos", num: "10" },
+  { path: "/governanca", label: "Governança", num: "04" },
+  { path: "/rede-sarelli", label: "Rede Sarelli", num: "05" },
 ] as const;
 
 export function ChapterNav() {
