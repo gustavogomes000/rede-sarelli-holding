@@ -128,10 +128,10 @@ function Capa() {
 
                 <div className="flex flex-wrap gap-3 pt-3 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
                   <Link
-                    to="/pilares"
+                    to="/organograma"
                     className="group inline-flex items-center gap-2 rounded-full bg-white text-pink px-7 py-3.5 text-sm font-bold shadow-xl hover:scale-105 transition-transform"
                   >
-                    Conheça as bandeiras
+                    Conheça a operação
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
