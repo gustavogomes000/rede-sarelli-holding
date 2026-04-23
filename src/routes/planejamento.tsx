@@ -23,7 +23,7 @@ import {
   Clock,
   TrendingUp,
 } from "lucide-react";
-import { ChapterNav } from "@/components/ChapterNav";
+
 
 export const Route = createFileRoute("/planejamento")({
   head: () => ({
@@ -739,26 +739,9 @@ function PlanejamentoPage() {
             </div>
           </section>
 
-          {/* CTA FINAL */}
-          <section className="mt-20 rounded-3xl bg-gradient-to-br from-pink-500 via-fuchsia-500 to-rose-600 p-8 sm:p-12 text-white shadow-xl">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-              <Megaphone className="h-12 w-12 shrink-0" />
-              <div className="flex-1">
-                <h2 className="font-display text-3xl sm:text-4xl font-extrabold leading-tight">
-                  De agora até 04 de outubro, todo dia conta.
-                </h2>
-                <p className="text-white/90 mt-3 text-base sm:text-lg leading-relaxed">
-                  Este calendário não é uma sugestão — é o ritmo da Operação. Cada semana tem
-                  tema, cada dia tem entrega, cada peça tem KPI. É assim que se vence eleição no
-                  dado.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <ChapterNav />
         </div>
       </div>
+
     </main>
   );
 }
