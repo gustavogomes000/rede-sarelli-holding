@@ -16,6 +16,7 @@ import {
 import portrait from "@/assets/fernanda-portrait.jpg";
 import logo from "@/assets/sarelli-logo.png";
 import { CountdownEleicao } from "@/components/CountdownEleicao";
+import { EditableText } from "@/components/EditableText";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -94,14 +95,17 @@ function Capa() {
               <div className="lg:col-span-6 space-y-7 text-white">
                 <div className="inline-flex items-center gap-2 rounded-full bg-pink px-5 py-2 shadow-pink animate-in fade-in slide-in-from-bottom-2 duration-700">
                   <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                  <span className="text-[11px] uppercase tracking-[0.25em] text-white font-bold">
-                    Pré-candidata · Deputada Estadual GO · NOVO
-                  </span>
+                  <EditableText
+                    id="capa.hero.badge"
+                    as="span"
+                    defaultValue="Pré-candidata · Deputada Estadual GO · NOVO"
+                    className="text-[11px] uppercase tracking-[0.25em] text-white font-bold"
+                  />
                 </div>
 
                 <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[0.9] tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                  <span className="block text-white drop-shadow-sm">Chama a</span>
-                  <span className="block text-white drop-shadow-md italic font-display">Doutora.</span>
+                  <EditableText id="capa.hero.titulo1" as="span" defaultValue="Chama a" className="block text-white drop-shadow-sm" />
+                  <EditableText id="capa.hero.titulo2" as="span" defaultValue="Doutora." className="block text-white drop-shadow-md italic font-display" />
                 </h1>
 
                 <div className="flex gap-1.5 pt-1 animate-in fade-in duration-1000 delay-200">
@@ -114,12 +118,13 @@ function Capa() {
                   ))}
                 </div>
 
-                <p className="text-base sm:text-lg text-white/95 leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-                  <span className="font-bold">Advogada criminalista</span>, empresária, mãe, esposa
-                  e cristã. Pré-candidata a Deputada Estadual por Goiás pelo{" "}
-                  <span className="font-bold">Partido NOVO</span>, com compromisso real com a
-                  defesa da mulher, da criança e das famílias em vulnerabilidade.
-                </p>
+                <EditableText
+                  id="capa.hero.descricao"
+                  as="p"
+                  multiline
+                  defaultValue="Advogada criminalista, empresária, mãe, esposa e cristã. Pré-candidata a Deputada Estadual por Goiás pelo Partido NOVO, com compromisso real com a defesa da mulher, da criança e das famílias em vulnerabilidade."
+                  className="text-base sm:text-lg text-white/95 leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200"
+                />
 
                 <div className="flex flex-wrap gap-3 pt-3 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
                   <Link
@@ -213,21 +218,24 @@ function Capa() {
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-tight">
-                Uma década cuidando.<br />
-                <span className="text-gradient-pink">Agora, representando.</span>
+                <EditableText id="capa.sobre.titulo1" as="span" defaultValue="Uma década cuidando." />
+                <br />
+                <EditableText id="capa.sobre.titulo2" as="span" defaultValue="Agora, representando." className="text-gradient-pink" />
               </h2>
-              <p className="mt-5 text-muted-foreground leading-relaxed">
-                Nascida em <strong className="text-foreground">Porangatu</strong> e cidadã
-                aparecidense por reconhecimento à sua trajetória, a Dra. Fernanda Sarelli
-                construiu uma carreira marcada pela{" "}
-                <strong className="text-foreground">defesa da justiça</strong>, pelo
-                compromisso social e pelo cuidado com as pessoas.
-              </p>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Em uma década de atuação, projetos e ações apoiados por ela já alcançaram{" "}
-                <strong className="text-pink">mais de 100 mil famílias</strong> em situação de
-                vulnerabilidade em Goiás e em diversas regiões do Brasil.
-              </p>
+              <EditableText
+                id="capa.sobre.p1"
+                as="p"
+                multiline
+                defaultValue="Nascida em Porangatu e cidadã aparecidense por reconhecimento à sua trajetória, a Dra. Fernanda Sarelli construiu uma carreira marcada pela defesa da justiça, pelo compromisso social e pelo cuidado com as pessoas."
+                className="mt-5 text-muted-foreground leading-relaxed"
+              />
+              <EditableText
+                id="capa.sobre.p2"
+                as="p"
+                multiline
+                defaultValue="Em uma década de atuação, projetos e ações apoiados por ela já alcançaram mais de 100 mil famílias em situação de vulnerabilidade em Goiás e em diversas regiões do Brasil."
+                className="mt-4 text-muted-foreground leading-relaxed"
+              />
             </div>
 
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
@@ -283,12 +291,15 @@ function Capa() {
               <span className="h-px w-10 bg-primary" />
             </div>
             <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground">
-              Compromissos institucionais por um{" "}
-              <span className="text-gradient-pink">Goiás mais justo</span>.
+              <EditableText id="capa.pilares.titulo" as="span" defaultValue="Compromissos institucionais por um Goiás mais justo." />
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Pilares fundamentais que guiam a atuação da Dra. Fernanda no Legislativo Estadual.
-            </p>
+            <EditableText
+              id="capa.pilares.subtitulo"
+              as="p"
+              multiline
+              defaultValue="Pilares fundamentais que guiam a atuação da Dra. Fernanda no Legislativo Estadual."
+              className="mt-4 text-muted-foreground"
+            />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
