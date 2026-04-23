@@ -6,6 +6,10 @@ import {
   Target,
   Headset,
   ArrowDown,
+  ArrowRight,
+  Link2,
+  ClipboardList,
+  Activity,
 } from "lucide-react";
 import { EditableText } from "@/components/EditableText";
 import { PageShell } from "@/components/PageShell";
@@ -342,30 +346,3 @@ function BlocoCampo({
   );
 }
 
-function RegraBloco({
-  icone: Icone,
-  titulo,
-  id,
-  defaultValue,
-}: {
-  icone: typeof Crown;
-  titulo: string;
-  id: string;
-  defaultValue: string;
-}) {
-  return (
-    <div className="rounded-2xl bg-white/70 backdrop-blur border border-border/60 p-5">
-      <div className="flex items-center gap-2 mb-2">
-        <Icone className="h-4 w-4 text-primary" />
-        <span className="font-display font-bold text-foreground">{titulo}</span>
-      </div>
-      <EditableText
-        id={id}
-        as="p"
-        multiline
-        defaultValue={defaultValue}
-        className="text-sm text-foreground/75 leading-relaxed"
-      />
-    </div>
-  );
-}
