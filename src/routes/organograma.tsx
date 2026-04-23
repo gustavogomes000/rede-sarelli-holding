@@ -591,3 +591,6 @@ function OrganogramaPage() {
           ))}
         </div>
       </section>
+    </main>
+  );
+}
