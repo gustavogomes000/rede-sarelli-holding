@@ -1,1 +1,4 @@
 project_id = "yvdfdmyusdhgtzfguxbj"
+
+[functions.editable-text]
+verify_jwt = false

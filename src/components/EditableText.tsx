@@ -3,17 +3,11 @@ import { Pencil, Check, X, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface EditableTextProps {
-  /** Identificador único do texto no banco. Ex: "planejamento.cta.titulo" */
   id: string;
-  /** Texto padrão (fallback) caso ainda não tenha sido editado */
   defaultValue: string;
-  /** Tag HTML a ser renderizada (h1, h2, p, span, div...) */
   as?: ElementType;
-  /** Classes Tailwind aplicadas no elemento renderizado */
   className?: string;
-  /** Renderizar como textarea (multilinhas) ao editar */
   multiline?: boolean;
-  /** Children opcional (ignorado se houver valor salvo / defaultValue) */
   children?: ReactNode;
 }
 
@@ -52,54 +46,41 @@ function writeLocalValue(id: string, value: string) {
   }
 }
 
-function isRecoverableDatabaseError(error: unknown) {
+function isRecoverableError(error: unknown) {
   if (!error || typeof error !== "object") return false;
 
-  const code = "code" in error && typeof error.code === "string" ? error.code : "";
   const message = "message" in error && typeof error.message === "string" ? error.message : "";
+  const details = "details" in error && typeof error.details === "string" ? error.details : "";
 
-  return (
-    code === "42P01" ||
-    code === "PGRST205" ||
-    code === "42501" ||
-    message.includes("row-level security") ||
-    message.includes("Could not find the table") ||
-    message.includes("caderno_textos") ||
-    message.includes("Failed to fetch")
-  );
+  return message.includes("Failed to fetch") || message.includes("FunctionsFetchError") || details.includes("Failed to send a request");
 }
 
 async function loadFromDatabase(id: string) {
-  try {
-    const { data, error } = await (supabase as any)
-      .from("caderno_textos")
-      .select("conteudo")
-      .eq("chave", id)
-      .maybeSingle();
+  const { data, error } = await supabase.functions.invoke("editable-text", {
+    body: {
+      action: "load",
+      id,
+    },
+  });
 
-    if (error) throw error;
-    return typeof data?.conteudo === "string" ? data.conteudo : null;
-  } catch (error) {
-    if (isRecoverableDatabaseError(error)) return null;
-    throw error;
-  }
+  if (error) throw error;
+  return typeof data?.value === "string" ? data.value : null;
 }
 
 async function saveToDatabase(id: string, content: string): Promise<SaveLocation> {
   try {
-    const { error } = await (supabase as any).from("caderno_textos").upsert(
-      {
-        chave: id,
-        conteudo: content,
-        atualizado_em: new Date().toISOString(),
+    const { error } = await supabase.functions.invoke("editable-text", {
+      body: {
+        action: "save",
+        id,
+        content,
       },
-      { onConflict: "chave" },
-    );
+    });
 
     if (error) throw error;
     return "database";
   } catch (error) {
-    if (isRecoverableDatabaseError(error)) return "local";
+    if (isRecoverableError(error)) return "local";
     throw error;
   }
 }
@@ -111,10 +92,9 @@ export function EditableText({
   className,
   multiline = false,
 }: EditableTextProps) {
-  const initialValue = cache.get(id) ?? readLocalValue(id) ?? defaultValue;
-  const [value, setValue] = useState<string>(initialValue);
+  const [value, setValue] = useState<string>(defaultValue);
   const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState(initialValue);
+  const [draft, setDraft] = useState(defaultValue);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -131,13 +111,24 @@ export function EditableText({
   }, [id]);
 
   useEffect(() => {
-    const localValue = readLocalValue(id);
-    const baseValue = cache.get(id) ?? localValue ?? defaultValue;
+    setValue(defaultValue);
+    setDraft(defaultValue);
+  }, [defaultValue, id]);
 
-    notify(id, baseValue);
-    setDraft(baseValue);
-
+  useEffect(() => {
     let cancelled = false;
+
+    const cachedValue = cache.get(id);
+    const localValue = readLocalValue(id);
+    const immediateValue = cachedValue ?? localValue ?? defaultValue;
+
+    if (immediateValue !== defaultValue) {
+      notify(id, immediateValue);
+      setDraft(immediateValue);
+      setNotice(localValue && !cachedValue ? "Usando o texto salvo neste navegador." : null);
+    } else {
+      setNotice(null);
+    }
 
     (async () => {
       try {
@@ -184,7 +175,7 @@ export function EditableText({
     try {
       const location = await saveToDatabase(id, draft);
       if (location === "local") {
-        setNotice("Texto salvo neste navegador. O banco será usado assim que a tabela estiver liberada.");
+        setNotice("Texto salvo neste navegador enquanto a conexão com o banco falha.");
       }
     } catch (saveError) {
       setError(saveError instanceof Error ? saveError.message : "Não foi possível salvar o texto.");
