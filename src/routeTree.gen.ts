@@ -9,8 +9,68 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as RedeSarelliRouteImport } from './routes/rede-sarelli'
+import { Route as ProximosPassosRouteImport } from './routes/proximos-passos'
+import { Route as PromotoresRouteImport } from './routes/promotores'
+import { Route as PilaresRouteImport } from './routes/pilares'
+import { Route as OrganogramaRouteImport } from './routes/organograma'
+import { Route as MarcaRouteImport } from './routes/marca'
+import { Route as HoldingRouteImport } from './routes/holding'
+import { Route as GovernancaRouteImport } from './routes/governanca'
+import { Route as FunilRouteImport } from './routes/funil'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedeSarelliRoute = RedeSarelliRouteImport.update({
+  id: '/rede-sarelli',
+  path: '/rede-sarelli',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProximosPassosRoute = ProximosPassosRouteImport.update({
+  id: '/proximos-passos',
+  path: '/proximos-passos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromotoresRoute = PromotoresRouteImport.update({
+  id: '/promotores',
+  path: '/promotores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilaresRoute = PilaresRouteImport.update({
+  id: '/pilares',
+  path: '/pilares',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrganogramaRoute = OrganogramaRouteImport.update({
+  id: '/organograma',
+  path: '/organograma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarcaRoute = MarcaRouteImport.update({
+  id: '/marca',
+  path: '/marca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoldingRoute = HoldingRouteImport.update({
+  id: '/holding',
+  path: '/holding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernancaRoute = GovernancaRouteImport.update({
+  id: '/governanca',
+  path: '/governanca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FunilRoute = FunilRouteImport.update({
+  id: '/funil',
+  path: '/funil',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +79,172 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/funil': typeof FunilRoute
+  '/governanca': typeof GovernancaRoute
+  '/holding': typeof HoldingRoute
+  '/marca': typeof MarcaRoute
+  '/organograma': typeof OrganogramaRoute
+  '/pilares': typeof PilaresRoute
+  '/promotores': typeof PromotoresRoute
+  '/proximos-passos': typeof ProximosPassosRoute
+  '/rede-sarelli': typeof RedeSarelliRoute
+  '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/funil': typeof FunilRoute
+  '/governanca': typeof GovernancaRoute
+  '/holding': typeof HoldingRoute
+  '/marca': typeof MarcaRoute
+  '/organograma': typeof OrganogramaRoute
+  '/pilares': typeof PilaresRoute
+  '/promotores': typeof PromotoresRoute
+  '/proximos-passos': typeof ProximosPassosRoute
+  '/rede-sarelli': typeof RedeSarelliRoute
+  '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/funil': typeof FunilRoute
+  '/governanca': typeof GovernancaRoute
+  '/holding': typeof HoldingRoute
+  '/marca': typeof MarcaRoute
+  '/organograma': typeof OrganogramaRoute
+  '/pilares': typeof PilaresRoute
+  '/promotores': typeof PromotoresRoute
+  '/proximos-passos': typeof ProximosPassosRoute
+  '/rede-sarelli': typeof RedeSarelliRoute
+  '/roadmap': typeof RoadmapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/funil'
+    | '/governanca'
+    | '/holding'
+    | '/marca'
+    | '/organograma'
+    | '/pilares'
+    | '/promotores'
+    | '/proximos-passos'
+    | '/rede-sarelli'
+    | '/roadmap'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/funil'
+    | '/governanca'
+    | '/holding'
+    | '/marca'
+    | '/organograma'
+    | '/pilares'
+    | '/promotores'
+    | '/proximos-passos'
+    | '/rede-sarelli'
+    | '/roadmap'
+  id:
+    | '__root__'
+    | '/'
+    | '/funil'
+    | '/governanca'
+    | '/holding'
+    | '/marca'
+    | '/organograma'
+    | '/pilares'
+    | '/promotores'
+    | '/proximos-passos'
+    | '/rede-sarelli'
+    | '/roadmap'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FunilRoute: typeof FunilRoute
+  GovernancaRoute: typeof GovernancaRoute
+  HoldingRoute: typeof HoldingRoute
+  MarcaRoute: typeof MarcaRoute
+  OrganogramaRoute: typeof OrganogramaRoute
+  PilaresRoute: typeof PilaresRoute
+  PromotoresRoute: typeof PromotoresRoute
+  ProximosPassosRoute: typeof ProximosPassosRoute
+  RedeSarelliRoute: typeof RedeSarelliRoute
+  RoadmapRoute: typeof RoadmapRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rede-sarelli': {
+      id: '/rede-sarelli'
+      path: '/rede-sarelli'
+      fullPath: '/rede-sarelli'
+      preLoaderRoute: typeof RedeSarelliRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proximos-passos': {
+      id: '/proximos-passos'
+      path: '/proximos-passos'
+      fullPath: '/proximos-passos'
+      preLoaderRoute: typeof ProximosPassosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/promotores': {
+      id: '/promotores'
+      path: '/promotores'
+      fullPath: '/promotores'
+      preLoaderRoute: typeof PromotoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilares': {
+      id: '/pilares'
+      path: '/pilares'
+      fullPath: '/pilares'
+      preLoaderRoute: typeof PilaresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/organograma': {
+      id: '/organograma'
+      path: '/organograma'
+      fullPath: '/organograma'
+      preLoaderRoute: typeof OrganogramaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marca': {
+      id: '/marca'
+      path: '/marca'
+      fullPath: '/marca'
+      preLoaderRoute: typeof MarcaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/holding': {
+      id: '/holding'
+      path: '/holding'
+      fullPath: '/holding'
+      preLoaderRoute: typeof HoldingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governanca': {
+      id: '/governanca'
+      path: '/governanca'
+      fullPath: '/governanca'
+      preLoaderRoute: typeof GovernancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/funil': {
+      id: '/funil'
+      path: '/funil'
+      fullPath: '/funil'
+      preLoaderRoute: typeof FunilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +257,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FunilRoute: FunilRoute,
+  GovernancaRoute: GovernancaRoute,
+  HoldingRoute: HoldingRoute,
+  MarcaRoute: MarcaRoute,
+  OrganogramaRoute: OrganogramaRoute,
+  PilaresRoute: PilaresRoute,
+  PromotoresRoute: PromotoresRoute,
+  ProximosPassosRoute: ProximosPassosRoute,
+  RedeSarelliRoute: RedeSarelliRoute,
+  RoadmapRoute: RoadmapRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
