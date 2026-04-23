@@ -48,7 +48,7 @@ export function CountdownEleicao() {
             </h2>
             <p className="mt-3 text-sm text-white/70 leading-relaxed max-w-md">
               Domingo, <strong className="text-white">04 de outubro de 2026</strong> ·
-              1º turno das eleições gerais. Cada hora conta na construção da Holding Sarelli.
+              1º turno das eleições gerais. Cada hora conta na construção da Operação Sarelli.
             </p>
           </div>
 

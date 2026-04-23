@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 
 export const chapters = [
   { path: "/", label: "Capa", num: "00" },
-  { path: "/holding", label: "A Holding", num: "01" },
+  { path: "/holding", label: "A Operação", num: "01" },
   { path: "/marca", label: "Identidade & Marca", num: "02" },
   { path: "/pilares", label: "5 Pilares", num: "03" },
   { path: "/organograma", label: "Organograma", num: "04" },
