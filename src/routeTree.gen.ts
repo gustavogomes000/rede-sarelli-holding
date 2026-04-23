@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OrganogramaRouteImport } from './routes/organograma'
 import { Route as EstrategiaDigitalRouteImport } from './routes/estrategia-digital'
 import { Route as IndexRouteImport } from './routes/index'
 
+const OrganogramaRoute = OrganogramaRouteImport.update({
+  id: '/organograma',
+  path: '/organograma',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EstrategiaDigitalRoute = EstrategiaDigitalRouteImport.update({
   id: '/estrategia-digital',
   path: '/estrategia-digital',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/organograma': typeof OrganogramaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/organograma': typeof OrganogramaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/organograma': typeof OrganogramaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/estrategia-digital'
+  fullPaths: '/' | '/estrategia-digital' | '/organograma'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/estrategia-digital'
-  id: '__root__' | '/' | '/estrategia-digital'
+  to: '/' | '/estrategia-digital' | '/organograma'
+  id: '__root__' | '/' | '/estrategia-digital' | '/organograma'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EstrategiaDigitalRoute: typeof EstrategiaDigitalRoute
+  OrganogramaRoute: typeof OrganogramaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/organograma': {
+      id: '/organograma'
+      path: '/organograma'
+      fullPath: '/organograma'
+      preLoaderRoute: typeof OrganogramaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/estrategia-digital': {
       id: '/estrategia-digital'
       path: '/estrategia-digital'
@@ -71,7 +88,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EstrategiaDigitalRoute: EstrategiaDigitalRoute,
+  OrganogramaRoute: OrganogramaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
