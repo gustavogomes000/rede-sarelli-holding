@@ -295,7 +295,54 @@ function EstrategiaDigital() {
       </section>
 
       {/* PRODUTOS DIGITAIS QUE VAMOS CRIAR */}
-...
+      <section className="mx-auto max-w-6xl px-6 lg:px-8 mb-24">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 mb-4">
+            <Layers className="h-4 w-4 text-primary" />
+            <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
+              Produtos Digitais
+            </span>
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl font-black text-foreground mb-3">
+            O que vamos <span className="text-primary">construir</span>
+          </h2>
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
+            Cada produto cumpre um papel claro no funil. Juntos, formam o
+            ecossistema digital da pré-campanha.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { icon: Instagram, nome: "Instagram da Doutora", papel: "Vitrine principal", texto: "Feed curado, stories diários, reels de 30s com cortes das lives e respostas jurídicas rápidas." },
+            { icon: Video, nome: "Cortes para TikTok & Shorts", papel: "Alcance frio", texto: "Reaproveitar lives e entrevistas em pílulas virais. Tema: justiça, mulher, casos reais comentados." },
+            { icon: Mic, nome: "Podcast 'Chama a Doutora'", papel: "Profundidade", texto: "Episódios quinzenais com convidadas: vítimas, mães, juristas, pastoras. Conteúdo longo que vira cortes." },
+            { icon: Camera, nome: "Banco de Mídia", papel: "Matéria-prima", texto: "Cobertura fotográfica de reuniões, encontros, visitas e materiais produzidos no dia a dia. Cada agenda vira combustível visual para semanas de conteúdo." },
+            { icon: FileText, nome: "Newsletter & WhatsApp", papel: "Comunidade Forte", texto: "Central de materiais postados para a comunidade — artes, vídeos, recados e convocações prontas para curtir, comentar e compartilhar. Cada apoiador recebe o que precisa para engajar e amplificar a Doutora nas próprias redes." },
+            { icon: Megaphone, nome: "Site Oficial", papel: "Evolução do que já existe", texto: "Partir do site atual da Doutora e elevá-lo: identidade renovada, bandeiras destacadas, captação de apoio e SEO para quem busca 'advogada da mulher em Goiás'." },
+          ].map((p) => {
+            const Icon = p.icon;
+            return (
+              <article
+                key={p.nome}
+                className="group relative bg-white rounded-2xl p-6 border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-pink-500 opacity-0 group-hover:opacity-100 transition" />
+                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <div className="font-mono text-[10px] tracking-[0.25em] text-primary/70 font-bold mb-1">
+                  {p.papel.toUpperCase()}
+                </div>
+                <h3 className="font-display text-lg font-black text-foreground mb-2 leading-tight">
+                  {p.nome}
+                </h3>
+                <p className="text-sm text-foreground/65 leading-relaxed">
+                  {p.texto}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </section>
 
