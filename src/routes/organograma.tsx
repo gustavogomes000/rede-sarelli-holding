@@ -158,17 +158,21 @@ const diretoria: Cargo[] = [
   {
     icon: Megaphone,
     cargo: "CMO · Marketing & Branding",
-    papel: "Planejamento, conteúdo e tráfego",
+    papel: "Planejamento, conteúdo, tráfego e Instagram",
     reporta: "COO · Coordenador Geral",
     responsabilidades: [
       "Executar planejamento editorial de 24 semanas.",
       "Coordenar o videomaker 'O Sombra' (vlogs estilo João Campos).",
       "Gerir tráfego pago e impulsionamento por região.",
+      "Cuidar do Instagram da Doutora: conteúdo, stories, respostas e tom de voz.",
+      "Conversar diretamente com o Head do Exército para alinhar o exército de campo às pautas e campanhas das redes sociais.",
       "Garantir consistência da marca: Efeito Cimed + Nova Política.",
     ],
     entregaveis: [
       "Calendário editorial por semana, alinhado às fases do Roadmap.",
       "5 a 7 vídeos verticais publicáveis por semana.",
+      "Instagram ativo diariamente (feed + stories) com métricas de engajamento.",
+      "Briefing semanal entregue ao Head do Exército com pautas para o campo.",
       "Relatório de performance de tráfego pago por município.",
     ],
     cor: "rose",
