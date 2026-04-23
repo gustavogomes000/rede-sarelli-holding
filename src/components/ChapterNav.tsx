@@ -8,7 +8,6 @@ export const chapters = [
   { path: "/planejamento", label: "Planejamento até 04/Out", num: "03" },
   { path: "/rede-sarelli", label: "Ecossistema de Cadastro", num: "04" },
   { path: "/inteligencia-eleitoral", label: "Inteligência Eleitoral GO", num: "05" },
-  { path: "/funil-metas", label: "Funil & Metas", num: "06" },
 ] as const;
 
 export function ChapterNav() {
