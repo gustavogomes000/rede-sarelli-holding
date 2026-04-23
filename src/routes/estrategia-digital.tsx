@@ -16,6 +16,10 @@ import {
   Lightbulb,
   Layers,
   Compass,
+  MapPin,
+  BarChart3,
+  Flame,
+  MousePointerClick,
 } from "lucide-react";
 
 export const Route = createFileRoute("/estrategia-digital")({
