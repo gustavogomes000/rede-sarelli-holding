@@ -282,10 +282,8 @@ function EstrategiaDigital() {
 
             <div className="mt-10 pt-8 border-t border-background/10">
               <p className="font-display text-xl sm:text-2xl text-background/90 leading-snug">
-                "Não é sobre aparecer mais. É sobre{" "}
-                <span className="text-primary font-bold">aparecer certo</span>,
-                para a pessoa certa, na hora em que ela está decidindo em quem
-                acreditar."
+                "Mostrar a realidade e o efeito do trabalho da Doutora — e a partir disso construir um{" "}
+                <span className="text-primary font-bold">produto forte</span> que comunica, com clareza, as bases que ela defende."
               </p>
             </div>
           </div>
