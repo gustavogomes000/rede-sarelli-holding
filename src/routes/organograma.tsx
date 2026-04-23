@@ -481,7 +481,7 @@ function OrganogramaPage() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            {["CEO Pública", "COO único", "Apoio · CoS + CFO", "Diretoria HQ", "Exército de Campo"].map((tag) => (
+            {["CEO Pública", "COO · CFO · Admin", "Chief of Staff 24h", "Diretoria HQ", "Exército de Campo"].map((tag) => (
               <span
                 key={tag}
                 className="px-4 py-2 rounded-full border border-primary/20 bg-white/80 backdrop-blur text-sm font-semibold text-primary shadow-sm"
