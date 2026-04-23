@@ -384,9 +384,9 @@ function EstrategiaDigital() {
             { icon: Instagram, nome: "Instagram da Doutora", papel: "Vitrine principal", texto: "Feed curado, stories diários, reels de 30s com cortes das lives e respostas jurídicas rápidas." },
             { icon: Video, nome: "Cortes para TikTok & Shorts", papel: "Alcance frio", texto: "Reaproveitar lives e entrevistas em pílulas virais. Tema: justiça, mulher, casos reais comentados." },
             { icon: Mic, nome: "Podcast 'Chama a Doutora'", papel: "Profundidade", texto: "Episódios quinzenais com convidadas: vítimas, mães, juristas, pastoras. Conteúdo longo que vira cortes." },
-            { icon: Camera, nome: "Banco de Mídia", papel: "Matéria-prima", texto: "Sessões fotográficas trimestrais + bastidores semanais. Sempre ter imagem nova, nunca repetir foto." },
-            { icon: FileText, nome: "Newsletter & WhatsApp", papel: "Base própria", texto: "Lista de e-mails e grupos de WhatsApp regionalizados. Canal direto, sem depender de algoritmo." },
-            { icon: Megaphone, nome: "Site & Landing Pages", papel: "Conversão", texto: "Site institucional + páginas específicas para cada bandeira. SEO para 'advogada da mulher Goiás'." },
+            { icon: Camera, nome: "Banco de Mídia", papel: "Matéria-prima", texto: "Cobertura fotográfica de reuniões, encontros, visitas e materiais produzidos no dia a dia. Cada agenda vira combustível visual para semanas de conteúdo." },
+            { icon: FileText, nome: "Newsletter & WhatsApp", papel: "Comunidade Forte", texto: "Lista de e-mails e grupos de WhatsApp regionalizados — não para falar com seguidores, mas para construir uma comunidade engajada que conversa entre si e amplifica a Doutora." },
+            { icon: Megaphone, nome: "Site Oficial", papel: "Evolução do que já existe", texto: "Partir do site atual da Doutora e elevá-lo: identidade renovada, bandeiras destacadas, captação de apoio e SEO para quem busca 'advogada da mulher em Goiás'." },
           ].map((p) => {
             const Icon = p.icon;
             return (
