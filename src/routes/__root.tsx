@@ -5,17 +5,17 @@ import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
-    <div className="dark flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-white px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-8xl font-bold text-gradient-pink">404</h1>
-        <h2 className="mt-4 font-display text-2xl text-foreground">Capítulo não encontrado</h2>
+        <h1 className="font-display text-8xl font-extrabold text-gradient-pink">404</h1>
+        <h2 className="mt-4 font-display text-2xl text-foreground font-bold">Capítulo não encontrado</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           Esta página do manual ainda não foi escrita.
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-full gradient-pink-gold px-6 py-2.5 text-sm font-medium text-white shadow-pink"
+            className="inline-flex items-center justify-center rounded-full gradient-pink px-6 py-2.5 text-sm font-bold text-white shadow-pink"
           >
             Voltar à capa
           </Link>
@@ -47,9 +47,11 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600;1,700;1,800&display=swap",
       },
     ],
   }),
@@ -60,7 +62,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className="dark">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
