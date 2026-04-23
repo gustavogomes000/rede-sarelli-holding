@@ -6,6 +6,7 @@ import {
   HandHeart,
   Scale,
   Shield,
+  Stethoscope,
   Instagram,
   Facebook,
   Cross,
@@ -64,8 +65,14 @@ const pilares = [
   {
     icon: Shield,
     n: "V",
-    t: "Segurança & Saúde",
-    d: "Segurança pública integrada e sistema de saúde acessível e de qualidade para todos os goianos.",
+    t: "Segurança Pública",
+    d: "Ações integradas para a segurança pública, proteção das comunidades e bem-estar das famílias goianas.",
+  },
+  {
+    icon: Stethoscope,
+    n: "VI",
+    t: "Saúde Pública",
+    d: "Sistema de saúde acessível e de qualidade para todos os goianos, com foco em prevenção e atendimento humano.",
   },
 ];
 
