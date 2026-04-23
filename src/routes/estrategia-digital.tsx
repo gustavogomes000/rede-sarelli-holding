@@ -314,7 +314,7 @@ function EstrategiaDigital() {
             { icon: Video, nome: "Cortes para TikTok & Shorts", papel: "Alcance frio", texto: "Reaproveitar lives e entrevistas em pílulas virais. Tema: justiça, mulher, casos reais comentados." },
             { icon: Mic, nome: "Podcast 'Chama a Doutora'", papel: "Profundidade", texto: "Episódios quinzenais com convidadas: vítimas, mães, juristas, pastoras. Conteúdo longo que vira cortes." },
             { icon: Camera, nome: "Banco de Mídia", papel: "Matéria-prima", texto: "Cobertura fotográfica de reuniões, encontros, visitas e materiais produzidos no dia a dia. Cada agenda vira combustível visual para semanas de conteúdo." },
-            { icon: FileText, nome: "Newsletter & WhatsApp", papel: "Comunidade Forte", texto: "Lista de e-mails e grupos de WhatsApp regionalizados — não para falar com seguidores, mas para construir uma comunidade engajada que conversa entre si e amplifica a Doutora." },
+            { icon: FileText, nome: "Newsletter & WhatsApp", papel: "Comunidade Forte", texto: "Central de materiais postados para a comunidade — artes, vídeos, recados e convocações prontas para curtir, comentar e compartilhar. Cada apoiador recebe o que precisa para engajar e amplificar a Doutora nas próprias redes." },
             { icon: Megaphone, nome: "Site Oficial", papel: "Evolução do que já existe", texto: "Partir do site atual da Doutora e elevá-lo: identidade renovada, bandeiras destacadas, captação de apoio e SEO para quem busca 'advogada da mulher em Goiás'." },
           ].map((p) => {
             const Icon = p.icon;
