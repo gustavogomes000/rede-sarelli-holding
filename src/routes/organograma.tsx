@@ -260,24 +260,39 @@ const diretoria: Cargo[] = [
 const exercito: Cargo[] = [
   {
     icon: UserCheck,
-    cargo: "Suplentes · Conquista Territorial & Fiscais",
-    papel: "Captação, blindagem política e operação do dia da eleição",
+    cargo: "Suplentes · Conquista Territorial",
+    papel: "Captação, blindagem política e articulação regional",
     reporta: "Head do Exército",
     responsabilidades: [
       "Captar novas lideranças locais para a Rede Sarelli.",
       "Blindagem política: neutralizar ataques e proteger a marca.",
       "Articular alianças regionais com vereadores e prefeitos.",
       "Representar a Doutora em agendas que ela não puder cumprir.",
-      "Atuar no dia da eleição como fiscais — dentro e fora da escola — garantindo lisura da votação.",
-      "Recepcionar conhecidos, amigos e familiares na porta da escola e trazer o máximo de votos possíveis para a Doutora na hora.",
     ],
     entregaveis: [
       "Meta mensal de novas lideranças captadas.",
       "Relatório de articulação política regional.",
-      "Escala completa de fiscais por escola/zona/seção entregue até 30 dias antes da eleição.",
-      "Relatório de votos recepcionados/conduzidos na porta da escola no dia da eleição.",
+      "Cobertura de agendas delegadas pela CEO.",
     ],
     cor: "sky",
+  },
+  {
+    icon: ShieldCheck,
+    cargo: "Fiscais · Dia da Eleição",
+    papel: "Lisura da votação e recepção de votos na escola",
+    reporta: "Head do Exército",
+    responsabilidades: [
+      "Atuar no dia da eleição como fiscais — dentro e fora da escola — garantindo lisura da votação.",
+      "Recepcionar conhecidos, amigos e familiares na porta da escola.",
+      "Trazer o máximo de votos possíveis para a Doutora na hora da votação.",
+      "Reportar irregularidades e ocorrências em tempo real ao Head do Exército.",
+    ],
+    entregaveis: [
+      "Escala completa de fiscais por escola/zona/seção entregue até 30 dias antes da eleição.",
+      "Relatório de votos recepcionados/conduzidos na porta da escola no dia da eleição.",
+      "Registro de ocorrências por seção em tempo real.",
+    ],
+    cor: "indigo",
   },
   {
     icon: Church,
