@@ -111,15 +111,24 @@ export function EditableText({
   }, [id]);
 
   useEffect(() => {
+    setValue(defaultValue);
+    setDraft(defaultValue);
+  }, [defaultValue, id]);
+
+  useEffect(() => {
     let cancelled = false;
 
     const cachedValue = cache.get(id);
     const localValue = readLocalValue(id);
     const immediateValue = cachedValue ?? localValue ?? defaultValue;
 
-    notify(id, immediateValue);
-    setDraft(immediateValue);
-    setNotice(localValue && !cachedValue ? "Usando o texto salvo neste navegador." : null);
+    if (immediateValue !== defaultValue) {
+      notify(id, immediateValue);
+      setDraft(immediateValue);
+      setNotice(localValue && !cachedValue ? "Usando o texto salvo neste navegador." : null);
+    } else {
+      setNotice(null);
+    }
 
     (async () => {
       try {
