@@ -30,14 +30,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Holding Sarelli 2026 — Manual Estratégico" },
+      { title: "Operação Sarelli 2026 — Manual Estratégico" },
       {
         name: "description",
         content:
-          "Manual interativo da campanha Dra. Fernanda Sarelli 2026. Holding política auditável, marca de desejo, eleição vencida no dado.",
+          "Manual interativo da campanha Dra. Fernanda Sarelli 2026. Operação política auditável, marca de desejo, eleição vencida no dado.",
       },
-      { name: "author", content: "Holding Sarelli" },
-      { property: "og:title", content: "Holding Sarelli 2026 — Manual Estratégico" },
+      { name: "author", content: "Operação Sarelli" },
+      { property: "og:title", content: "Operação Sarelli 2026 — Manual Estratégico" },
       {
         property: "og:description",
         content: "Pitch deck vivo da campanha. Chama a Doutora.",
