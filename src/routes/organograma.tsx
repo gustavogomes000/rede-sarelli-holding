@@ -76,66 +76,52 @@ const ceoPublica: Cargo = {
   cor: "primary",
 };
 
-// ============= COO ÚNICO (logo abaixo da CEO) =============
+// ============= COO ÚNICO (logo abaixo da CEO) — acumula CFO/Admin/Dev =============
 const coo: Cargo = {
   icon: Compass,
-  cargo: "COO · Coordenador Geral",
+  cargo: "COO · Coordenador Geral, CFO & Admin",
   ocupante: "Deocleciano",
-  papel: "Causa do Exército · Gestão geral da operação",
+  papel: "Causa do Exército · Gestão geral, financeiro, administrativo e desenvolvimento sob demanda",
   reporta: "CEO Pública",
   responsabilidades: [
     "Gestão geral de toda a Holding (HQ + Exército de Campo).",
     "Causa e comando do Exército: define metas, territórios e ritmo.",
+    "Gestão financeira: caixa, contas a pagar, fornecedores e prestação de contas.",
+    "Controle administrativo do comitê, contratos e fornecedores.",
+    "Cobrança de resultados e responsabilidade financeira de cada área.",
+    "Desenvolve qualquer solução/local digital necessário para qualquer demanda do dia a dia (landing, formulário, integração).",
     "Garantir execução do Roadmap Macro até 4 de outubro.",
     "Tomar decisões com base no painel da Rede Sarelli.",
   ],
   entregaveis: [
     "Reunião semanal de status com todas as áreas.",
     "Relatório consolidado quinzenal de KPIs.",
+    "Fluxo de caixa semanal e painel de cobrança de metas por área.",
+    "Soluções digitais sob demanda entregues no prazo solicitado.",
     "Auditoria contínua de metas das promotoras e lideranças.",
   ],
   cor: "primary",
 };
 
-// ============= CAMADA 2 — CHIEF OF STAFF + CFO =============
-const camadaApoioCEO: Cargo[] = [
-  {
-    icon: CalendarClock,
-    cargo: "Chief of Staff · Assessoria 24h",
-    papel: "Filtro de acesso e gestão de agenda",
-    reporta: "COO · Coordenador Geral",
-    responsabilidades: [
-      "Gestão integral da agenda da CEO Pública.",
-      "Acompanhamento 24h: deslocamentos, compromissos, gravações.",
-      "Filtrar pedidos, convites e contatos antes de chegarem à Doutora.",
-      "Articular interface entre CEO e demais áreas da Holding.",
-    ],
-    entregaveis: [
-      "Agenda semanal fechada e validada com 7 dias de antecedência.",
-      "Briefing diário pré-agenda para a CEO.",
-      "Confirmações e logística operacional de cada compromisso.",
-    ],
-    cor: "rose",
-  },
-  {
-    icon: Wallet,
-    cargo: "CFO · Financeiro, Administrativo & Dados",
-    papel: "Caixa, contas, cobrança de resultados e desenvolvimento sob demanda",
-    reporta: "COO · Coordenador Geral",
-    responsabilidades: [
-      "Gestão financeira: caixa, contas a pagar, fornecedores e prestação de contas.",
-      "Controle administrativo do comitê, contratos e fornecedores.",
-      "Cobrança de resultados e responsabilidade financeira de cada área.",
-      "Além de dados, desenvolve qualquer solução/local digital necessário para qualquer demanda do dia a dia (landing, formulário, integração).",
-    ],
-    entregaveis: [
-      "Fluxo de caixa semanal aprovado pela COO.",
-      "Painel de cobrança de metas por área e responsáveis.",
-      "Soluções digitais sob demanda entregues no prazo solicitado.",
-    ],
-    cor: "amber",
-  },
-];
+// ============= CAMADA 2 — CHIEF OF STAFF (sozinha, 24h com a CEO) =============
+const chiefOfStaff: Cargo = {
+  icon: CalendarClock,
+  cargo: "Chief of Staff · Assessoria 24h",
+  papel: "Companhia 24h da Doutora · Filtro de acesso e gestão de agenda",
+  reporta: "COO · Coordenador Geral",
+  responsabilidades: [
+    "Acompanhar a CEO 24h: deslocamentos, compromissos, gravações e bastidores.",
+    "Gestão integral da agenda da CEO Pública.",
+    "Filtrar pedidos, convites e contatos antes de chegarem à Doutora.",
+    "Articular interface entre CEO e demais áreas da Holding.",
+  ],
+  entregaveis: [
+    "Agenda semanal fechada e validada com 7 dias de antecedência.",
+    "Briefing diário pré-agenda para a CEO.",
+    "Confirmações e logística operacional de cada compromisso.",
+  ],
+  cor: "rose",
+};
 
 // ============= CAMADA 3 — DIRETORIA OPERACIONAL (HQ) =============
 const diretoria: Cargo[] = [
