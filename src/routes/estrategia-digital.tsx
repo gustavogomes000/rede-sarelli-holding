@@ -413,66 +413,6 @@ function EstrategiaDigital() {
         </div>
       </section>
 
-      {/* RESULTADO ESPERADO */}
-      <section className="mx-auto max-w-5xl px-6 lg:px-8 mb-20">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-pink-500 to-rose-500 p-10 sm:p-14 text-white shadow-2xl shadow-primary/30">
-          <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-
-          <div className="relative">
-            <div className="flex items-center gap-2 mb-5">
-              <TrendingUp className="h-5 w-5" />
-              <span className="text-[11px] uppercase tracking-[0.35em] font-bold">
-                Resultado Esperado
-              </span>
-            </div>
-            <h2 className="font-display text-3xl sm:text-5xl font-black leading-tight mb-6">
-              Sair da pré-campanha com uma{" "}
-              <span className="underline decoration-white/40 decoration-4 underline-offset-4">
-                base digital ativa
-              </span>{" "}
-              em todas as regiões de Goiás.
-            </h2>
-            <div className="grid sm:grid-cols-3 gap-6 mt-10">
-              {[
-                { n: "+50k", l: "seguidores qualificados" },
-                { n: "+200", l: "embaixadoras locais" },
-                { n: "100%", l: "regiões de Goiás cobertas" },
-              ].map((m) => (
-                <div key={m.l} className="border-l-2 border-white/40 pl-4">
-                  <div className="font-display text-4xl font-black">{m.n}</div>
-                  <div className="text-sm text-white/80 mt-1">{m.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA PRÓXIMA PÁGINA */}
-      <section className="mx-auto max-w-4xl px-6 lg:px-8">
-        <Link
-          to="/"
-          className="group block relative overflow-hidden rounded-2xl border-2 border-dashed border-primary/30 bg-white/60 backdrop-blur p-8 hover:border-primary hover:bg-white transition-all"
-        >
-          <div className="flex items-center justify-between gap-6">
-            <div>
-              <span className="font-mono text-xs font-bold text-primary tracking-[0.3em]">
-                PRÓXIMO CAPÍTULO · 03
-              </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-black text-foreground mt-2">
-                Cronograma digital detalhado
-              </h3>
-              <p className="text-foreground/60 mt-1">
-                As fases, os marcos e o calendário até a eleição.
-              </p>
-            </div>
-            <div className="shrink-0 h-14 w-14 rounded-full bg-primary text-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
-              <ArrowRight className="h-6 w-6" />
-            </div>
-          </div>
-        </Link>
-      </section>
     </main>
   );
 }
