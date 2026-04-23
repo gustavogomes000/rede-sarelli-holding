@@ -27,17 +27,17 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/rede-sarelli")({
   head: () => ({
     meta: [
-      { title: "Rede Sarelli — Fluxo de Cadastro por Papel" },
+      { title: "Ecossistema de Cadastro — Como construímos a base eleitoral" },
       {
         name: "description",
         content:
-          "Organograma completo da rede: Suplente, Liderança, Fiscal, Promotor, Coordenador e os apps (SindsPag, Recepção, Time Tubarão) que alimentam o time de CS.",
+          "Visão completa de todos os sistemas e papéis que cadastram pessoas: Rede Sarelli (Suplente, Liderança, Fiscal, Promotor, Coordenador) + apps SindsPag, Recepção e Time Tubarão alimentando uma base única até o Time de CS.",
       },
-      { property: "og:title", content: "Rede Sarelli — Organograma de Cadastro" },
+      { property: "og:title", content: "Ecossistema de Cadastro — Base eleitoral única" },
       {
         property: "og:description",
         content:
-          "Como cada papel cadastra, quem cadastra quem, e como os 3 apps alimentam a base que chega ao Time de CS.",
+          "Todos os canais de cadastro num só fluxo: papéis da rede + 3 aplicativos convergindo para a base que o Time de CS aquece até a eleição.",
       },
     ],
   }),
