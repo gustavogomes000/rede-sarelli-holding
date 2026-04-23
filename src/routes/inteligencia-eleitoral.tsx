@@ -43,7 +43,7 @@ export const Route = createFileRoute("/inteligencia-eleitoral")({
 type EleitoradoMap = Record<string, number>;
 type CentroidMap = Record<string, [number, number]>;
 const ELE = eleitorado as EleitoradoMap;
-const CENT = centroids as CentroidMap;
+const CENT = centroids as unknown as CentroidMap;
 
 // ============= PARÂMETROS DE CAMPANHA =============
 // Base histórica TSE 2022 — Dep. Estadual GO (41 cadeiras na ALEGO):
