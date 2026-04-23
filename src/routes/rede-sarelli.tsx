@@ -10,6 +10,11 @@ import {
   Link2,
   ClipboardList,
   Activity,
+  Share2,
+  CheckCircle2,
+  UserPlus,
+  Vote,
+  ShieldCheck,
 } from "lucide-react";
 import { EditableText } from "@/components/EditableText";
 import { PageShell } from "@/components/PageShell";
@@ -43,6 +48,7 @@ type Papel = {
   defaultNome: string;
   defaultSubtitulo: string;
   defaultAcesso: string;
+  defaultCadastra: string;
   defaultResponsabilidades: string;
   defaultEntrega: string;
   defaultMedicao: string;
@@ -56,15 +62,17 @@ const PAPEIS: Papel[] = [
     bgCor: "bg-amber-50",
     borderCor: "border-amber-300",
     defaultNome: "Suplente",
-    defaultSubtitulo: "Topo da rede — primeiro acesso criado por nós",
+    defaultSubtitulo: "Topo da rede — acesso criado pela coordenação",
     defaultAcesso:
-      "Recebe acesso direto criado pela coordenação central. É o primeiro nó da rede.",
+      "Recebe acesso direto criado pela coordenação central. É o primeiro nó da árvore — não depende de convite de ninguém.",
+    defaultCadastra:
+      "Pode cadastrar: Lideranças, Fiscais e Eleitores. Gera links de convite para liberar novas Lideranças e Fiscais.",
     defaultResponsabilidades:
-      "Cadastra Lideranças, Fiscais e Eleitores. Constrói a sua própria rede de captação a partir do zero.",
+      "Estruturar a base inicial da sua região, escolhendo lideranças confiáveis que vão multiplicar a rede abaixo dele.",
     defaultEntrega:
-      "Estruturar pelo menos uma base inicial de lideranças que vão multiplicar a rede abaixo dele.",
+      "Montar pelo menos um núcleo ativo de lideranças que cadastrem com constância — e garantir presença nas redes sociais cadastradas no perfil.",
     defaultMedicao:
-      "Medido pelo total de cadastros gerados pela sua árvore inteira (lideranças, fiscais e eleitores) + postagens nas redes sociais vinculadas.",
+      "Total de cadastros de TODA a árvore abaixo dele (lideranças, fiscais, eleitores) + frequência de postagens nas redes sociais vinculadas.",
   },
   {
     id: "lideranca",
@@ -75,13 +83,15 @@ const PAPEIS: Papel[] = [
     defaultNome: "Liderança",
     defaultSubtitulo: "Cadastrada pelo Suplente — multiplica a rede",
     defaultAcesso:
-      "Recebe um link de convite gerado pelo Suplente. Ao clicar, cria sua conta e já entra com acesso.",
+      "Recebe link de convite gerado pelo Suplente (ou por outra Liderança). Ao clicar, cria a própria conta e já entra com acesso ativo.",
+    defaultCadastra:
+      "Pode cadastrar: outras Lideranças e Eleitores. Também pode gerar links para liberar novas Lideranças abaixo de si.",
     defaultResponsabilidades:
-      "Cadastra outras Lideranças e Eleitores. Pode também gerar links de convite para liberar acesso a novas lideranças e cadastrar eleitores diretamente.",
+      "Expandir a base de apoio na sua região, manter constância semanal de cadastros e formar novas lideranças.",
     defaultEntrega:
-      "Expandir a base de apoio na sua região e manter constância de cadastros + presença nas redes.",
+      "Cadastros próprios + crescimento da sub-rede + postagens semanais nas redes sociais cadastradas.",
     defaultMedicao:
-      "Medido pelo nº de cadastros próprios e da sua sub-rede + nº de postagens vinculadas nas redes sociais cadastradas.",
+      "Nº de cadastros próprios + cadastros da sub-rede inteira + frequência de postagens nas redes sociais vinculadas ao perfil.",
   },
   {
     id: "promotor",
@@ -90,15 +100,17 @@ const PAPEIS: Papel[] = [
     bgCor: "bg-blue-50",
     borderCor: "border-blue-300",
     defaultNome: "Promotor",
-    defaultSubtitulo: "Recebe link e cria a própria conta",
+    defaultSubtitulo: "Recebe link, cria conta e cadastra eleitores",
     defaultAcesso:
-      "Recebe o link de convite, cria a conta e entra direto no sistema com perfil de Promotor.",
+      "Recebe um link de convite, cria a própria conta e entra direto no sistema com perfil de Promotor.",
+    defaultCadastra:
+      "Pode cadastrar: Eleitores. Foco 100% em volume e qualidade dos cadastros — não monta sub-rede.",
     defaultResponsabilidades:
-      "Após criar a conta, deve cadastrar Eleitores. Foco total em volume de cadastros qualificados.",
+      "Cadastrar eleitores constantemente e divulgar a campanha nas redes sociais cadastradas no perfil.",
     defaultEntrega:
-      "Cadastros constantes de eleitores e atuação ativa nas redes sociais com conteúdo da campanha.",
+      "Meta semanal de eleitores cadastrados + postagens/compartilhamentos vinculados ao perfil.",
     defaultMedicao:
-      "Medido pelo nº de eleitores cadastrados + nº de postagens e compartilhamentos nas redes sociais cadastradas no perfil.",
+      "Nº de eleitores cadastrados + nº de postagens e compartilhamentos detectados nas redes sociais cadastradas.",
   },
   {
     id: "coordenador",
@@ -106,16 +118,18 @@ const PAPEIS: Papel[] = [
     cor: "text-emerald-700",
     bgCor: "bg-emerald-50",
     borderCor: "border-emerald-300",
-    defaultNome: "Coordenador",
+    defaultNome: "Coordenador de Evento",
     defaultSubtitulo: "Atua nos eventos cadastrando possíveis eleitores",
     defaultAcesso:
-      "Acesso criado pela coordenação central, vinculado a um ou mais eventos.",
+      "Acesso criado pela coordenação central, vinculado a um ou mais eventos específicos.",
+    defaultCadastra:
+      "Pode cadastrar: Possíveis Eleitores no momento do evento, com vínculo automático ao evento que está acontecendo.",
     defaultResponsabilidades:
-      "Atua presencialmente nos eventos cadastrando possíveis eleitores no momento. Garante que toda interação vire cadastro.",
+      "Estar presente nos eventos, abordar pessoas e transformar cada interação em cadastro qualificado no sistema.",
     defaultEntrega:
-      "Volume de cadastros por evento e qualidade dos dados (telefone válido, contato direto, observações úteis).",
+      "Volume de cadastros por evento + qualidade dos dados (telefone válido, observação útil) + cobertura do evento nas redes sociais.",
     defaultMedicao:
-      "Medido pelo nº de cadastros por evento + presença/postagens cobrindo os eventos nas redes sociais.",
+      "Nº de cadastros por evento + taxa de aproveitamento (público presente vs. cadastros) + presença nas redes sociais.",
   },
   {
     id: "cs",
@@ -124,15 +138,17 @@ const PAPEIS: Papel[] = [
     bgCor: "bg-violet-50",
     borderCor: "border-violet-300",
     defaultNome: "Time de CS",
-    defaultSubtitulo: "Recebe todos os cadastros e mantém a base aquecida",
+    defaultSubtitulo: "Recebe TODOS os cadastros e mantém a base aquecida",
     defaultAcesso:
-      "Acesso interno do time central. Vê todos os cadastros entrando em tempo real, vindos de qualquer papel da rede.",
+      "Acesso interno do time central. Vê em tempo real todos os cadastros entrando — não importa de qual papel da rede vieram.",
+    defaultCadastra:
+      "Não cadastra novos contatos: trabalha em cima da base que chega de Suplentes, Lideranças, Promotores e Coordenadores.",
     defaultResponsabilidades:
-      "Entra em contato com cada novo cadastro, mantém o relacionamento aquecido até o dia da eleição e qualifica/segmenta a base.",
+      "Entrar em contato com cada novo cadastro, qualificar, segmentar e manter o relacionamento aquecido até o dia da eleição.",
     defaultEntrega:
       "Base ativa, segmentada e relacionada — cada eleitor cadastrado precisa chegar no dia da eleição lembrando da campanha.",
     defaultMedicao:
-      "Medido por taxa de contato realizado, taxa de resposta e nível de aquecimento da base ao longo do tempo.",
+      "Taxa de contato realizado + taxa de resposta + nível de aquecimento da base ao longo do tempo.",
   },
 ];
 
@@ -153,11 +169,11 @@ function RedeSarelliPage() {
           id="rede.hero.intro"
           as="span"
           multiline
-          defaultValue="O caminho de cada pessoa dentro do sistema: quem recebe acesso, quem cadastra quem, o que entrega e como o engajamento é medido. A rede cresce em árvore — quanto mais cada papel multiplica, maior fica a base."
+          defaultValue="O caminho de cada pessoa dentro do sistema: quem recebe acesso, quem cadastra quem, o que entrega e como o engajamento é medido. A rede cresce em árvore — quanto mais cada papel multiplica, maior fica a base que chega ao time de CS."
         />
       }
     >
-      {/* Mapa visual do fluxo */}
+      {/* ============ MAPA DO FLUXO ============ */}
       <section className="mb-16">
         <div className="flex items-center gap-3 mb-8">
           <span className="h-px w-10 bg-primary" />
@@ -167,15 +183,15 @@ function RedeSarelliPage() {
         </div>
 
         <div className="rounded-3xl border border-border/60 bg-card p-6 sm:p-10 shadow-sm">
-          {/* Nível 1: Suplente */}
-          <div className="flex justify-center">
-            <NoFluxo papel={PAPEIS[0]} />
+          {/* Nível 1: Quem cadastra */}
+          <div className="text-center mb-6">
+            <span className="inline-block text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">
+              Nível 1 · Quem capta
+            </span>
           </div>
 
-          <SetaVertical />
-
-          {/* Nível 2: Liderança + Promotor + Coordenador */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
+            <NoFluxo papel={PAPEIS[0]} />
             <NoFluxo papel={PAPEIS[1]} />
             <NoFluxo papel={PAPEIS[2]} />
             <NoFluxo papel={PAPEIS[3]} />
@@ -183,14 +199,57 @@ function RedeSarelliPage() {
 
           <SetaVertical legenda="Todos os cadastros descem para →" />
 
-          {/* Nível 3: CS */}
-          <div className="flex justify-center">
+          {/* Nível 2: CS recebe tudo */}
+          <div className="text-center mb-6">
+            <span className="inline-block text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">
+              Nível 2 · Quem aquece a base
+            </span>
+          </div>
+
+          <div className="flex justify-center mb-8">
             <NoFluxo papel={PAPEIS[4]} destacado />
+          </div>
+
+          <SetaVertical legenda="Base aquecida chega no →" />
+
+          {/* Nível 3: Dia da eleição */}
+          <div className="flex justify-center">
+            <div className="rounded-2xl border-2 border-primary bg-primary/5 px-8 py-5 text-center max-w-sm">
+              <Vote className="h-7 w-7 text-primary mx-auto mb-2" />
+              <div className="font-display font-extrabold text-lg text-primary">
+                Dia da eleição
+              </div>
+              <p className="text-xs text-foreground/70 mt-1">
+                Eleitores lembram da campanha porque foram cadastrados, contatados e mantidos aquecidos.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Legenda do fluxo */}
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div className="flex items-start gap-2 rounded-lg border border-border/60 bg-card p-3">
+            <UserPlus className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+            <span className="text-foreground/80">
+              <strong>Suplente, Liderança e Promotor</strong> cadastram a partir de qualquer lugar (rua, casa, WhatsApp).
+            </span>
+          </div>
+          <div className="flex items-start gap-2 rounded-lg border border-border/60 bg-card p-3">
+            <Target className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span className="text-foreground/80">
+              <strong>Coordenador</strong> só cadastra dentro de eventos — cada cadastro fica vinculado ao evento.
+            </span>
+          </div>
+          <div className="flex items-start gap-2 rounded-lg border border-border/60 bg-card p-3">
+            <Headset className="h-4 w-4 text-violet-600 shrink-0 mt-0.5" />
+            <span className="text-foreground/80">
+              <strong>Time de CS</strong> recebe 100% dos cadastros e trabalha relacionamento até a eleição.
+            </span>
           </div>
         </div>
       </section>
 
-      {/* Detalhamento por papel */}
+      {/* ============ DETALHAMENTO POR PAPEL ============ */}
       <section className="mb-16">
         <div className="flex items-center gap-3 mb-8">
           <span className="h-px w-10 bg-primary" />
@@ -206,6 +265,107 @@ function RedeSarelliPage() {
         </div>
       </section>
 
+      {/* ============ REDES SOCIAIS + CONTROLE DE ENTREGA ============ */}
+      <section className="mb-16">
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-10 bg-primary" />
+          <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
+            Redes sociais & controle de entrega
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article className="rounded-2xl border-2 border-border/60 bg-card p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <Share2 className="h-6 w-6" />
+              </div>
+              <EditableText
+                id="rede.redes.titulo"
+                as="h3"
+                defaultValue="Redes sociais vinculadas ao perfil"
+                className="font-display text-xl font-extrabold leading-tight"
+              />
+            </div>
+            <EditableText
+              id="rede.redes.descricao"
+              as="p"
+              multiline
+              defaultValue="Cada pessoa cadastra suas redes sociais (Instagram, TikTok, Facebook, X) no próprio perfil. O sistema acompanha postagens, stories e compartilhamentos ligados à campanha — isso vira parte da pontuação de engajamento. Não basta cadastrar pessoas: precisa aparecer também."
+              className="text-sm text-foreground/80 leading-relaxed"
+            />
+          </article>
+
+          <article className="rounded-2xl border-2 border-border/60 bg-card p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <ShieldCheck className="h-6 w-6" />
+              </div>
+              <EditableText
+                id="rede.controle.titulo"
+                as="h3"
+                defaultValue="Controle de entrega da equipe"
+                className="font-display text-xl font-extrabold leading-tight"
+              />
+            </div>
+            <EditableText
+              id="rede.controle.descricao"
+              as="p"
+              multiline
+              defaultValue="O sistema mostra em painel: quantos cadastros cada pessoa fez, quantos vieram da sua sub-rede, frequência de postagens e ranking por região. A coordenação acompanha quem está produzindo, quem precisa de suporte e quem está parado — sem depender de planilha solta."
+              className="text-sm text-foreground/80 leading-relaxed"
+            />
+          </article>
+        </div>
+
+        {/* Pontos-chave */}
+        <div className="mt-6 rounded-2xl border border-primary/30 bg-primary/5 p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <CheckCircle2 className="h-5 w-5 text-primary" />
+            <span className="text-sm font-bold text-primary uppercase tracking-wider">
+              O que conta como entrega
+            </span>
+          </div>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-foreground/85">
+            <li className="flex items-start gap-2">
+              <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+              <EditableText
+                id="rede.entrega.item1"
+                as="span"
+                multiline
+                defaultValue="Cadastros próprios feitos no sistema"
+              />
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+              <EditableText
+                id="rede.entrega.item2"
+                as="span"
+                multiline
+                defaultValue="Cadastros gerados pela sub-rede (quando aplicável)"
+              />
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+              <EditableText
+                id="rede.entrega.item3"
+                as="span"
+                multiline
+                defaultValue="Postagens e stories nas redes cadastradas"
+              />
+            </li>
+            <li className="flex items-start gap-2">
+              <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+              <EditableText
+                id="rede.entrega.item4"
+                as="span"
+                multiline
+                defaultValue="Presença e cobertura dos eventos da campanha"
+              />
+            </li>
+          </ul>
+        </div>
+      </section>
     </PageShell>
   );
 }
@@ -229,7 +389,7 @@ function NoFluxo({ papel, destacado = false }: { papel: Papel; destacado?: boole
             id={`rede.no.${papel.id}.nome`}
             as="div"
             defaultValue={papel.defaultNome}
-            className={`font-display font-extrabold text-lg ${papel.cor}`}
+            className={`font-display font-extrabold text-base ${papel.cor} leading-tight`}
           />
         </div>
       </div>
@@ -291,8 +451,14 @@ function CardDetalhe({ papel }: { papel: Papel }) {
           defaultValue={papel.defaultAcesso}
         />
         <BlocoCampo
+          icone={UserPlus}
+          titulo="Quem pode cadastrar"
+          id={`rede.detalhe.${papel.id}.cadastra`}
+          defaultValue={papel.defaultCadastra}
+        />
+        <BlocoCampo
           icone={ClipboardList}
-          titulo="O que faz no sistema"
+          titulo="Função no sistema"
           id={`rede.detalhe.${papel.id}.responsabilidades`}
           defaultValue={papel.defaultResponsabilidades}
         />
@@ -345,4 +511,3 @@ function BlocoCampo({
     </div>
   );
 }
-
