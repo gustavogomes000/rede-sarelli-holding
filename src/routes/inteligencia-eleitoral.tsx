@@ -154,7 +154,7 @@ function InteligenciaPage() {
       eyebrow="Capítulo 05 · Inteligência Eleitoral GO"
       title={
         <EditableText
-          settingKey="inteligencia.hero.titulo"
+          id="inteligencia.hero.titulo"
           defaultValue="Onde estão os votos. Onde a Doutora vai brilhar."
           as="span"
           multiline
@@ -162,7 +162,7 @@ function InteligenciaPage() {
       }
       intro={
         <EditableText
-          settingKey="inteligencia.hero.intro"
+          id="inteligencia.hero.intro"
           defaultValue="Mapa de calor de Goiás com eleitorado, zonas, seções e locais de votação por município. A base que orienta onde investir tempo, equipe e estrutura."
           as="span"
           multiline
@@ -545,7 +545,7 @@ function InteligenciaPage() {
           Fonte e atualização
         </h4>
         <EditableText
-          settingKey="inteligencia.fonte"
+          id="inteligencia.fonte"
           defaultValue="Dados consolidados do TSE — Eleições 2024 (eleitorado, zonas, seções e locais de votação). Para 2026 os números serão atualizados conforme o calendário oficial. As estimativas de potencial de votos consideram cenários conservadores de 3% sobre o eleitorado, com abstenção média de 20%."
           as="p"
           multiline
