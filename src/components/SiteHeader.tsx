@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronLeft, ChevronRight } from "lucide-react";
 import logoHeader from "@/assets/sarelli-logo-header.png";
 
 const NAV = [
@@ -42,6 +42,8 @@ export function SiteHeader() {
 
   const currentIdx = NAV.findIndex((n) => n.to === location.pathname);
   const progress = currentIdx >= 0 ? ((currentIdx + 1) / NAV.length) * 100 : 0;
+  const prev = currentIdx > 0 ? NAV[currentIdx - 1] : null;
+  const next = currentIdx >= 0 && currentIdx < NAV.length - 1 ? NAV[currentIdx + 1] : null;
 
   return (
     <>
@@ -53,22 +55,16 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center gap-3 group">
+          {/* LOGO sozinho */}
+          <Link to="/" className="flex items-center group">
             <img
               src={logoHeader}
               alt="Doutora Fernanda Sarelli — Chama a Doutora"
               className="h-12 w-auto object-contain"
             />
-            <div className="hidden md:block leading-tight border-l border-border pl-3 ml-1">
-              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-semibold">
-                Manual Estratégico
-              </div>
-              <div className="font-display text-sm font-bold text-foreground">
-                Holding Sarelli 2026
-              </div>
-            </div>
           </Link>
 
+          {/* NAV de capítulos (desktop) */}
           <nav className="hidden xl:flex items-center gap-0.5">
             {NAV.map((item) => {
               const active = location.pathname === item.to;
@@ -91,7 +87,43 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          {/* CONTROLES: Prev / Next / Tema / Menu */}
+          <div className="flex items-center gap-1.5">
+            {/* Navegação prev/next sempre visível */}
+            <div className="flex items-center rounded-full border border-border bg-white/80 backdrop-blur p-0.5 shadow-sm">
+              {prev ? (
+                <Link
+                  to={prev.to}
+                  className="h-9 w-9 flex items-center justify-center rounded-full text-foreground/70 hover:text-primary hover:bg-accent transition"
+                  aria-label={`Anterior: ${prev.label}`}
+                  title={`← ${prev.label}`}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Link>
+              ) : (
+                <span className="h-9 w-9 flex items-center justify-center text-foreground/20">
+                  <ChevronLeft className="h-4 w-4" />
+                </span>
+              )}
+              <div className="px-2 text-[10px] font-mono font-bold text-primary tabular-nums">
+                {String(currentIdx + 1).padStart(2, "0")}/{String(NAV.length).padStart(2, "0")}
+              </div>
+              {next ? (
+                <Link
+                  to={next.to}
+                  className="h-9 w-9 flex items-center justify-center rounded-full text-foreground/70 hover:text-primary hover:bg-accent transition"
+                  aria-label={`Próxima: ${next.label}`}
+                  title={`${next.label} →`}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              ) : (
+                <span className="h-9 w-9 flex items-center justify-center text-foreground/20">
+                  <ChevronRight className="h-4 w-4" />
+                </span>
+              )}
+            </div>
+
             <button
               onClick={() => setDark(!dark)}
               className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full text-foreground/70 hover:text-primary hover:bg-accent transition"
