@@ -58,16 +58,20 @@ export function EditableText({
       return;
     }
     (async () => {
-      const { data, error } = await (supabase as any)
-        .from("caderno_textos")
-        .select("conteudo")
-        .eq("chave", id)
-        .maybeSingle();
-      if (cancelled) return;
-      if (!error && data?.conteudo) {
-        notify(id, data.conteudo);
-      } else {
-        cache.set(id, defaultValue);
+      try {
+        const { data, error } = await (supabase as any)
+          .from("caderno_textos")
+          .select("conteudo")
+          .eq("chave", id)
+          .maybeSingle();
+        if (cancelled) return;
+        if (!error && data?.conteudo) {
+          notify(id, data.conteudo);
+        } else {
+          cache.set(id, defaultValue);
+        }
+      } catch {
+        if (!cancelled) cache.set(id, defaultValue);
       }
     })();
     return () => {
