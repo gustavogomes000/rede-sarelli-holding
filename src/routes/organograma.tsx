@@ -84,7 +84,7 @@ const coo: Cargo = {
   papel: "Causa do Exército · Gestão geral, financeiro, administrativo e desenvolvimento sob demanda",
   reporta: "CEO Pública",
   responsabilidades: [
-    "Gestão geral de toda a Holding (HQ + Exército de Campo).",
+    "Gestão geral de toda a Operação (HQ + Exército de Campo).",
     "Causa e comando do Exército: define metas, territórios e ritmo.",
     "Gestão financeira: caixa, contas a pagar, fornecedores e prestação de contas.",
     "Controle administrativo do comitê, contratos e fornecedores.",
