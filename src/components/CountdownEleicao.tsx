@@ -43,7 +43,7 @@ export function CountdownEleicao() {
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold leading-tight">
-              Faltam <span className="text-pink">{t.days} dias</span> para
+              Faltam <span className="text-pink">{mounted ? t.days : "—"} dias</span> para
               o <span className="italic">D-Day</span>.
             </h2>
             <p className="mt-3 text-sm text-white/70 leading-relaxed max-w-md">
@@ -60,7 +60,7 @@ export function CountdownEleicao() {
                   className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur p-4 sm:p-6 text-center"
                 >
                   <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tabular-nums leading-none">
-                    {String(val).padStart(2, "0")}
+                    {mounted ? String(val).padStart(2, "0") : "—"}
                   </div>
                   <div className="mt-2 text-[10px] sm:text-xs uppercase tracking-widest text-pink font-bold">
                     {label}
