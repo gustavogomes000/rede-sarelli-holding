@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RedeSarelliRouteImport } from './routes/rede-sarelli'
 import { Route as PlanejamentoRouteImport } from './routes/planejamento'
 import { Route as OrganogramaRouteImport } from './routes/organograma'
+import { Route as GovernancaRouteImport } from './routes/governanca'
 import { Route as EstrategiaDigitalRouteImport } from './routes/estrategia-digital'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -30,6 +31,11 @@ const OrganogramaRoute = OrganogramaRouteImport.update({
   path: '/organograma',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernancaRoute = GovernancaRouteImport.update({
+  id: '/governanca',
+  path: '/governanca',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EstrategiaDigitalRoute = EstrategiaDigitalRouteImport.update({
   id: '/estrategia-digital',
   path: '/estrategia-digital',
@@ -44,6 +50,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/governanca': typeof GovernancaRoute
   '/organograma': typeof OrganogramaRoute
   '/planejamento': typeof PlanejamentoRoute
   '/rede-sarelli': typeof RedeSarelliRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/governanca': typeof GovernancaRoute
   '/organograma': typeof OrganogramaRoute
   '/planejamento': typeof PlanejamentoRoute
   '/rede-sarelli': typeof RedeSarelliRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/estrategia-digital': typeof EstrategiaDigitalRoute
+  '/governanca': typeof GovernancaRoute
   '/organograma': typeof OrganogramaRoute
   '/planejamento': typeof PlanejamentoRoute
   '/rede-sarelli': typeof RedeSarelliRoute
@@ -68,6 +77,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/estrategia-digital'
+    | '/governanca'
     | '/organograma'
     | '/planejamento'
     | '/rede-sarelli'
@@ -75,6 +85,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/estrategia-digital'
+    | '/governanca'
     | '/organograma'
     | '/planejamento'
     | '/rede-sarelli'
@@ -82,6 +93,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/estrategia-digital'
+    | '/governanca'
     | '/organograma'
     | '/planejamento'
     | '/rede-sarelli'
@@ -90,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EstrategiaDigitalRoute: typeof EstrategiaDigitalRoute
+  GovernancaRoute: typeof GovernancaRoute
   OrganogramaRoute: typeof OrganogramaRoute
   PlanejamentoRoute: typeof PlanejamentoRoute
   RedeSarelliRoute: typeof RedeSarelliRoute
@@ -118,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrganogramaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/governanca': {
+      id: '/governanca'
+      path: '/governanca'
+      fullPath: '/governanca'
+      preLoaderRoute: typeof GovernancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/estrategia-digital': {
       id: '/estrategia-digital'
       path: '/estrategia-digital'
@@ -138,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EstrategiaDigitalRoute: EstrategiaDigitalRoute,
+  GovernancaRoute: GovernancaRoute,
   OrganogramaRoute: OrganogramaRoute,
   PlanejamentoRoute: PlanejamentoRoute,
   RedeSarelliRoute: RedeSarelliRoute,
