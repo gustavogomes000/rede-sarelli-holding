@@ -5,16 +5,6 @@ import logoHeader from "@/assets/sarelli-logo-header.png";
 
 const NAV = [
   { to: "/", label: "Capa", n: "01" },
-  { to: "/holding", label: "Holding", n: "02" },
-  { to: "/pilares", label: "Pilares", n: "03" },
-  { to: "/organograma", label: "Organograma", n: "04" },
-  { to: "/marca", label: "Marca", n: "05" },
-  { to: "/roadmap", label: "Roadmap", n: "06" },
-  { to: "/rede-sarelli", label: "Rede Sarelli", n: "07" },
-  { to: "/funil", label: "Funil", n: "08" },
-  { to: "/promotores", label: "Promotores", n: "09" },
-  { to: "/governanca", label: "Governança", n: "10" },
-  { to: "/proximos-passos", label: "Próximos Passos", n: "11" },
 ] as const;
 
 export function SiteHeader() {
