@@ -526,19 +526,17 @@ function OrganogramaPage() {
 
       <HorizontalBracket />
 
-      {/* NÍVEL 3 — CHIEF OF STAFF + CFO */}
+      {/* NÍVEL 3 — CHIEF OF STAFF (sozinha) */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8 mt-6">
         <NivelHeader
-          capitulo="Nível 03 · Apoio Direto à Coordenação"
-          titulo="Agenda, finanças e"
-          destaque="cobrança de resultados"
-          subtitulo="Chief of Staff blinda a CEO 24h. CFO administra o caixa e cobra metas de cada área."
+          capitulo="Nível 03 · Sombra da CEO"
+          titulo="Quem está com a Doutora"
+          destaque="24 horas por dia"
+          subtitulo="Chief of Staff: companhia, agenda e filtro de acesso. A pessoa que blinda a CEO o tempo inteiro."
           Icon={Briefcase}
         />
-        <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
-          {camadaApoioCEO.map((c) => (
-            <CargoCard key={c.cargo} cargo={c} />
-          ))}
+        <div className="max-w-2xl mx-auto">
+          <CargoCard cargo={chiefOfStaff} />
         </div>
       </section>
 
@@ -550,7 +548,7 @@ function OrganogramaPage() {
           capitulo="Nível 04 · Diretoria Operacional · HQ"
           titulo="O"
           destaque="cérebro da Holding"
-          subtitulo="CTO, Marketing, Head do Exército, CS Político e Recepção. Cada um responde diretamente ao COO."
+          subtitulo="CTO, CMOs (Conteúdo + Redes), Head do Exército, CS Político e Recepção. Cada um responde diretamente ao COO."
           Icon={Building2}
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -568,10 +566,10 @@ function OrganogramaPage() {
           capitulo="Nível 05 · Exército de Campo · Operação de Rua"
           titulo="Quem"
           destaque="conquista território"
-          subtitulo="Comandado pelo Head do Exército: Suplentes articulam, Lideranças convertem, Promotores prospectam."
+          subtitulo="Comandado pelo Head do Exército: Suplentes articulam, Fiscais defendem a urna, Lideranças convertem, Promotores prospectam."
           Icon={Swords}
         />
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {exercito.map((c) => (
             <CargoCard key={c.cargo} cargo={c} />
           ))}
