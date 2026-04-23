@@ -6,12 +6,6 @@ import {
   Target,
   Headset,
   ArrowDown,
-  ArrowRight,
-  Link2,
-  ClipboardList,
-  Activity,
-  UserPlus,
-  TrendingUp,
 } from "lucide-react";
 import { EditableText } from "@/components/EditableText";
 import { PageShell } from "@/components/PageShell";
@@ -208,48 +202,6 @@ function RedeSarelliPage() {
         </div>
       </section>
 
-      {/* Como medimos engajamento */}
-      <section>
-        <div className="rounded-3xl border-2 border-primary/30 bg-gradient-to-br from-primary/5 via-rose/10 to-pink-soft/30 p-8 sm:p-12">
-          <div className="flex items-center gap-3 mb-6">
-            <Activity className="h-5 w-5 text-primary" />
-            <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-              Como medimos o engajamento
-            </span>
-          </div>
-
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold leading-tight mb-6">
-            <EditableText
-              id="rede.medicao.titulo"
-              as="span"
-              defaultValue="Quem está somando, quem está parado."
-            />
-          </h2>
-
-          <EditableText
-            id="rede.medicao.regra"
-            as="p"
-            multiline
-            className="text-lg leading-relaxed text-foreground/80 mb-8"
-            defaultValue="Toda Suplente, Liderança, Promotor e Coordenador tem suas redes sociais vinculadas no cadastro. O sistema mede e mostra publicamente se a pessoa está somando ou não, com base em duas variáveis simples: número de cadastros gerados e número de postagens/compartilhamentos feitos nas redes sociais cadastradas. Quem soma, aparece. Quem não soma, também."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <RegraBloco
-              icone={UserPlus}
-              titulo="Cadastros"
-              id="rede.medicao.cadastros"
-              defaultValue="Total de pessoas cadastradas pela rede inteira abaixo daquele papel — soma direta + indireta."
-            />
-            <RegraBloco
-              icone={TrendingUp}
-              titulo="Postagens nas redes"
-              id="rede.medicao.postagens"
-              defaultValue="Postagens, stories e compartilhamentos feitos nas redes sociais que a pessoa cadastrou no perfil."
-            />
-          </div>
-        </div>
-      </section>
     </PageShell>
   );
 }
