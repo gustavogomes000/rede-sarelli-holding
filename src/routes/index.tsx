@@ -278,7 +278,7 @@ function Capa() {
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="h-px w-10 bg-primary" />
               <span className="text-[11px] uppercase tracking-[0.35em] text-primary font-bold">
-                Nossas Bandeiras · 5 Pilares
+                Nossas Bandeiras · 6 Pilares
               </span>
               <span className="h-px w-10 bg-primary" />
             </div>
@@ -295,10 +295,9 @@ function Capa() {
             {pilares.map((p) => {
               const Icon = p.icon;
               return (
-                <Link
+                <div
                   key={p.t}
-                  to="/pilares"
-                  className="group relative rounded-2xl bg-white border-2 border-border p-7 hover:border-primary hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-pink"
+                  className="group relative rounded-2xl bg-white border-2 border-border p-7 hover:border-primary/60 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-pink"
                 >
                   <div className="absolute -top-4 left-7 h-9 w-9 rounded-full bg-primary text-white flex items-center justify-center font-mono text-xs font-bold shadow-pink">
                     {p.n}
@@ -310,11 +309,7 @@ function Capa() {
                     {p.t}
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{p.d}</p>
-                  <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                    Ver desdobramentos
-                    <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
+                </div>
               );
             })}
           </div>
